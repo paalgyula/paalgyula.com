@@ -4,3 +4,9 @@
 **/node_modules
 
 **/.sass-cache
+projects/idea-online/assets/css/main.css
+projects/idea-online/assets/css/main.css.map
+projects/idea-license-server/IntelliJIDEALicenseServer_windows_amd64.exe
+
+public/stylesheets/styles.css
+public/stylesheets/styles.css.map
