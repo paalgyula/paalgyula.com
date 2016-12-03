@@ -1,0 +1,430 @@
+extends layout
+
+block head
+  title(itemprop='name') #{__('resume-header-description')}
+  meta(name='description', content="#{__('resume-header-description')}")
+  link(rel='alternate', hreflang='en-us', href='http://www.paalgyula.com/en/')
+  link(rel='alternate', hreflang='en-gb', href='http://www.paalgyula.com/en/')
+
+block header
+  header.header
+    .top-bar.container-fluid
+      .actions
+        a.btn(href='../en/')
+          img(src='/assets/images/flags/us-flag.png', alt='English')
+        a.btn.hidden-xs(href='mailto:paalgyula@paalgyula.com')
+          i.fa.fa-paper-plane(aria-hidden='true')
+          |  #{__('hire-me')}
+        a.btn(href='http://www.paalgyula.com/oneletrajz.pdf')
+          i.fa.fa-download(aria-hidden='true')
+          |  #{__('download-my-resume')}
+      ul.social.list-inline
+        li
+          a(href='https://twitter.com/paalgyula')
+            i.fa.fa-twitter(aria-hidden='true')
+        li
+          a(href='https://plus.google.com/+PaálGyulaÖrdög')
+            i.fa.fa-google-plus(aria-hidden='true')
+        li
+          a(href='https://bitbucket.org/paalgyula')
+            i.fa.fa-bitbucket(aria-hidden='true')
+        li
+          a(href='https://github.com/paalgyula')
+            i.fa.fa-github-alt(aria-hidden='true')
+        li
+          a(href='skype:goofydesign?add')
+            i.fa.fa-skype(aria-hidden='true')
+    .intro
+      .container.text-center
+        img.profile-image(src='/assets/images/profile-image.png', alt='')
+        h1.name #{__('full-name')}
+        .title #{__('subtitle')}
+        .profile
+          p
+            | #{__('introduction')}
+    .contact-info
+      .container.text-center
+        ul.list-inline
+          li.email
+            i.fa.fa-envelope
+            a(href='mailto:paalgyula@paalgyula.com') paalgyula@paalgyula.com
+          li
+            i.fa.fa-phone
+            a(href='tel:+36308468338') +36 30 846 8338
+          li.website
+            i.fa.fa-globe
+            a(href='#', target='_blank') www.paalgyula.com
+    .page-nav-space-holder.hidden-xs
+      #page-nav-wrapper.page-nav-wrapper.text-center
+        .container
+          ul#page-nav.nav.page-nav.list-inline
+            li
+              a.scrollto(href='#experiences-section') Életpálya
+            li
+              a.scrollto(href='#eudcation-section') Oktatások
+            li
+              a.scrollto(href='#skills-section') Tudásbázis
+            li
+              a.scrollto(href='#testimonials-section') #{__('testimonals')}
+            li
+              a.scrollto(href='#portfolio-section') Portfólió
+            li
+              a.scrollto(href='#contact-section') Kapcsolat
+
+block content
+  .wrapper.container
+    section#experiences-section.experiences-section.section
+      h2.section-title Életpálya
+      .timeline
+        .item
+          .work-place
+            h3.place InfoCompass International Kft.
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='https://www.google.com/maps?q=Infopark+Budapest', target='_blank')
+                | XI. Budapest,
+                | Infopark
+          .job-meta
+            .title Senior Software Engineer
+            .time 2016 - Jelenleg
+          .job-desc
+            p Hamarosan...
+            ul
+              li JavaEE fejlesztés Wildfly alkalmazásszerverrel
+              li Web frontend készítése Angular2 + Bootstrap3 használatával
+              li Test Driven fejlesztés JUnit + Arquillian-al
+        .item
+          .work-place
+            h3.place
+              img(src='/assets/images/gw-systems-logo.png', alt='GW-Systems')
+              |  GW-Systems Kft.
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='#') XIII. Budapest
+          .job-meta
+            .title Vezető, Tulajdonos
+            .time 2014 - 2016
+          .job-desc
+            b Pár nagyobb projektem:
+            ul
+              li Pub Management software (Android)
+              li ALCOA Document Manager rendszer (C#)
+              li Vasúti logisztikai szoftver a CER Cargo Holding SE. részére (C#)
+              li Club Aligai beléptető rendszer (Qt5/C++)
+              li Bérelt vezető fejlesztő
+              li
+                b.text-danger JavaEE Stack oktatása JBoss Partnerként
+              li Egyedi hardware tervezés (Atmel chip(ek) használatával)
+        .item
+          .work-place
+            h3.place
+              img(src='/assets/images/pont-logo.png', alt='Pont Systems Group')
+              |  Pont Systems
+              |                         Group
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='https://www.google.com/maps?q=Pont+Systems+Zrt.', target='_blank') XI. Budapest
+          .job-meta
+            .title Senior J2EE Programmer
+            .time 2014
+          .job-desc
+            | Bérbe adva dolgoztam a Budaepst Bank Zrt. és CIB Bank Zrt. számára
+            ul
+              li JMS kommunikáció kialakítása külső rendszerekkel
+              li Belső banki rendszer(ek) hibajavítása, továbbfejlesztése
+              li Belső dokumentum kezelő rendszer továbbfejlesztése
+        .item
+          .work-place
+            h3.place Húsiari Vállalat Zrt.
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='https://www.google.com/maps?q=Húsipari+Vállalat+Zrt.', target='_blank')
+                | XVIII.
+                | Budapest
+          .job-meta
+            .title J2EE Architect
+            .time 2011-2013
+          .job-desc
+            | Az teljes üzemi rendszer (Húsfeldolgozó, Hűtőház) megtervezése, kivitelezése
+            ul
+              li JBoss EAP Application server
+              li Oracle adatbázis
+              li Flexible ExtJS frontend
+        .item
+          .work-place
+            h3.place Welt2000 Ltd.
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='https://www.google.com/maps?q=Welt+2000+Kft.', target='_blank') Budaörs
+          .job-meta
+            .title Java/PHP Programmer
+            .time 2009-2010
+          .job-desc
+            | Az EU-s pályázatokat elbíráló rendszer (EMIR) beadó felületének (UMFT, UMFT2) egyik fejlesztője
+            | voltam
+        .item
+          .work-place
+            h3.place
+              img(src='/assets/images/freelancer-logo.png', alt='Freelancer')
+              |  Freelancer
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='#') Bárhol
+          .job-meta
+            .title PHP Programmer
+            .time 2007-2009
+          .job-desc
+            | Projects:
+            ul
+              li Asterisk VoIP PBX Administration panel (PHP+ExtJS 3)
+              li Hosting System for LAMP stack (Java + Tomcat + Axis2 + GWT)
+              li Hotel booking system (OOP PHP + Smarty Templates)
+              li Hobbiként: World of Warcraft server protokoll visszafejtés
+        .item
+          .work-place
+            h3.place Teleház
+            .location.hidden-xs
+              i.fa.fa-map-marker(aria-hidden='true')
+              a(href='https://www.google.com/maps?q=Győrvár', target='_blank') Győrvár
+          .job-meta
+            .title Rendszergazda
+            .time 2004-2007 (Iskola alatt)
+          .job-desc
+            | Linux based Active Directory (Samba PDC) and Proxy server administrating, Windows managing, handling
+    section#eudcation-section.education-section.section
+      h2.section-title Education
+      .row
+        .item.col-xs-12.col-sm-4
+          .item-inner
+            h3.degree Középiskola
+            .education-body
+              | GIMSZ
+            .time 2003 - 2007
+            .desc
+              | Az ország felvételi rangsorolása alapján a 8. legjobb szakközépiskola.
+              b Java, Delphi programozás
+              |  és alapok Windows/Linux/Novell üzemeltetésből.
+        .item.col-xs-12.col-sm-4
+          .item-inner
+            h3.degree System Informatics Technician
+            .education-body
+              | GIMSZ
+            .time 2007 - 2008
+            .desc
+              | Technikum -
+              b Rendszerinformatika
+              | i képesítés Linux/Novell/Windows-ból.
+              |                         Haladó Java programozás.
+              |                         Haladó ismeretek hálózatkezelésből +
+              b Cisco CCNA Minősítés
+              | .
+        .item.col-xs-12.col-sm-4
+          .item-inner
+            h3.degree Egyéb minősítések
+            .education-body
+            .time
+            .desc
+              ul
+                li Certified Enterprise System Administrator (Novell/SuSE)
+                li Cisco CCDE - Cisco Certified Design Expert
+                li Java 7 SE Programmer Certification
+                li Spring Web Application Developer Certification
+                li TypeScript Expert Certification
+                li
+                  span.label.label-danger SZÉPSÉGHIBA
+                  |  Diploma nincs (se folyamatban) helyette:
+                  span.label.label-success ÉN TUDOK
+                  | !
+    section#skills-section.skills-section.section.text-center
+      h2.section-title Tudásbázis
+      .top-skills
+        h3.subtitle Ebben vagyok a legjobb
+        .row
+          .item.col-xs-12.col-sm-3
+            .item-inner
+              .chart-easy-pie.text-center
+                .chart-theme-1.chart(data-percent='98')
+                  span 98
+                  | %
+              h4.skill-name Java
+              .level Szakértő, 8 years
+              .desc
+          .item.col-xs-12.col-sm-3
+            .item-inner
+              .chart-easy-pie.text-center
+                .chart-theme-1.chart(data-percent='90')
+                  span 90
+                  | %
+              h4.skill-name HTML5 + SEO
+              .level Szakértő, 11 years
+              .desc
+          .item.col-xs-12.col-sm-3
+            .item-inner
+              .chart-easy-pie.text-center
+                .chart-theme-1.chart(data-percent='90')
+                  span 90
+                  | %
+              h4.skill-name Angular(1|2) & TypeScript
+              .level Szakértő, 3 years
+              .desc
+          .item.col-xs-12.col-sm-3
+            .item-inner
+              .chart-easy-pie.text-center
+                .chart-theme-1.chart(data-percent='70')
+                  span 70
+                  | %
+              h4.skill-name C# & MVC5 + WebApi
+              .level Haladó, 4 years
+              .desc
+      .other-skills
+        h3.subtitle Egyéb tapasztalatok
+        .misc-skills
+          span.skill-tag HTML5
+          span.skill-tag CSS3
+          span.skill-tag SASS
+          span.skill-tag Git
+          span.skill-tag Subversion
+          span.skill-tag Mercurial
+          br
+          span.skill-tag.text-danger Java2 EE
+          span.skill-tag.text-danger PHP
+          span.skill-tag.text-danger Delphi
+          span.skill-tag.text-danger C#
+          br
+          span.skill-tag.text-success PostgreSQL
+          span.skill-tag.text-success MySQL
+          span.skill-tag.text-success MSSQL
+          span.skill-tag.text-success Oracle 9+
+    //
+      section id="testimonials-section" class="testimonials-section section">
+      <h2 class="section-title">Testimonials</h2>
+      <div id="testimonials-carousel" class="testimonials-carousel carousel slide" data-interval="8000">
+      <ol class="carousel-indicators">
+      <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+      <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+      <div class="item active">
+      <blockquote class="quote">
+      <i class="fa fa-quote-left"></i>
+      <p>James is an excellent software engineer and he is passionate about what he does. Lorem ipsum
+      dolor sit amet, consectetuer adipiscing elit. Suspendisse porttitor metus eros.</p>
+      </blockquote>
+      <div class="source">
+      <div class="name">Rob Olson</div>
+      <div class="position">Product Manager, Apple</div>
+      </div>
+      </div>
+      <div class="item">
+      <blockquote class="quote">
+      <p><i class="fa fa-quote-left"></i>
+      Sed massa leo, aliquet non velit eu, volutpat vulputate odio. Interdum et malesuada fames ac
+      ante ipsum primis in faucibus. Suspendisse porttitor metus eros, ut fringilla nulla auctor
+      a.</p>
+      </blockquote>
+      <div class="source">
+      <div class="name">Christina Jensen</div>
+      <div class="position">Senior Developer, Twitter</div>
+      </div>
+      </div>
+      <div class="item">
+      <blockquote class="quote">
+      <p><i class="fa fa-quote-left"></i>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+      Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
+      </blockquote>
+      <div class="source">
+      <div class="name">Austin Ward</div>
+      <div class="position">CEO, Startup Hub</div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </section
+    section#portfolio-section.portfolio-section.section
+      h2.section-title Portfolio
+      ul#filters.filters.clearfix
+        li.type.active(data-filter='*') All
+        li.type(data-filter='.backend') Back-end
+        li.type(data-filter='.frontend') Front-end
+        li.type(data-filter='.appz') Application
+      .items-wrapper.isotope.row
+        .item.appz.col-md-3.col-xs-6
+          .item-inner
+            figure.figure
+              img.img-responsive(src='/assets/images/portfolio/portfolio-zombieland.jpg', alt='ZombieLand Client')
+            .content.text-left
+              h3.sub-title
+                a(href='#') ZombieLand Game Client
+              .meta Unity3D
+              .action
+                a(href='https://github.com/paalgyula/zombieland') View on Github
+            a.link-mask(href='https://github.com/paalgyula/zombieland')
+        .item.appz.col-md-3.col-xs-6
+          .item-inner
+            figure.figure
+              img.img-responsive(src='/assets/images/portfolio/portfolio-ncoredroid.jpg', alt='nCore Android Client')
+            .content.text-left
+              h3.sub-title
+                a(href='#') nCore Torrent Tracker client
+              .meta Android/Java
+              .action
+                a(href='https://github.com/paalgyula/ncoredroid') View on Github
+            a.link-mask(href='https://github.com/paalgyula/ncoredroid')
+        .item.frontend.col-md-3.col-xs-6
+          .item-inner
+            figure.figure
+              img.img-responsive(src='/assets/images/portfolio/portfolio-gravatar.jpg', alt='Gravatar Taglib')
+            .content.text-left
+              h3.sub-title
+                a(href='#') Gravatar JSP/JSF Tag Library
+              .meta Java
+              .action
+                a(href='https://bitbucket.org/paalgyula/gravatar-taglib') View on Bitbucket
+            a.link-mask(href='https://bitbucket.org/paalgyula/gravatar-taglib')
+    section#contact-section.contact-section.section
+      h2.section-title Kapcsolatfelvétel
+      .intro
+        img.profile-image(src='/assets/images/profile-image.png', alt='')
+        .dialog
+          p Szívesen vállalok szabadúszóként projekteket!
+          p
+            strong A következőkben lehetek a segítségedre:
+          ul.list-unstyled.service-list
+            li
+              i.fa.fa-check(aria-hidden='true')
+              |  Alkalmazás fejlesztés Android/C#/Swing/Qt5
+            li
+              i.fa.fa-check(aria-hidden='true')
+              |  Front-end fejlesztés AngularJS/Bootstrap
+            li
+              i.fa.fa-check(aria-hidden='true')
+              |  Back-end fejlesztés with JavaEE/Spring
+            li
+              i.fa.fa-check(aria-hidden='true')
+              |  UI fejlesztés
+            li
+              i.fa.fa-check(aria-hidden='true')
+              |  UX prototyping
+          p
+            | Írj üzenetet:
+            a(href='mailto:paalgyula@paalgyula.com') paalgyula@paalgyula.com
+            |  vagy hívj bátran:
+            a(href='tel:+36308468338') +36 30 846 8338
+          ul.social.list-inline
+            li
+              a(href='https://twitter.com/paalgyula')
+                i.fa.fa-twitter(aria-hidden='true')
+            li
+              a(href='https://plus.google.com/+PaálGyulaÖrdög')
+                i.fa.fa-google-plus(aria-hidden='true')
+            li
+              a(href='https://bitbucket.org/paalgyula')
+                i.fa.fa-bitbucket(aria-hidden='true')
+            li
+              a(href='https://github.com/paalgyula')
+                i.fa.fa-github-alt(aria-hidden='true')
+            li
+              a(href='skype:goofydesign?add')
+                i.fa.fa-skype(aria-hidden='true')

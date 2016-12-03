@@ -1,0 +1,252 @@
+extends layout
+
+block head
+  title= title
+
+block header
+  header.header
+    .intro-2
+      .container.text-center
+        .title #{__('full-name')} - #{__('tutorial-head')}
+        .profile
+          p #{__('tutorial-intro')}
+    .contact-info
+      .container.text-center
+        ul.list-inline
+          li.email
+            i.fa.fa-envelope
+            a(href='mailto:paalgyula@paalgyula.com') paalgyula@paalgyula.com
+          li
+            i.fa.fa-phone
+            a(href='tel:+36308468338') +36 30 846 8338
+          li.website
+            i.fa.fa-globe
+            a(href='#', target='_blank') www.paalgyula.com
+    .page-nav-space-holder.hidden-xs
+      #page-nav-wrapper.page-nav-wrapper.text-center
+        .container
+          ul#page-nav.nav.page-nav.list-inline
+            li
+              a.scrollto(href='#experiences-section') Életpálya
+            li
+              a.scrollto(href='#eudcation-section') Oktatások
+            li
+              a.scrollto(href='#skills-section') Tudásbázis
+            li
+              a.scrollto(href='#testimonials-section') #{__('testimonals')}
+            li
+              a.scrollto(href='#portfolio-section') Portfólió
+            li
+              a.scrollto(href='#contact-section') Kapcsolat
+
+block content
+  .breadcrumb-wrapper.blog-small
+    .container
+      .row
+        .col-lg-6.col-md-6.col-xs-12.col-sm-6
+          h2.title Small Blog
+        .col-lg-6.col-md-6.col-xs-12.col-sm-6
+          .breadcrumbs.pull-right
+            ul
+              li You are here:
+              li
+                a(href='index.html') Home
+              li
+                a(style='cursor: pointer;') Blog
+              li Small Blog
+
+  br
+
+  div.container-fluid
+    div.row.blog-small
+      div(class="posts-block col-lg-9 col-md-9 col-sm-8 col-xs-12")
+        each i in [1,2,3,4,5,6,7]
+          article.post.hentry
+            .post-image
+              a(href='/images/blog-post1.jpg', data-rel='prettyPhoto')
+                span.img-hover
+                span.fullscreen
+                  i.fa.fa-search
+                img(src='/images/blog-post1.jpg', alt='')
+            .post-content-wrap
+              header.post-header
+                .post-date
+                  a.date(style='cursor: pointer;')
+                    strong 12
+                    i SEP
+                h3.content-title Blog post title
+                .blog-entry-meta
+                  .blog-entry-meta-author
+                    i.fa.fa-user
+                    a.blog-entry-meta-author(style='cursor: pointer;') John Doe
+                  .blog-entry-meta-tags
+                    i.fa.fa-tags
+                    a(style='cursor: pointer;') Web Design
+                    | ,
+                    a(style='cursor: pointer;') Branding
+                  .blog-entry-meta-comments
+                    i.fa.fa-comments
+                    a.blog-entry-meta-comments(style='cursor: pointer;') 4 comments
+              .post-content
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen not only five centuries, but also the leap essentially.
+            .clearfix
+            .blog-divider
+
+        .pagination-centered
+          ul.pagination
+            li.disabled
+              a(style='cursor: pointer;') «
+            li.active
+              a(style='cursor: pointer;') 1
+            li
+              a(style='cursor: pointer;') 2
+            li
+              a(style='cursor: pointer;') 3
+            li
+              a(style='cursor: pointer;') 4
+            li
+              a(style='cursor: pointer;') 5
+            li
+              a(style='cursor: pointer;') »
+      .sidebar.col-lg-3.col-md-3.col-sm-4.col-xs-12
+        // Search Widget Start
+        .widget.search-form
+          .input-group
+            input.search-input.form-control(type='text', value='Search...', onfocus="if(this.value=='Search...')this.value='';", onblur="if(this.value=='')this.value='Search...';")
+            span.input-group-btn
+              button.subscribe-btn.btn(type='submit')
+                i.fa.fa-search
+          // /input-group
+        // Search Widget End
+        // Tab Start
+        .widget.tabs
+          #horizontal-tabs
+            ul.tabs
+              li#tab1.current Popular
+              li#tab2 Recent
+              li#tab3 Comments
+            .contents
+              #content1.tabscontent(style='display: block;')
+                ul.posts
+                  li
+                    a(style='cursor: pointer;')
+                      img.img-thumbnail.recent-post-img(alt='', src='/images/recent-post-img.jpg')
+                    p
+                      a(style='cursor: pointer;') Lorem Ipsum is simply dummy text.
+                    span.color 27 July 2013
+                  li
+                    a(style='cursor: pointer;')
+                      img.img-thumbnail.recent-post-img(alt='', src='/images/recent-post-img.jpg')
+                    p
+                      a(style='cursor: pointer;') Lorem Ipsum is simply dummy text.
+                    span.color 30 July 2013
+              #content2.tabscontent(style='display: none;')
+                ul.posts
+                  li
+                    a(style='cursor: pointer;')
+                      img.img-thumbnail.recent-post-img(alt='', src='/images/recent-post-img.jpg')
+                    p
+                      a(style='cursor: pointer;') Lorem Ipsum is simply dummy text.
+                    span.color 27 July 2013
+                  li
+                    a(style='cursor: pointer;')
+                      img.img-thumbnail.recent-post-img(alt='', src='/images/recent-post-img.jpg')
+                    p
+                      a(style='cursor: pointer;') Lorem Ipsum is simply dummy text.
+                    span.color 30 July 2013
+              #content3.tabscontent(style='display: none;')
+                ul.posts
+                  li
+                    a(style='cursor: pointer;')
+                      img.img-thumbnail.recent-post-img(alt='', src='/images/recent-post-img.jpg')
+                    p
+                      a(style='cursor: pointer;') Lorem Ipsum is simply dummy text.
+                    |       by
+                    span.color wptuts+
+                  li
+                    a(style='cursor: pointer;')
+                      img.img-thumbnail.recent-post-img(alt='', src='/images/recent-post-img.jpg')
+                    p
+                      a(style='cursor: pointer;') Lorem Ipsum is simply dummy text.
+                    |       by
+                    span.color wptuts+
+        // Tab End
+        // Testimonials Widget Start
+        .row
+          .testimonials.widget
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+              .testimonials-title
+                h3.title Testimonials
+            .clearfix
+            #testimonials-carousel.testimonials-carousel.slide
+              .carousel-inner
+                .item
+                  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    .testimonial.item
+                      p
+                        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                      .testimonials-arrow
+                      .author
+                        .testimonial-image
+                          img(alt='', src='/images/team-member-1.jpg')
+                        .testimonial-author-info
+                          a(style='cursor: pointer;')
+                            span.color Monica Sing
+                          |  FIFO Themes
+                .item.active
+                  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    .testimonial.item
+                      p
+                        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                      .testimonials-arrow
+                      .author
+                        .testimonial-image
+                          img(alt='', src='/images/team-member-2.jpg')
+                        .testimonial-author-info
+                          a(style='cursor: pointer;')
+                            span.color Monzurul Haque
+                          |  FIFO Themes
+                .item
+                  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    .testimonial.item
+                      p
+                        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                      .testimonials-arrow
+                      .author
+                        .testimonial-image
+                          img(alt='', src='/images/team-member-3.jpg')
+                        .testimonial-author-info
+                          a(style='cursor: pointer;')
+                            span.color Carol Johansen
+                          |  FIFO Themes
+        // Category Widget Start
+        .widget.category
+          h3.title Categories
+          ul.category-list.slide
+            li
+              a(style='cursor: pointer;') Web Design
+            li
+              a(style='cursor: pointer;') Graphic Design
+            li
+              a(style='cursor: pointer;') Illustration
+            li
+              a(style='cursor: pointer;') Logo Design
+            li
+              a(style='cursor: pointer;') Wordpress Themes
+        // Category Widget End
+        // Ads Widget Start
+        .widget.ads
+          h3.title Advertisement
+          .ads-img.row
+            .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
+              img.img-thumbnail(alt='', src='/images/ads-small.jpg')
+            .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
+              img.img-thumbnail(alt='', src='/images/ads-small.jpg')
+          .ads-img.row
+            .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
+              img.img-thumbnail(alt='', src='/images/ads-small.jpg')
+            .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
+              img.img-thumbnail(alt='', src='/images/ads-small.jpg')
+        // Ads Widget End
+      // Sidebar End

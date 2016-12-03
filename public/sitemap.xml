@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>/hu/index.html</loc>
+        <changefreq>daily</changefreq>
+        <!--xhtml:link rel="amphtml" href="http://example.com/dogs/poodles/poodle1.amp.html"/-->
+        <lastmod>2016-11-09T16:10:02Z</lastmod>
+    </url>
+    <url>
+        <loc>/en/index.html</loc>
+        <changefreq>daily</changefreq>
+        <lastmod>2016-11-09T16:10:02Z</lastmod>
+    </url>
+</urlset>

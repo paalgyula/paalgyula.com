@@ -1,0 +1,13 @@
+ErrorDocument 404 /404.html
+
+# //RedirectMatch ^/$ /en/
+
+# One year for image files
+<FilesMatch ".(jpg|jpeg|png|gif|ico)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# One month for css and js
+<FilesMatch ".(css|js)$">
+    Header set Cache-Control "max-age=2628000, public"
+</FilesMatch>
