@@ -6,16 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var i18n = require('i18n-2');
 
-var index = require('./routes/index');
 var users = require('./routes/users');
-var cv = require('./routes/cv');
+var langselector = require('./routes/lang-selector');
 var tutorial = require('./routes/tutorials');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -29,23 +28,17 @@ app.use(require('node-sass-middleware')({
   indentedSyntax: true,
   sourceMap: true
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 i18n.expressBind(app, {
   locales: ['hu', 'en'],
   cookieName: 'locale',
   extension: '.json'
 });
 
-// This is how you'd set a locale from req.cookies.
-// Don't forget to set the cookie either on the client or in your Express app.
-app.use(function (req, res, next) {
-  req.i18n.setLocaleFromCookie();
-  next();
-});
-
-app.use('/', index);
+app.use('/', langselector);
 app.use('/users', users);
-app.use('/en/', cv);
 app.use('/Tutorial/', tutorial);
 
 // catch 404 and forward to error handler
