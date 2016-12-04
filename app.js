@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var debug = require('debug')('paalgyula:app');
 var i18n = require('i18n-2');
 
 var users = require('./routes/users');
@@ -53,6 +54,14 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  debug(req.acceptsLanguages());
+  debug(req.headers['user-agent']);
+
+  if (!err.status)
+    debug(err);
+  else
+    debug(err.message + " " + err.status || 500 + " url: " + req.url);
 
   // render the error page
   res.status(err.status || 500);

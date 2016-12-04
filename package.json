@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "debug": "DEBUG=paalgyula:server supervisor ./bin/www"
+    "debug": "DEBUG=paalgyula:* supervisor ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
