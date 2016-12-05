@@ -11,6 +11,7 @@ var proxy = require('express-http-proxy');
 var users = require('./routes/users');
 var langselector = require('./routes/lang-selector');
 var tutorial = require('./routes/tutorials');
+var ideaproxy = require('./routes/ideaproxy');
 
 var app = express();
 
@@ -42,7 +43,7 @@ i18n.expressBind(app, {
 app.use('/', langselector);
 app.use('/users', users);
 app.use('/Tutorial/', tutorial);
-app.use('/rpc', proxy('127.0.0.1:3390'));
+app.use('/rpc/', ideaproxy);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
