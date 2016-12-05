@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug')('paalgyula:app');
 var i18n = require('i18n-2');
+var proxy = require('express-http-proxy');
 
 var users = require('./routes/users');
 var langselector = require('./routes/lang-selector');
@@ -41,6 +42,7 @@ i18n.expressBind(app, {
 app.use('/', langselector);
 app.use('/users', users);
 app.use('/Tutorial/', tutorial);
+app.use('/rpc', proxy('127.0.0.1:3390'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
