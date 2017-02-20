@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
-
+var debug = require('debug')('paalgyula:app');
 
 /* Index page, nyelvesítés */
 router.get('/', function (req, res, next) {
@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
   if (isAccepted(acceptedLangs, 'hu')) {
     res.redirect('/hu/');
   } else {
-    debug.info('Accepted language request: ' + acceptedLangs);
+    debug('Accepted language request: ' + acceptedLangs);
     res.redirect("/en/");
   }
 });
