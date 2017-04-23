@@ -1,8 +1,0 @@
-{
-  "name": "idea-online",
-  "version": "0.0.1",
-  "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "jquery": "^3.1.1"
-  }
-}
