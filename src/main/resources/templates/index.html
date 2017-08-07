@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="hu">
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
     <link rel="canonical" href="http://www.paalgyula.com/"/>
     <meta charset="utf-8"/>
@@ -15,41 +15,53 @@
 
     <script>
         (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-87027213-1', 'auto');
-    ga('send', 'pageview');
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-87027213-1', 'auto');
+        ga('send', 'pageview');
     </script>
 
-    <title itemprop="name">Paál Gyula - A Senior J2EE Fejlesztő</title>
+    <title itemprop="name" th:text="#{resume-header-description}">
+        Paál Gyula - A Senior J2EE Fejlesztő
+    </title>
     <meta name="description" th:content="#{resume-header-description}"/>
-    <link rel="alternate" hreflang="en-us" href="http://www.paalgyula.com/en/"/>
-    <link rel="alternate" hreflang="en-gb" href="http://www.paalgyula.com/en/"/>
+    <link th:unless="${lang=='en'}" rel="alternate" hreflang="en-us" href="http://www.paalgyula.com/en/"/>
+    <link th:unless="${lang=='en'}" rel="alternate" hreflang="en-gb" href="http://www.paalgyula.com/en/"/>
+    <link th:unless="${lang=='hu'}" rel="alternate" hreflang="hu-hu" href="http://www.paalgyula.com/hu/"/>
 </head>
 <body itemscope="itemscope" itemtype="http://schema.org/Person">
 <header class="header">
     <div class="top-bar container-fluid">
         <div class="actions">
-            <a class="btn" th:href="@{~/en/index.html}" href="../en/">
-            <img src="/assets/images/flags/us-flag.png" alt="English"/></a>
+            <a class="btn" href="../en/"
+               th:href="@{~/__${lang == 'hu' ? 'en' : 'hu'}__/index.html}">
+                <img src="/assets/images/flags/us-flag.png" alt="English"
+                     th:src="@{~/assets/images/flags/__${lang == 'hu' ? 'us' : 'hu'}__-flag.png}"/>
+            </a>
+
             <a class="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
-                <i class="fa fa-paper-plane" aria-hidden="true"></i> Bérelj fel!</a>
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                <span th:text="#{hire-me}" th:remove="tag"></span>
+            </a>
             <a class="btn" href="http://www.paalgyula.com/oneletrajz.pdf">
-                <i class="fa fa-download" aria-hidden="true"></i> Töltsd le az önéletrajzom!</a>
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <span th:text="#{download-my-resume}" th:remove="tag"></span>
+            </a>
         </div>
 
         <ul class="social list-inline">
             <li><a href="https://twitter.com/paalgyula"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="https://plus.google.com/+PaálGyulaÖrdög"><i class="fa fa-google-plus"
-                                                                     aria-hidden="true"></i></a></li>
+            <li><a href="https://plus.google.com/+PaálGyulaÖrdög">
+                <i class="fa fa-google-plus"
+                   aria-hidden="true"></i></a></li>
             <li><a href="https://bitbucket.org/paalgyula"><i class="fa fa-bitbucket" aria-hidden="true"></i></a></li>
             <li><a href="https://github.com/paalgyula"><i class="fa fa-github-alt" aria-hidden="true"></i></a></li>
             <li><a href="skype:goofydesign?add"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
@@ -58,8 +70,10 @@
     <div class="intro">
         <div class="container text-center"><img class="profile-image" src="/assets/images/profile-image.png" alt=""/>
             <h1 itemprop="name" class="name">Paál Gyula</h1>
-            <div class="title" itemprop="jobTitle">Senior J2EE/Java Fejlesztő</div>
-            <div class="profile" itemprop="description"><p>Szoftverfejlesztő vagyok, Budapesten (Magyarországon) élek. Többnyire webes
+            <div class="title" itemprop="jobTitle" th:text="#{subtitle}">Senior J2EE/Java Fejlesztő</div>
+            <div class="profile" itemprop="description"><p th:text="#{introduction}">Szoftverfejlesztő vagyok,
+                Budapesten (Magyarországon) élek.
+                Többnyire webes
                 alkalmazásokat fejlesztek, Java és AngularJS használatával. InfoCompass International Kft.-nél tettem le
                 a lantot, nyitott vagyok az új lehetőségekre!</p></div>
         </div>
@@ -78,23 +92,28 @@
         <div class="page-nav-wrapper text-center" id="page-nav-wrapper">
             <div class="container">
                 <ul class="nav page-nav list-inline" id="page-nav">
-                    <li><a class="scrollto" href="#experiences-section">Életpálya</a></li>
-                    <li><a class="scrollto" href="#eudcation-section">Oktatások</a></li>
-                    <li><a class="scrollto" href="#skills-section">Tudásbázis</a></li>
-                    <li><a class="scrollto" href="#testimonials-section">Testimonals</a></li>
-                    <li><a class="scrollto" href="#portfolio-section">Portfólió</a></li>
-                    <li><a class="scrollto" href="#contact-section">Kapcsolat</a></li>
+                    <li><a class="scrollto" href="#experiences-section" th:text="#{menu.experiences}">Életpálya</a></li>
+                    <li><a class="scrollto" href="#eudcation-section" th:text="#{menu.education}">Oktatások</a></li>
+                    <li><a class="scrollto" href="#skills-section" th:text="#{menu.skills}">Tudásbázis</a></li>
+                    <li th:if="${false}"><a class="scrollto" href="#testimonials-section" th:text="#{menu.testimonals}">Testimonals</a>
+                    </li>
+                    <li><a class="scrollto" href="#portfolio-section" th:text="#{menu.portfolio}">Portfólió</a></li>
+                    <li><a class="scrollto" href="#contact-section" th:text="#{menu.contact}">Kapcsolat</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
 <div class="wrapper container">
-    <section class="experiences-section section" id="experiences-section"><h2 class="section-title">Életpálya</h2>
+    <section class="experiences-section section" id="experiences-section"><h2 class="section-title"
+                                                                              th:text="#{menu.experiences}">
+        Életpálya</h2>
         <div class="timeline">
             <div class="item">
-                <div class="work-place"><h3 class="place">Vajon Te vagy-e az, aki ezt meglátod, és ajánlatot kapok
-                    tőled?<br/><br/><br/></h3>
+                <div class="work-place">
+                    <h3 class="place">
+                        Vajon Te vagy-e az, aki ezt meglátod, és ajánlatot kapok tőled?<br/><br/><br/>
+                    </h3>
                     <div class="location hidden-xs"></div>
                 </div>
                 <div class="job-meta">
@@ -232,7 +251,8 @@
             </div>
         </div>
     </section>
-    <section class="education-section section" id="eudcation-section"><h2 class="section-title">Education</h2>
+    <section class="education-section section" id="eudcation-section"><h2 class="section-title"
+                                                                          th:text="#{menu.education}">Education</h2>
         <div class="row">
             <div class="item col-xs-12 col-sm-4">
                 <div class="item-inner"><h3 class="degree">Középiskola</h3>
@@ -273,8 +293,9 @@
             </div>
         </div>
     </section>
-    <section class="skills-section section text-center" id="skills-section"><h2 class="section-title">Tudásbázis</h2>
-        <div class="top-skills"><h3 class="subtitle">Ebben vagyok a legjobb</h3>
+    <section class="skills-section section text-center" id="skills-section"><h2 class="section-title"
+                                                                                th:text="#{menu.skills}">Tudásbázis</h2>
+        <div class="top-skills"><h3 class="subtitle" th:text="#{my-top-skills}">Ebben vagyok a legjobb</h3>
             <div class="row">
                 <div class="item col-xs-12 col-sm-3">
                     <div class="item-inner">
@@ -282,7 +303,7 @@
                             <div class="chart-theme-1 chart" data-percent="98"><span>98</span>%</div>
                         </div>
                         <h4 class="skill-name">Java</h4>
-                        <div class="level">Szakértő, 8 years</div>
+                        <div class="level">Szakértő, 9 years</div>
                         <div class="desc"></div>
                     </div>
                 </div>
@@ -301,7 +322,7 @@
                         <div class="chart-easy-pie text-center">
                             <div class="chart-theme-1 chart" data-percent="90"><span>90</span>%</div>
                         </div>
-                        <h4 class="skill-name">Angular(1|2) &amp; TypeScript</h4>
+                        <h4 class="skill-name">Angular &amp; TypeScript</h4>
                         <div class="level">Szakértő, 3 years</div>
                         <div class="desc"></div>
                     </div>
@@ -319,14 +340,25 @@
             </div>
         </div>
         <div class="other-skills"><h3 class="subtitle">Egyéb tapasztalatok</h3>
-            <div class="misc-skills"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span
+            <div class="misc-skills">
+                <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span
                     class="skill-tag">SASS</span><span class="skill-tag">Git</span><span
-                    class="skill-tag">Subversion</span><span class="skill-tag">Mercurial</span><br/><span
-                    class="skill-tag text-danger">Java2 EE</span><span class="skill-tag text-danger">PHP</span><span
-                    class="skill-tag text-danger">Delphi</span><span class="skill-tag text-danger">C#</span><br/><span
-                    class="skill-tag text-success">PostgreSQL</span><span
+                    class="skill-tag">Subversion</span><span class="skill-tag">Mercurial</span><br/>
+                <span
+                        class="skill-tag text-danger">Java2 EE (Mostly JBoss)</span>
+                <span
+                        class="skill-tag text-danger">Spring/SpringBoot</span>
+                <span class="skill-tag text-danger">PHP</span><span
+                    class="skill-tag text-danger">Delphi</span>
+                <span class="skill-tag text-danger">C#</span>
+                <span class="skill-tag text-danger">Qt5 (Cross Platform Development)</span>
+                <br/>
+                <span
+                        class="skill-tag text-success">PostgreSQL</span><span
                     class="skill-tag text-success">MySQL</span><span class="skill-tag text-success">MSSQL</span><span
-                    class="skill-tag text-success">Oracle 9+</span></div>
+                    class="skill-tag text-success">Oracle 9+</span>
+                <span class="skill-tag text-success">MongoDB</span>
+            </div>
         </div>
     </section><!--section id="testimonials-section" class="testimonials-section section">
 <h2 class="section-title">Testimonials</h2>
@@ -431,8 +463,9 @@ Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
                     <li><i class="fa fa-check" aria-hidden="true"></i> UI fejlesztés</li>
                     <li><i class="fa fa-check" aria-hidden="true"></i> UX prototyping</li>
                 </ul>
-                <p>Írj üzenetet:<a href="mailto:paalgyula@paalgyula.com" itemprop="email">paalgyula@paalgyula.com</a> vagy hívj bátran:<a
-                        href="tel:+36308468338" itemprop="telephone">+36 30 846 8338</a></p>
+                <p>Írj üzenetet:<a href="mailto:paalgyula@paalgyula.com" itemprop="email">paalgyula@paalgyula.com</a>
+                    vagy hívj bátran:<a
+                            href="tel:+36308468338" itemprop="telephone">+36 30 846 8338</a></p>
                 <ul class="social list-inline">
                     <li><a href="https://twitter.com/paalgyula"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </li>

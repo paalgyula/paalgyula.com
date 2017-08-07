@@ -1,0 +1,9 @@
+---
+applications:
+- name: paalgyula
+  memory: 1024M
+  health-check-type: process
+  stack: cflinuxfs2
+  buildpack: java_buildpack
+  routes:
+  - route: paalgyula.cfapps.io

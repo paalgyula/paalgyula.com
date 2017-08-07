@@ -1,5 +1,9 @@
 **/*.iml
 .idea
+.settings
+.classpath
+.project
+.factorypath
 
 **/node_modules
 
