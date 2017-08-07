@@ -5,6 +5,8 @@
 .project
 .factorypath
 
+**/target
+
 **/node_modules
 
 **/.sass-cache
