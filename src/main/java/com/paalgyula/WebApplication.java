@@ -59,6 +59,10 @@ public class WebApplication extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").authorizeRequests()
                 .antMatchers("/**/index.html",
+                        "/oneletrajz.pdf",
+                        "/sitemap.xml",
+                        "/robots.txt",
+                        "/error",
                         "/resume.pdf",
                         "/stylesheets/**",
                         "/login**",
