@@ -69,7 +69,10 @@
         </ul>
     </div>
     <div class="intro">
-        <div class="container text-center"><img class="profile-image" src="/assets/images/profile-image.png" alt=""/>
+        <div class="container text-center">
+            <img class="profile-image" src="../public/assets/images/profile-image.png"
+                 th:alt="#{full-name}" th:title="#{full-name}"
+                 th:src="@{~/assets/images/profile-image.png}"/>
             <h1 itemprop="name" class="name">Paál Gyula</h1>
             <div class="title" itemprop="jobTitle" th:text="#{subtitle}">Senior J2EE/Java Fejlesztő</div>
             <div class="profile" itemprop="description"><p th:text="#{introduction}">Szoftverfejlesztő vagyok,
@@ -106,22 +109,28 @@
     </div>
 </header>
 <div class="wrapper container">
-    <section class="experiences-section section" id="experiences-section"><h2 class="section-title"
-                                                                              th:text="#{menu.experiences}">
-        Életpálya</h2>
+    <section class="experiences-section section" id="experiences-section">
+        <h2 class="section-title" th:text="#{menu.experiences}">Életpálya</h2>
         <div class="timeline">
             <div class="item">
                 <div class="work-place">
                     <h3 class="place">
-                        Vajon Te vagy-e az, aki ezt meglátod, és ajánlatot kapok tőled?<br/><br/><br/>
+                        <img src="../public/assets/images/blackrock-logo.png" alt="BlackRock"
+                             th:title="BlackRock" th:src="@{~/assets/images/blackrock-logo.png}"/>
                     </h3>
-                    <div class="location hidden-xs"></div>
+                    <div class="location hidden-xs"><i class="fa fa-map-marker" aria-hidden="true"></i><a
+                            href="https://www.google.hu/maps/place/Duna+Tower+Irodah%C3%A1z/@47.5349502,19.0573418,17z/data=!3m1!4b1!4m5!3m4!1s0x4741dbe6475d053b:0x24f1fd1da920b683!8m2!3d47.5349502!4d19.0595305"
+                            target="_blank">
+                        XIII. Budapest - Duna Tower</a>
+                    </div>
                 </div>
                 <div class="job-meta">
-                    <div class="title">Java Lead Developer<br/>Architect</div>
-                    <div class="time">2017.14 -</div>
+                    <div class="title">Senior Associate</div>
+                    <div class="time">2017.08 -</div>
                 </div>
-                <div class="job-desc"></div>
+                <div class="job-desc">
+                    <p>Full stack development using Angular 4 and Spring frameworks</p>
+                </div>
             </div>
             <div class="item">
                 <div class="work-place"><h3 class="place">InfoCompass International Kft.</h3>
