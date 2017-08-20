@@ -27,7 +27,6 @@ public class HomeControllerTest {
     public void redirect_to_main_page() throws Exception {
         homeController.redirectToIndex("hu");
         homeController.redirectToIndex("en");
-        //homeController.redirectToIndex(null);
     }
 
 }
