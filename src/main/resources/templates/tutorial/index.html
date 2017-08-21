@@ -1,46 +1,553 @@
 <!DOCTYPE html>
-<html lang="en-US"
-      xmlns:th="http://www.thymeleaf.org"
-      prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
+    <link rel="canonical" href="http://www.paalgyula.com/"/>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="Paál Gyula"/>
+    <meta name="theme-color" content="#607D8B"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../../public/assets/plugins/jquery-prettyPhoto/index.css"
+          th:href="@{~/assets/plugins/jquery-prettyPhoto/index.css}"/>
+    <link rel="stylesheet" href="../../public/stylesheets/styles.css"
+          th:href="@{~/stylesheets/styles.css}"/>
+    <link rel="shortcut icon" th:href="@{~/favicon.ico}" href="../../static/favicon.ico"/>
 
-    <title th:text="#{nemtom}">Lowfax</title>
-    <link rel="stylesheet" th:href="@{~/assets/plugins/bootstrap/css/bootstrap.min.css}" href="../../public/assets/plugins/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" th:href="@{~/stylesheets/tutorials.css}" href="../../public/stylesheets/tutorials.css"/>
-    <script th:src="@{~/assets/plugins/jquery-1.12.4.min.js}" src="../../public/assets/plugins/jquery-1.12.4.min.js"></script>
-    <script th:src="@{~/assets/plugins/bootstrap/js/bootstrap.min.js}" src="../../public/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-87027213-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <title itemprop="name" th:text="#{resume-header-description}">
+        Paál Gyula - A Senior J2EE Fejlesztő
+    </title>
+    <meta name="description" th:content="#{resume-header-description}"/>
+    <link th:unless="${lang=='en'}" rel="alternate" hreflang="en-us" href="http://www.paalgyula.com/en/"/>
+    <link th:unless="${lang=='en'}" rel="alternate" hreflang="en-gb" href="http://www.paalgyula.com/en/"/>
+    <link th:unless="${lang=='hu'}" rel="alternate" hreflang="hu-hu" href="http://www.paalgyula.com/hu/"/>
 </head>
 <body>
+<header class="header" style="display: inherit;">
+    <div class="top-bar container-fluid">
+        <div class="actions">
+            <a class="btn" href="../en/"
+               th:href="@{~/__${lang == 'hu' ? 'en' : 'hu'}__/index.html}">
+                <img src="/assets/images/flags/us-flag.png" alt="English"
+                     th:src="@{~/assets/images/flags/__${lang == 'hu' ? 'us' : 'hu'}__-flag.png}"/>
+            </a>
 
-<header>
-    <div class="container-fluid">
-        <div class="row">
-            TODO: header
+            <a class="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                <span th:text="#{hire-me}" th:remove="tag"></span>
+            </a>
+            <a class="btn" href="http://www.paalgyula.com/resume.pdf">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <span th:text="#{download-my-resume}" th:remove="tag"></span>
+            </a>
+        </div>
+
+        <ul class="social list-inline">
+            <li><a href="https://twitter.com/paalgyula"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="https://plus.google.com/+PaálGyulaÖrdög">
+                <i class="fa fa-google-plus"
+                   aria-hidden="true"></i></a></li>
+            <li><a href="https://bitbucket.org/paalgyula"><i class="fa fa-bitbucket" aria-hidden="true"></i></a></li>
+            <li><a href="https://github.com/paalgyula"><i class="fa fa-github-alt" aria-hidden="true"></i></a></li>
+            <li><a href="skype:goofydesign?add"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+    <div class="intro">
+        <div class="container text-center">
+            <img class="profile-image" src="../../public/assets/images/profile-image.png"
+                 th:alt="#{full-name}" th:title="#{full-name}"
+                 th:src="@{~/assets/images/profile-image.png}"/>
+            <h1 itemprop="name" class="name">Paál Gyula</h1>
+            <div class="title" itemprop="jobTitle" th:text="#{subtitle}">Senior J2EE/Java Fejlesztő</div>
+            <div class="profile" itemprop="description"><p th:text="#{introduction}">Szoftverfejlesztő vagyok,
+                Budapesten (Magyarországon) élek.
+                Többnyire webes
+                alkalmazásokat fejlesztek, Java és AngularJS használatával. InfoCompass International Kft.-nél tettem le
+                a lantot, nyitott vagyok az új lehetőségekre!</p></div>
+        </div>
+    </div>
+    <div class="contact-info">
+        <div class="container text-center">
+            <ul class="list-inline">
+                <li class="email"><i class="fa fa-envelope"></i><a href="mailto:paalgyula@paalgyula.com">paalgyula@paalgyula.com</a>
+                </li>
+                <li><i class="fa fa-phone"></i><a href="tel:+36308468338">+36 30 846 8338</a></li>
+                <li class="website"><i class="fa fa-globe"></i><a href="#" target="_blank">www.paalgyula.com</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-nav-space-holder hidden-xs">
+        <div class="page-nav-wrapper text-center" id="page-nav-wrapper">
+            <div class="container">
+                <ul class="nav page-nav list-inline" id="page-nav">
+                    <li><a class="scrollto" href="#experiences-section" th:text="#{menu.experiences}">Életpálya</a></li>
+                    <li><a class="scrollto" href="#eudcation-section" th:text="#{menu.education}">Oktatások</a></li>
+                    <li><a class="scrollto" href="#skills-section" th:text="#{menu.skills}">Tudásbázis</a></li>
+                    <li th:if="${false}"><a class="scrollto" href="#testimonials-section" th:text="#{menu.testimonals}">Testimonals</a>
+                    </li>
+                    <li><a class="scrollto" href="#portfolio-section" th:text="#{menu.portfolio}">Portfólió</a></li>
+                    <li><a class="scrollto" href="#contact-section" th:text="#{menu.contact}">Kapcsolat</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
+<div class="wrapper">
 
-<div class="container">
-    <div class="col-sm-4">
-        <div class="thumbnail">
-            <h2>trallala :)</h2>
+    <div class="breadcrumb-wrapper blog-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                    <h2 class="title">Small Blog</h2>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                    <div class="breadcrumbs pull-right">
+                        <ul>
+                            <li>You are here:</li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a style="cursor: pointer;">Blog</a></li>
+                            <li>Small Blog</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="thumbnail">
-            <h2>trallala :)</h2>
+    <br/>
+    <div class="container-fluid">
+        <div class="row blog-small">
+            <div class="posts-block col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <article class="post hentry">
+                    <div class="post-image"><a href="/images/blog-post1.jpg" data-rel="prettyPhoto"><span
+                            class="img-hover"></span><span class="fullscreen"><i class="fa fa-search"></i></span><img
+                            src="/images/blog-post1.jpg" alt=""/></a></div>
+                    <div class="post-content-wrap">
+                        <header class="post-header">
+                            <div class="post-date"><a style="cursor: pointer;"
+                                                      class="date"><strong>12</strong><i>SEP</i></a></div>
+                            <h3 class="content-title">Blog post title</h3>
+                            <div class="blog-entry-meta">
+                                <div class="blog-entry-meta-author"><i class="fa fa-user"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-author">John Doe</a></div>
+                                <div class="blog-entry-meta-tags"><i class="fa fa-tags"></i><a style="cursor: pointer;">Web
+                                    Design</a>,<a style="cursor: pointer;">Branding</a></div>
+                                <div class="blog-entry-meta-comments"><i class="fa fa-comments"></i><a
+                                        style="cursor: pointer;" class="blog-entry-meta-comments">4 comments</a></div>
+                            </div>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen not only five
+                                centuries, but also the leap essentially.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="blog-divider"></div>
+                </article>
+                <div class="pagination-centered">
+                    <ul class="pagination">
+                        <li class="disabled"><a style="cursor: pointer;">«</a></li>
+                        <li class="active"><a style="cursor: pointer;">1</a></li>
+                        <li><a style="cursor: pointer;">2</a></li>
+                        <li><a style="cursor: pointer;">3</a></li>
+                        <li><a style="cursor: pointer;">4</a></li>
+                        <li><a style="cursor: pointer;">5</a></li>
+                        <li><a style="cursor: pointer;">»</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <!-- Search Widget Start-->
+                <div class="widget search-form">
+                    <div class="input-group">
+                        <input type="text" value="Search..." onfocus="if(this.value=='Search...')this.value='';"
+                               onblur="if(this.value=='')this.value='Search...';"
+                               class="search-input form-control"/>
+                        <span class="input-group-btn">
+                            <button type="submit" class="subscribe-btn btn">
+                             <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group-->
+                </div>
+                <!-- Search Widget End-->
+                <!-- Tab Start-->
+                <div class="widget tabs">
+                    <div id="horizontal-tabs">
+                        <ul class="tabs">
+                            <li id="tab1" class="current">Popular</li>
+                            <li id="tab2">Recent</li>
+                            <li id="tab3">Comments</li>
+                        </ul>
+                        <div class="contents">
+                            <div id="content1" style="display: block;" class="tabscontent">
+                                <ul class="posts">
+                                    <li><a style="cursor: pointer;"><img alt="" src="/images/recent-post-img.jpg"
+                                                                         class="img-thumbnail recent-post-img"/></a>
+                                        <p><a style="cursor: pointer;">Lorem Ipsum is simply dummy text.</a></p><span
+                                                class="color">27 July 2013</span>
+                                    </li>
+                                    <li><a style="cursor: pointer;"><img alt="" src="/images/recent-post-img.jpg"
+                                                                         class="img-thumbnail recent-post-img"/></a>
+                                        <p><a style="cursor: pointer;">Lorem Ipsum is simply dummy text.</a></p><span
+                                                class="color">30 July 2013</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="content2" style="display: none;" class="tabscontent">
+                                <ul class="posts">
+                                    <li><a style="cursor: pointer;"><img alt="" src="/images/recent-post-img.jpg"
+                                                                         class="img-thumbnail recent-post-img"/></a>
+                                        <p><a style="cursor: pointer;">Lorem Ipsum is simply dummy text.</a></p><span
+                                                class="color">27 July 2013</span>
+                                    </li>
+                                    <li><a style="cursor: pointer;"><img alt="" src="/images/recent-post-img.jpg"
+                                                                         class="img-thumbnail recent-post-img"/></a>
+                                        <p><a style="cursor: pointer;">Lorem Ipsum is simply dummy text.</a></p><span
+                                                class="color">30 July 2013</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="content3" style="display: none;" class="tabscontent">
+                                <ul class="posts">
+                                    <li><a style="cursor: pointer;"><img alt="" src="/images/recent-post-img.jpg"
+                                                                         class="img-thumbnail recent-post-img"/></a>
+                                        <p><a style="cursor: pointer;">Lorem Ipsum is simply dummy text.</a></p> by<span
+                                                class="color">wptuts+</span>
+                                    </li>
+                                    <li><a style="cursor: pointer;"><img alt="" src="/images/recent-post-img.jpg"
+                                                                         class="img-thumbnail recent-post-img"/></a>
+                                        <p><a style="cursor: pointer;">Lorem Ipsum is simply dummy text.</a></p> by<span
+                                                class="color">wptuts+</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab End-->
+                <!-- Testimonials Widget Start-->
+                <div class="row">
+                    <div class="testimonials widget">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="testimonials-title">
+                                <h3 class="title">Testimonials</h3>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="testimonials-carousel" class="testimonials-carousel slide">
+                            <div class="carousel-inner">
+                                <div class="item">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="testimonial item">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type.</p>
+                                            <div class="testimonials-arrow"></div>
+                                            <div class="author">
+                                                <div class="testimonial-image"><img alt=""
+                                                                                    src="/images/team-member-1.jpg"/>
+                                                </div>
+                                                <div class="testimonial-author-info"><a style="cursor: pointer;"><span
+                                                        class="color">Monica Sing</span></a> FIFO Themes
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item active">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="testimonial item">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type.</p>
+                                            <div class="testimonials-arrow"></div>
+                                            <div class="author">
+                                                <div class="testimonial-image"><img alt=""
+                                                                                    src="/images/team-member-2.jpg"/>
+                                                </div>
+                                                <div class="testimonial-author-info"><a style="cursor: pointer;"><span
+                                                        class="color">Monzurul Haque</span></a> FIFO Themes
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="testimonial item">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                                since the 1500s, when an unknown printer took a galley of type.</p>
+                                            <div class="testimonials-arrow"></div>
+                                            <div class="author">
+                                                <div class="testimonial-image"><img alt=""
+                                                                                    src="/images/team-member-3.jpg"/>
+                                                </div>
+                                                <div class="testimonial-author-info"><a style="cursor: pointer;"><span
+                                                        class="color">Carol Johansen</span></a> FIFO Themes
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Widget Start-->
+                <div class="widget category">
+                    <h3 class="title">Categories</h3>
+                    <ul class="category-list slide">
+                        <li><a style="cursor: pointer;">Web Design</a></li>
+                        <li><a style="cursor: pointer;">Graphic Design</a></li>
+                        <li><a style="cursor: pointer;">Illustration</a></li>
+                        <li><a style="cursor: pointer;">Logo Design</a></li>
+                        <li><a style="cursor: pointer;">Wordpress Themes</a></li>
+                    </ul>
+                </div>
+                <!-- Category Widget End-->
+                <!-- Ads Widget Start-->
+                <div class="widget ads">
+                    <h3 class="title">Advertisement</h3>
+                    <div class="ads-img row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                            <img alt=""
+                                 src="/images/ads-small.jpg"
+                                 class="img-thumbnail"/></div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                            <img alt=""
+                                 src="/images/ads-small.jpg"
+                                 class="img-thumbnail"/></div>
+                    </div>
+                    <div class="ads-img row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                            <img alt=""
+                                 src="/images/ads-small.jpg"
+                                 class="img-thumbnail"/></div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                            <img alt=""
+                                 src="/images/ads-small.jpg"
+                                 class="img-thumbnail"/></div>
+                    </div>
+                </div>
+                <!-- Ads Widget End-->
+            </div>
+            <!-- Sidebar End-->
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="thumbnail">
-            <h2>trallala :)</h2>
-        </div>
+
+
     </div>
 </div>
+<script type="text/javascript" src="../../public/assets/plugins/jquery-1.12.4.min.js"
+        th:href="@{~/assets/plugins/jquery-1.12.4.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/bootstrap/js/bootstrap.min.js"
+        th:href="@{~/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/back-to-top.js"
+        th:href="@{~/assets/plugins/back-to-top.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"
+        th:href="@{~/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/jquery-prettyPhoto/index.js"
+        th:href="@{~/assets/plugins/jquery-prettyPhoto/index.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/easy-pie-chart/dist/jquery.easypiechart.min.js"
+        th:href="@{~/assets/plugins/easy-pie-chart/dist/jquery.easypiechart.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/imagesloaded.pkgd.min.js"
+        th:href="@{~/assets/plugins/imagesloaded.pkgd.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/isotope.pkgd.min.js"
+        th:href="@{~/assets/plugins/isotope.pkgd.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/tytabs.js"
+        th:href="@{~/assets/plugins/tytabs.js}"></script>
+<script type="text/javascript" src="../../public/assets/plugins/jquery.waypoints.min.js"
+        th:href="@{~/assets/plugins/jquery.waypoints.min.js}"></script>
+<script type="text/javascript" src="../../public/assets/js/main.js"
+        th:href="@{~/assets/js/main.js}"></script>
 
 </body>
 </html>

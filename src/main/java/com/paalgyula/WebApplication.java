@@ -61,6 +61,7 @@ public class WebApplication extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**/index.html",
                         "/oneletrajz.pdf",
                         "/sitemap.xml",
+                        "/tutorials",
                         "/robots.txt",
                         "/error",
                         "/resume.pdf",
