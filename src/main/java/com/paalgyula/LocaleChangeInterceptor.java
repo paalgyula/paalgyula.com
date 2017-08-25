@@ -90,6 +90,7 @@ public class LocaleChangeInterceptor extends HandlerInterceptorAdapter {
 
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws ServletException {
 
@@ -143,7 +144,7 @@ public class LocaleChangeInterceptor extends HandlerInterceptorAdapter {
      * @since 4.3
      */
     @UsesJava7
-    protected Locale parseLocaleValue(String locale) {
+    private Locale parseLocaleValue(String locale) {
         return (isLanguageTagCompliant() ? Locale.forLanguageTag(locale) : StringUtils.parseLocaleString(locale));
     }
 

@@ -1,11 +1,18 @@
 ---
 applications:
 - name: paalgyula
-  memory: 1024M
+  memory: 512M
+  instances: 1 
   health-check-type: process
   stack: cflinuxfs2
+  path: target/website.jar
   buildpack: java_buildpack
   routes:
   - route: paalgyula.cfapps.io
   - route: www.paalgyula.com
   - route: www.paalgyula.hu
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {stack_threads: 80, memory_sizes: {stack: 512k}}]'
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+  - config-server
