@@ -1,6 +1,6 @@
 package com.paalgyula;
 
-import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.social.config.annotation.EnableSocial;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/")
-public class HomeController implements ErrorController {
-    private static final String PATH = "/error";
+public class HomeController {
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
 
     @GetMapping({"/{lang}/", "/", "/index.html"})
     public String redirectToIndex(@PathVariable(value = "lang", required = false) String lang) {
@@ -31,16 +35,6 @@ public class HomeController implements ErrorController {
     @GetMapping("/oneletrajz.pdf")
     public String oldResume() {
         return "redirect:/resume.pdf";
-    }
-
-    @RequestMapping(value = PATH)
-    public String error() {
-        return "error";
-    }
-
-    @Override
-    public String getErrorPath() {
-        return PATH;
     }
 }
 

@@ -1,0 +1,101 @@
+<header class="header">
+    <div class="top-bar container-fluid">
+        <div class="actions">
+            <a class="btn" href="/en/">
+                <img [src]="'/assets/images/flags/us-flag.png'" i18n-alt i18n-title title="English" alt="English" />
+            </a>
+            <a class="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                <span i18n="@@hire-me">Hire me</span>
+            </a>
+            <a class="btn" href="http://www.paalgyula.com/resume.pdf">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <span i18n="@@download-my-resume">Download my resume</span>
+            </a>
+        </div>
+
+        <ul class="social list-inline">
+            <li>
+                <a href="https://twitter.com/paalgyula">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://plus.google.com/+PaálGyulaÖrdög">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://bitbucket.org/paalgyula">
+                    <i class="fa fa-bitbucket" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/paalgyula">
+                    <i class="fa fa-github-alt" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="skype:goofydesign?add">
+                    <i class="fa fa-skype" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="intro">
+        <div class="container text-center">
+            <img class="profile-image" [src]="'/assets/images/profile-image.png'" alt="" title="" i18n-alt="@@my-name" i18n-title="@@my-name" />
+            <h1 itemprop="name" class="name" i18n="@@my-name">Paál Gyula</h1>
+            <div class="title" itemprop="jobTitle" i18n="@@subtitle">Senior J2EE/Java Fejlesztő</div>
+            <div class="profile" itemprop="description">
+                <p i18n="@@introduction">Szoftverfejlesztő vagyok, Budapesten (Magyarországon) élek. Többnyire webes alkalmazásokat fejlesztek, Java
+                        és AngularJS használatával. InfoCompass International Kft.-nél tettem le a lantot, nyitott vagyok az
+                        új lehetőségekre!</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact-info">
+        <div class="container text-center">
+            <ul class="list-inline">
+                <li class="email">
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:paalgyula@paalgyula.com">paalgyula@paalgyula.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <a href="tel:+36308468338">+36 30 846 8338</a>
+                </li>
+                <li class="website">
+                    <i class="fa fa-globe"></i>
+                    <a href="#" target="_blank">www.paalgyula.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-nav-space-holder hidden-xs">
+        <div class="page-nav-wrapper text-center" id="page-nav-wrapper">
+            <div class="container">
+                <ul class="nav page-nav list-inline" id="page-nav">
+                    <li>
+                        <a class="scrollto" href="#experiences-section" i18n>Életpálya</a>
+                    </li>
+                    <li>
+                        <a class="scrollto" href="#eudcation-section" i18n>Oktatások</a>
+                    </li>
+                    <li>
+                        <a class="scrollto" href="#skills-section" i18n>Tudásbázis</a>
+                    </li>
+                    <li th:if="${false}">
+                        <a class="scrollto" href="#testimonials-section" i18n>Testimonals</a>
+                    </li>
+                    <li>
+                        <a class="scrollto" href="#portfolio-section" i18n>Portfólió</a>
+                    </li>
+                    <li>
+                        <a class="scrollto" href="#contact-section" i18n>Kapcsolat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

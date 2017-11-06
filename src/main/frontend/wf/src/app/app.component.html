@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<app-header></app-header>
+
+<div class="wrapper container">
+    <section class="experiences-section section" id="experiences-section">
+        <h2 class="section-title" th:text="#{menu.experiences}">Életpálya</h2>
+        <div class="timeline">
+            <app-timeline-item *ngFor="let item of timeline"></app-timeline-item>
+        </div>
+    </section>
+
+    <section class="education-section section" id="eudcation-section">
+        <h2 class="section-title" th:text="#{menu.education}">Education</h2>
+        <div class="row">
+            <app-education-item></app-education-item>
+        </div>
+    </section>
+
+    <section class="skills-section section text-center" id="skills-section">
+        <h2 class="section-title" th:text="#{menu.skills}">Tudásbázis</h2>
+        <div class="top-skills">
+            <h3 class="subtitle" th:text="#{my-top-skills}">Ebben vagyok a legjobb</h3>
+            <div class="row">
+                <app-knowledgebase-item></app-knowledgebase-item>
+            </div>
+        </div>
+        <div class="other-skills"><h3 class="subtitle">Egyéb tapasztalatok</h3>
+            <div class="misc-skills">
+                <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span
+                    class="skill-tag">SASS</span><span class="skill-tag">Git</span><span
+                    class="skill-tag">Subversion</span><span class="skill-tag">Mercurial</span><br/>
+                <span
+                        class="skill-tag text-danger">Java2 EE (Mostly JBoss)</span>
+                <span
+                        class="skill-tag text-danger">Spring/SpringBoot</span>
+                <span class="skill-tag text-danger">PHP</span><span
+                    class="skill-tag text-danger">Delphi</span>
+                <span class="skill-tag text-danger">C#</span>
+                <span class="skill-tag text-danger">Qt5 (Cross Platform Development)</span>
+                <br/>
+                <span
+                        class="skill-tag text-success">PostgreSQL</span><span
+                    class="skill-tag text-success">MySQL</span><span class="skill-tag text-success">MSSQL</span><span
+                    class="skill-tag text-success">Oracle 9+</span>
+                <span class="skill-tag text-success">MongoDB</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section section" id="portfolio-section">
+        <h2 class="section-title">Portfolio</h2>
+        <ul class="filters clearfix" id="filters">
+            <li class="type active" data-filter="*">All</li>
+            <li class="type" data-filter=".backend">Back-end</li>
+            <li class="type" data-filter=".frontend">Front-end</li>
+            <li class="type" data-filter=".appz">Application</li>
+        </ul>
+        <div class="items-wrapper isotope row">
+            <app-portfolio-item></app-portfolio-item>
+        </div>
+    </section>
+
+    <app-contact-box></app-contact-box>
+</div>
