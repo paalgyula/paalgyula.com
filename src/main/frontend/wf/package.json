@@ -5,7 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en",
-    "build": "ng build --target=production",
+    "build-en": "ng build --target=production --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --base-href=/en/ --output-path=public/en",
+    "build-hu": "ng build --target=production --aot --i18nFile=src/locale/messages.hu.xlf --i18nFormat=xlf --locale=hu --base-href=/hu/ --output-path=public/hu",
+    "build": "npm run build-en && npm run build-hu",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
