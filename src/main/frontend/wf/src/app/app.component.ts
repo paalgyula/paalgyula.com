@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TimelineItem } from './timeline-item/timeline-item';
 import { OnInit } from '@angular/core';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Meta } from '@angular/platform-browser';
 
 declare const $: any;
 
@@ -13,6 +14,8 @@ declare const $: any;
 export class AppComponent implements OnInit, AfterViewInit {
     title = 'app';
     timeline: TimelineItem[];
+
+    constructor(private _metaService: Meta) { }
 
     ngOnInit(): void {
         const timelineItem: TimelineItem = {
@@ -38,6 +41,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this._metaService.addTag({ name: 'twitter:title', content: 'Gyula, Paal - Senior Developer' });
+        this._metaService.addTag({
+            name: 'description',
+            content: 'Senior Java, J2EE (Wildfly), SpringBoot developer with more than 10 years relevant experience!'
+        });
+
         /* ======= Isotope plugin ======= */
         /* Ref: http://isotope.metafizzy.co/ */
         // init Isotope
@@ -77,7 +86,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         });
 
         /* ========= ScrollTo ========== */
-        $('.scrollto').on('click', function(e) {
+        $('.scrollto').on('click', function (e) {
             // store hash
             const target = this.hash;
             e.preventDefault();
