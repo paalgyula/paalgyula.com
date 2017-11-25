@@ -9,7 +9,7 @@ export class TimelineItem {
     };
     meta: {
         title: string;
-        name: string;
+        time: string;
         description: string;
     };
 }

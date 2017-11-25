@@ -8,21 +8,23 @@ import { EducationItemComponent } from './education-item/education-item.componen
 import { KnowledgebaseItemComponent } from './knowledgebase-item/knowledgebase-item.component';
 import { PortfolioItemComponent } from './portfolio-item/portfolio-item.component';
 import { ContactBoxComponent } from './contact-box/contact-box.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    TimelineItemComponent,
-    EducationItemComponent,
-    KnowledgebaseItemComponent,
-    PortfolioItemComponent,
-    ContactBoxComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        TimelineItemComponent,
+        EducationItemComponent,
+        KnowledgebaseItemComponent,
+        PortfolioItemComponent,
+        ContactBoxComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

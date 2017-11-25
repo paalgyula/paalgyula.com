@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core';
+import { TimelineItem } from './timeline-item';
 
 @Component({
-  selector: 'app-timeline-item',
-  templateUrl: './timeline-item.component.html'
+    selector: 'app-timeline-item',
+    templateUrl: './timeline-item.component.html'
 })
 export class TimelineItemComponent implements OnInit {
 
-  constructor() { }
+    @Input()
+    public item: TimelineItem;
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+    }
 
 }

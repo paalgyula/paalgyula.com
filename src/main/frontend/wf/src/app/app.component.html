@@ -3,14 +3,14 @@
 
 <div class="wrapper container">
     <section class="experiences-section section" id="experiences-section">
-        <h2 class="section-title" th:text="#{menu.experiences}">Életpálya</h2>
+        <h2 class="section-title" i18n="@@experiences">Életpálya</h2>
         <div class="timeline">
-            <app-timeline-item *ngFor="let item of timeline"></app-timeline-item>
+            <app-timeline-item *ngFor="let item of timeline" [item]="item"></app-timeline-item>
         </div>
     </section>
 
     <section class="education-section section" id="eudcation-section">
-        <h2 class="section-title" th:text="#{menu.education}">Education</h2>
+        <h2 class="section-title" i18n="@@education">Education</h2>
         <div class="row">
             <app-education-item></app-education-item>
         </div>
@@ -24,7 +24,8 @@
                 <app-knowledgebase-item></app-knowledgebase-item>
             </div>
         </div>
-        <div class="other-skills"><h3 class="subtitle">Egyéb tapasztalatok</h3>
+        <div class="other-skills">
+            <h3 class="subtitle" i18n="@@another-experiences">Egyéb tapasztalatok</h3>
             <div class="misc-skills">
                 <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span
                     class="skill-tag">SASS</span><span class="skill-tag">Git</span><span

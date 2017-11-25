@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { TimelineItem } from './timeline-item/timeline-item';
 import { OnInit } from '@angular/core';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Meta } from '@angular/platform-browser';
+import { AfterViewInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 declare const $: any;
 
@@ -13,34 +14,21 @@ declare const $: any;
 })
 export class AppComponent implements OnInit, AfterViewInit {
     title = 'app';
-    timeline: TimelineItem[];
+    timeline: TimelineItem[] = [];
 
-    constructor(private _metaService: Meta) { }
+    constructor(
+        private _metaService: Meta,
+        private _titleService: Title,
+        private _http: HttpClient
+    ) { }
 
     ngOnInit(): void {
-        const timelineItem: TimelineItem = {
-            workplace: {
-                image: '',
-                location: {
-                    href: '#',
-                    title: 'Budapest'
-                },
-                title: 'Izebize company'
-            },
-            meta: {
-                name: 'nemtom',
-                title: 'Ezt sem',
-                description: 'Jofele'
-            }
-        };
-
-        this.timeline = [];
-        this.timeline.push(timelineItem);
-        this.timeline.push(timelineItem);
-        this.timeline.push(timelineItem);
+        this._http.get<TimelineItem[]>('/experiences')
+            .subscribe((value: TimelineItem[]) => this.timeline = value);
     }
 
     ngAfterViewInit(): void {
+        this._titleService.setTitle('Paál Gyula - Senior Java Developer');
         this._metaService.addTag({ name: 'twitter:title', content: 'Gyula, Paal - Senior Developer' });
         this._metaService.addTag({
             name: 'description',
