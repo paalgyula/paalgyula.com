@@ -1,14 +1,14 @@
 image: node:10
 pipelines:
   default:
-- step:
-     caches:
-       - node
-     script: # Modify the commands below to build your repository.
-       - echo "$(ls -la)"
-       - npm install
-       - npm install -g @angular/cli
-      #  - ng build --prod
-       - npm run test
-       - npm run build
-       - echo "$(ls -la dist/)"
+  - step:
+       caches:
+         - node
+       script: # Modify the commands below to build your repository.
+         - echo "$(ls -la)"
+         - npm install
+         - npm install -g @angular/cli
+        #  - ng build --prod
+         - npm run test
+         - npm run build
+         - echo "$(ls -la dist/)"
