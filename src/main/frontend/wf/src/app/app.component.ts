@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     ) { }
 
     ngOnInit(): void {
-        this._http.get<TimelineItem[]>('/experiences')
+        this._http.get<TimelineItem[]>('/assets/experiences.json')
             .subscribe((value: TimelineItem[]) => this.timeline = value);
     }
 
@@ -35,32 +35,6 @@ export class AppComponent implements OnInit, AfterViewInit {
             content: 'Senior Java, J2EE (Wildfly), SpringBoot developer with more than 10 years relevant experience!'
         });
 
-        /* ======= Isotope plugin ======= */
-        /* Ref: http://isotope.metafizzy.co/ */
-        // init Isotope
-        const $container = $('.isotope');
-
-        // $container.imagesLoaded(function () {
-        $('.isotope').isotope({
-            itemSelector: '.item'
-        });
-        // });
-
-        // filter items on click
-        $('#filters').on('click', '.type', function () {
-            const filterValue = $(this).attr('data-filter');
-            $container.isotope({ filter: filterValue });
-        });
-
-        // change is-checked class on buttons
-        $('.filters').each(function (i, typeGroup) {
-            const $typeGroup = $(typeGroup);
-            $typeGroup.on('click', '.type', function () {
-                $typeGroup.find('.active').removeClass('active');
-                $(this).addClass('active');
-            });
-        });
-
         /* ======= Chart ========= */
         $('.chart').easyPieChart({
             barColor: '#00BCD4',    // Pie chart color
@@ -68,23 +42,24 @@ export class AppComponent implements OnInit, AfterViewInit {
             scaleColor: false,
             lineWidth: 5,
             animate: 2000,
-            onStep: function (from, to, percent) {
+            onStep: function (_from: any, _to: any, percent: number) {
                 $(this.el).find('span').text(Math.round(percent));
             }
         });
 
         /* ========= ScrollTo ========== */
-        $('.scrollto').on('click', function (e) {
+        $('.scrollto').on('click', function (e: any) {
             // store hash
             const target = this.hash;
             e.preventDefault();
 
-            $('body').scrollTo(target, 800, { offset: -60, 'axis': 'y' });
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(target).offset().top - 70
+            }, 800);
         });
 
         /* ======= Fixed page nav when scrolled ======= */
-        $(window).on('scroll resize load', function () {
-
+        $(window).on('scroll resize load', function() {
             $('#page-nav-wrapper').removeClass('fixed');
 
             const scrollTop = $(this).scrollTop();
@@ -97,7 +72,6 @@ export class AppComponent implements OnInit, AfterViewInit {
                 $('#page-nav-wrapper').addClass('fixed');
                 $('body').addClass('sticky-page-nav');
             }
-
         });
     }
 }

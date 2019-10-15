@@ -1,20 +1,28 @@
 <div class="item">
     <div class="work-place">
         <h3 class="place">
-            <img [src]="'//www.paalgyula.com/en/assets/images/' + item.workplace.image" [alt]="item.workplace.title" [title]="item.workplace.title"
+            <img *ngIf="item.workplace.image"
+                [src]="'/assets/images/' + item.workplace.image"
+                [alt]="item.workplace.title"
+                [title]="item.workplace.title"
             />
+            {{item.workplace.title}}
         </h3>
         <div class="location hidden-xs">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
             <a [href]="item.workplace.location.href" target="_blank">
-                {{item.workplace.location.title}}</a>
+                {{ item.workplace.location.title }}</a
+            >
         </div>
     </div>
     <div class="job-meta">
-        <div class="title">{{item.meta.title}}</div>
-        <div class="time">{{item.meta.time}}</div>
+        <div class="title">{{ item.meta.title }}</div>
+        <div class="time">{{ item.meta.time }}</div>
     </div>
     <div class="job-desc">
-        <p>{{item.meta.description}}</p>
+        <p>{{ item.meta.description }}</p>
+        <ul *ngIf="item.meta.tasks">
+            <li *ngFor="let task of item.meta.tasks">{{task}}</li>
+        </ul>
     </div>
 </div>

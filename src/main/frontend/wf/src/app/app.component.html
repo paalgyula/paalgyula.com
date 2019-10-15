@@ -10,16 +10,13 @@
     </section>
 
     <section class="education-section section" id="eudcation-section">
-        <h2 class="section-title" i18n="@@education">Education</h2>
-        <div class="row">
-            <app-education-item></app-education-item>
-        </div>
+        <app-education-item></app-education-item>
     </section>
 
     <section class="skills-section section text-center" id="skills-section">
-        <h2 class="section-title" th:text="#{menu.skills}">Tudásbázis</h2>
+        <h2 class="section-title" i18n="@@skillset">Tudásbázis</h2>
         <div class="top-skills">
-            <h3 class="subtitle" th:text="#{my-top-skills}">Ebben vagyok a legjobb</h3>
+            <h3 class="subtitle" i18n="@@skills-subtitle">Ebben vagyok a legjobb</h3>
             <div class="row">
                 <app-knowledgebase-item></app-knowledgebase-item>
             </div>

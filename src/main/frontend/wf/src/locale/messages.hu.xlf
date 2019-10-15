@@ -3,56 +3,65 @@
     xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="ng2.template">
         <body>
-            <trans-unit id="e3f564a47cb6a5951022c346bac28fc7565beddb" datatype="html">
-                <source>Szoftverfejlesztő vagyok, Budapesten (Magyarországon) élek. Többnyire webes alkalmazásokat fejlesztek, Java                    és AngularJS használatával. InfoCompass International Kft.-nél tettem le a lantot, nyitott vagyok az                    új lehetőségekre!</source>
-                <target>Szeeeep ANGOL szoveg :)</target>
+            <trans-unit id="introduction" datatype="html">
+                <target>Szoftverfejlesztő vagyok, Budapesten (Magyarországon) élek. Többnyire webes alkalmazásokat fejlesztek, Java                    és AngularJS használatával. InfoCompass International Kft.-nél tettem le a lantot, nyitott vagyok az új lehetőségekre!</target>
             </trans-unit>
-            <trans-unit id="699566b07975da0c7a3f5be0f05bcc57d289cb4a" datatype="html">
-                <source>Életpálya</source>
-                <target>Experiences</target>
+
+            <trans-unit id="experiences" datatype="html">
+                <source>Experiences</source>
+                <target>Tapasztalatok</target>
             </trans-unit>
-            <trans-unit id="2fcb221978ce5b0b78a1ce98fd1d336fcd5c9163" datatype="html">
-                <source>Oktatások</source>
-                <target>Educations</target>
+
+            <trans-unit id="educations" datatype="html">
+                <source>Educations</source>
+                <target>Oktatások</target>
             </trans-unit>
-            <trans-unit id="09522306f32045326e5ff34c64c3cfe290a91da3" datatype="html">
-                <source>Tudásbázis</source>
-                <target>Knowledgebase</target>
+
+            <trans-unit id="skillset" datatype="html">
+                <source>Skillset</source>
+                <target>Tudásbázis</target>
             </trans-unit>
-            <trans-unit id="dd5e5936efb467e85a0668c62b90b0bb4f50654d" datatype="html">
+
+            <trans-unit id="testimonals" datatype="html">
                 <source>Testimonals</source>
-                <target>Testimonals</target>
+                <target>Rólam mondták</target>
             </trans-unit>
-            <trans-unit id="3dd065f2fd7d9b1c26ab78ddc54169fa9bad01c4" datatype="html">
-                <source>Portfólió</source>
-                <target>Portfolio</target>
+
+            <trans-unit id="portfolio" datatype="html">
+                <source>Portfolio</source>
+                <target>Portfólió</target>
             </trans-unit>
-            <trans-unit id="443496e8a9bc0b0a9fcdb2cece26a75f489eee5a" datatype="html">
-                <source>Kapcsolat</source>
-                <target>Contacts</target>
+
+            <trans-unit id="contact" datatype="html">
+                <source>Contacts</source>
+                <target>Kapcsolat</target>
+            </trans-unit>
+
+            <trans-unit id="skills-subtitle" datatype="html">
+                <target>Ebben vagyok a legjobb!</target>
+            </trans-unit>
+
+            <trans-unit id="another-experiences" datatype="html">
+              <target>Egyéb tapasztalatok</target>
             </trans-unit>
 
             <trans-unit id="hire-me" datatype="html">
                 <source>Hire me!</source>
-                <target>Hire me!</target>
+                <target>Bérelj fel!</target>
             </trans-unit>
 
             <trans-unit id="download-my-resume" datatype="html">
                 <source>Download my resume</source>
-                <target>Download my resume</target>
+                <target>Önéletrajz letöltése</target>
             </trans-unit>
 
             <trans-unit id="my-name" datatype="html">
-                <source>Paál Gyula</source>
-                <target>Gyula, Paál</target>
-            </trans-unit>
-
-            <trans-unit id="introduction" datatype="html">
-                <target>I'm a software developer based in Budapest, Hungary. I make mostly web applications, usually with Java and Angular. Now I've just ended with InfoCompass International Kft. so now I'm ready for getting new experiences elsewhere. Don't be late, contact me!</target>
+                <source>Gyula, Paal</source>
+                <target>Paál Gyula</target>
             </trans-unit>
 
             <trans-unit id="subtitle" datatype="html">
-                <target>Senior Java/J2EE Developer</target>
+                <target>Mad Scientist</target>
             </trans-unit>
         </body>
     </file>

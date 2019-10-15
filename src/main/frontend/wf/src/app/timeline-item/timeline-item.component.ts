@@ -4,7 +4,7 @@ import { TimelineItem } from './timeline-item';
 
 @Component({
     selector: 'app-timeline-item',
-    templateUrl: './timeline-item.component.html'
+    templateUrl: './timeline-item.component.html',
 })
 export class TimelineItemComponent implements OnInit {
 

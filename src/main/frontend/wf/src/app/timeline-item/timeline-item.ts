@@ -1,5 +1,5 @@
 export class TimelineItem {
-    workplace: {
+    public workplace: {
         title: string;
         image: string;
         location: {
@@ -7,9 +7,12 @@ export class TimelineItem {
             title: string;
         };
     };
-    meta: {
+
+    public meta: {
         title: string;
         time: string;
         description: string;
+        tasks: string[];
+        technologies: string[];
     };
 }
