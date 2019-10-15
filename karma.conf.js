@@ -28,7 +28,7 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
     junitReporter: {
-      outputDir: 'reports', // results will be saved as $outputDir/$browserName.xml
+      outputDir: 'test-reports', // results will be saved as $outputDir/$browserName.xml
       outputFile: 'junit.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
