@@ -9,7 +9,8 @@
     "build-en": "ng build --configuration=en",
     "build-hu": "ng build --configuration=hu",
     "build": "npm run build-en && npm run build-hu",
-    "test": "ng test",
+    "tdd": "ng test",
+    "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -24,10 +25,11 @@
     "@angular/platform-browser-dynamic": "^8.2.10",
     "@angular/router": "^8.2.10",
     "core-js": "^2.4.1",
+    "firebase-functions": "^3.3.0",
     "rxjs": "^6.5.3",
+    "rxjs-compat": "^6.0.0-rc.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.9",

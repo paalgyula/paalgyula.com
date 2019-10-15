@@ -70,10 +70,10 @@ describe('TimelineItemComponent', () => {
       expect(p.childElementCount).toBe(2);
     });
 
-    it('should image url be "/assets/images/dummy-image.png"', () => {
+    it('should image url be "assets/images/dummy-image.png"', () => {
       const p = nativeElement.querySelector('div > div > h3 > img');
       expect(p.attributes.getNamedItem('src').value).toEqual(
-        '/assets/images/dummy-image.png'
+        'assets/images/dummy-image.png'
       );
     });
   });

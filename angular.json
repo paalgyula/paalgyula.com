@@ -52,17 +52,19 @@
             },
             "hu": {
               "aot": true,
-              "outputPath": "dist/hu/",
+              "outputPath": "public/hu/",
               "i18nFile": "src/locale/messages.hu.xlf",
               "i18nFormat": "xlf",
-              "i18nLocale": "hu"
+              "i18nLocale": "hu",
+              "baseHref": "/hu/"
             },
             "en": {
               "aot": true,
-              "outputPath": "dist/en/",
+              "outputPath": "public/en/",
               "i18nFile": "src/locale/messages.en.xlf",
               "i18nFormat": "xlf",
-              "i18nLocale": "hu"
+              "i18nLocale": "en",
+              "baseHref": "/en/"
             }
           }
         },

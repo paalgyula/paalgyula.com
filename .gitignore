@@ -46,3 +46,6 @@ package-lock.json
 
 # Firebase
 firebase-debug.log
+
+# Ignore angular generated files
+public/*
