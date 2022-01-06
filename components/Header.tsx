@@ -82,9 +82,9 @@ const Header: React.FC<{}> = () => {
           <div className="profile">
             <p>
               Cloud native software tervező vagyok, jelenleg Budapesten élek.
-              Többnyire webes alkalmazásokat tervezek/kivitelezek, Go/Java(SpringBoot)/node.js és React/React Natvice
+              Többnyire webes alkalmazásokat tervezek/kivitelezek, Go/Java(SpringBoot)/node.js és React/React Native
               használatával. Jelenleg az InterTicket Enterprise Kft. alkalmazottja vagyok,
-              de nyitott vagyok új kihívásokra, most induló cégemmel: a <b>Progressive Innovation LAB</b> -el!
+              de nyitott vagyok új kihívásokra, most alakuló cégemmel: a <b>Progressive Innovation LAB</b> -el!
             </p>
           </div>
         </div>
