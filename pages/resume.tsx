@@ -9,19 +9,6 @@ import Portfolio from '../components/Portfolio';
 import Timeline from '../components/Timeline';
 import styles from '../styles/Home.module.css';
 
-// type StaticProps = {
-//   locale: string;
-// };
-
-// export async function getStaticProps({ locale }: StaticProps) {
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(locale, ['default'])),
-//       // Will be passed to the page component as props
-//     },
-//   };
-// }
-
 const Home: NextPage = () => {
   const { t } = useTranslation('default');
 

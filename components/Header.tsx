@@ -22,8 +22,6 @@ const Header: React.FC<{}> = () => {
           <a className="btn" href="/en/">
             <img
               src="/images/flags/us-flag.png"
-              i18n-alt
-              i18n-title
               title="English"
               alt="English"
             />
@@ -71,10 +69,8 @@ const Header: React.FC<{}> = () => {
           <img
             className="profile-image"
             src="/images/profile-image.png"
-            alt=""
-            title=""
-            i18n-alt="@@my-name"
-            i18n-title="@@my-name"
+            alt="Paál Gyula"
+            title="Paál Gyula"
           />
           <h1 className="name">Paál Gyula</h1>
           <div className="title">

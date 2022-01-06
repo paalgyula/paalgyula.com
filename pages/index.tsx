@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Script from 'next/script';
 import Contacts from '../components/Contacts';
 import Header from '../components/Header';
 import styles from '../styles/Home.module.css';
@@ -43,6 +44,7 @@ const Home: NextPage = () => {
         <br />
         <Contacts />
       </div>
+      <Script src='/analytics.js'/>
     </div>
   );
 };
