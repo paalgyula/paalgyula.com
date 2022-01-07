@@ -17,7 +17,7 @@ class DefaultDocument extends Document {
             crossOrigin='anonymous'
           />
           <link
-            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            href="/css/font-awesome.min.css"
             rel="stylesheet"
             type="text/css"
           />
@@ -25,7 +25,7 @@ class DefaultDocument extends Document {
           <link rel="icon" type="image/x-icon" href="favicon.ico" />
           <link
             rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            href="/css/bootstrap.min.css"
 
           />
 

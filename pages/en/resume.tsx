@@ -1,16 +1,33 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'react-i18next';
-import Contacts from '../components/Contacts';
-import Educations from '../components/Educations';
-import Header from '../components/Header';
-import Knowledgebase from '../components/Knowledgebase';
-import Portfolio from '../components/Portfolio';
-import Timeline from '../components/Timeline';
-import styles from '../styles/Home.module.css';
+import Contacts from '../../components/Contacts';
+import Educations from '../../components/Educations';
+import Header from '../../components/Header';
+import BestSkillsPies from '../../components/skills/BestSkillsPies';
+import Portfolio from '../../components/Portfolio';
+import Timeline from '../../components/Timeline';
+import SkillsChipses from '../../components/skills/SkillsChipses';
+import { useTranslation } from '../../src/translator';
+import { useRouter } from 'next/router';
 
-const Home: NextPage = () => {
-  const { t } = useTranslation('default');
+import styles from '../../styles/Home.module.css';
+
+export async function getStaticProps() {
+  return {
+    props: {
+      // ...(await serverSideTranslations(locale, ['default'])),
+      // Will be passed to the page component as props
+    },
+  };
+}
+
+const ResumePage: NextPage = () => {
+  const router = useRouter();
+  const { language } = router.query;
+
+  const { t } = useTranslation();
+
+  console.log(language);
 
   return (
     <div className={styles.container}>
@@ -50,39 +67,10 @@ const Home: NextPage = () => {
           <h2 className="section-title">
             {t('knowledgebase')}
           </h2>
-          <div className="top-skills">
-            <h3 className="subtitle">
-              {t('skills-subtitle')}
-            </h3>
-            <div className="row">
-              <Knowledgebase />
-            </div>
-          </div>
-          <div className="other-skills">
-            <h3 className="subtitle">
-              {t('another-experiences')}
-            </h3>
-            <div className="misc-skills">
-              <span className="skill-tag">HTML5</span>
-              <span className="skill-tag">CSS3</span>
-              <span className="skill-tag">SASS/SCSS</span>
-              <span className="skill-tag">Git/GitFlow</span>
-              <br />
-              <span className="skill-tag text-danger">
-                J2EE (JBossAS/Wildfly/WebSphere)
-              </span>
-              <span className="skill-tag text-danger">Spring/SpringBoot</span>
-              <span className="skill-tag text-danger">C#</span>
-              <span className="skill-tag text-danger">
-                Qt5 (Cross Platform Development)
-              </span>
-              <br />
-              <span className="skill-tag text-success">PostgreSQL</span>
-              <span className="skill-tag text-success">MySQL</span>
-              <span className="skill-tag text-success">Oracle 9+</span>
-              <span className="skill-tag text-success">MongoDB</span>
-            </div>
-          </div>
+
+          <BestSkillsPies/>
+
+          <SkillsChipses/>
         </section>
 
         <section className="portfolio-section section" id="portfolio-section">
@@ -112,4 +100,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default ResumePage;

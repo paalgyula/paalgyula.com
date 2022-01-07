@@ -1,5 +1,4 @@
-import { MouseEvent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../src/translator';
 
 const Header: React.FC<{}> = () => {
   const { t } = useTranslation();
@@ -83,7 +82,7 @@ const Header: React.FC<{}> = () => {
             <p>
               Cloud native software tervező vagyok, jelenleg Budapesten élek.
               Többnyire webes alkalmazásokat tervezek/kivitelezek, Go/Java(SpringBoot)/node.js és React/React Native
-              használatával. Jelenleg az InterTicket Enterprise Kft. alkalmazottja vagyok,
+              használatával. Jelenleg az InterTicket Kft. alkalmazottja vagyok,
               de nyitott vagyok új kihívásokra, most alakuló cégemmel: a <b>Progressive Innovation LAB</b> -el!
             </p>
           </div>

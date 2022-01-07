@@ -1,1 +1,8 @@
-{"experiences":"Experiences","knowledgebase":"Used Technologies","skills-subtitle":"My best skills"}
+{
+  "experiences": "Experiences",
+  "knowledgebase": "My Knowledgebase",
+  "skills-subtitle": "My best skills",
+  "expert": "Expert",
+  "advanced": "Advanced",
+  "another-experiences": "Another Experiences"
+}

@@ -477,7 +477,7 @@ p {
 }
 
 .skills-section .top-skills {
-	margin-bottom: 60px;
+	/* margin-bottom: 60px; */
 }
 
 .skills-section .top-skills .item {
@@ -605,6 +605,15 @@ p {
 
 .portfolio-section {
 	min-height: 600px;
+}
+
+.portfolio-section .subtitle {
+  text-align: center;
+	font-size: 18px;
+	color: #8a8a8a;
+	margin-top: 0;
+	margin-bottom: 45px;
+	font-weight: 300;
 }
 
 .portfolio-section .filters {

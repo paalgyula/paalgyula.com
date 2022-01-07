@@ -1,22 +1,25 @@
-const Educations = () => {
+import * as React from 'react';
+import { IEducation } from '../src/IEducation';
+
+type EducationsProps = {
+  educations?: IEducation[];
+};
+
+const Educations: React.FC<EducationsProps> = ({ educations }) => {
   return (
     <>
-      <h2 className="section-title">
-        Educations
-      </h2>
+      <h2 className="section-title">Educations</h2>
       <div className="row">
-        <div className="item col-xs-12 col-sm-4">
-          <div className="item-inner">
-            <h3 className="degree">Középiskola</h3>
-            <div className="education-body">GIMSZ</div>
-            <div className="time">2003 - 2007</div>
-            <div className="desc">
-              Az ország felvételi rangsorolása alapján a 8. legjobb
-              szakközépiskola. <b>Java, Delphi programozás</b> és alapok
-              Windows/Linux/Novell üzemeltetésből.
+        {educations?.map((e) => (
+          <div key={e.degree} className="item col-xs-12 col-sm-4">
+            <div className="item-inner">
+              <h3 className="degree">{e.degree}</h3>
+              <div className="education-body">{e.school}</div>
+              <div className="time">{e.fromTo}</div>
+              <div className="desc">{e.description}</div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );
