@@ -1,12 +1,17 @@
 import Image from 'next/image';
-import { useTranslation } from '../src/translator';
-import LanguageChanger from './LanguageChanger'
+import LanguageChanger from './LanguageChanger';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from 'next-export-i18n';
 
+/* eslint-disable @next/next/no-img-element */
 const Header = () => {
   const { t } = useTranslation();
 
   const scrollTo = (e, selector) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const element = document.querySelector(selector);
     if (element) {
@@ -61,7 +66,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="intro">
+      <div itemScope itemType="https://schema.org/Person" className="intro">
         <div className="container text-center">
           <Image
             height={160}
@@ -71,20 +76,17 @@ const Header = () => {
             alt="Paál Gyula"
             title="Paál Gyula"
           />
-          <h1 className="name">Paál Gyula</h1>
+          <h1 className="name" itemProp="name">
+            {t('Gyula, Paál')}
+          </h1>
           <div className="title">
-            (Mad Scientist)
-            <br/>
-
-            <img src="/images/g-logo.svg" alt="Google" title="Google" /> Certified Cloud Architect
+            (The Mad Scientist)
+            <br />
+            <img src="/images/g-logo.svg" alt="Google" title="Google" />{' '}
+            <span itemProp="jobTitle">Certified Cloud Architect</span>
           </div>
-          <div className="profile">
-            <p>
-              Cloud native software tervező vagyok, jelenleg Budapesten élek.
-              Többnyire webes alkalmazásokat tervezek/kivitelezek, Go/Java(SpringBoot)/node.js és React/React Native
-              használatával. Jelenleg az InterTicket Kft. alkalmazottja vagyok,
-              de nyitott vagyok új kihívásokra, most alakuló cégemmel: a <b>Progressive Innovation LAB</b> -el!
-            </p>
+          <div itemProp="description" className="profile">
+            {t('introduction')}
           </div>
         </div>
       </div>
@@ -117,10 +119,10 @@ const Header = () => {
               <li>
                 <a
                   className="scrollto"
-                  onClick={e => scrollTo(e, '#experiences-section')}
+                  onClick={(e) => scrollTo(e, '#experiences-section')}
                   href="#"
                 >
-                  Experiences
+                  {t('Experiences')}
                 </a>
               </li>
               <li>
@@ -129,7 +131,7 @@ const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, '#eudcation-section')}
                 >
-                  Educations
+                  {t('Educations')}
                 </a>
               </li>
               <li>
@@ -138,7 +140,7 @@ const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, '#skills-section')}
                 >
-                  Skillset
+                  {t('Skillset')}
                 </a>
               </li>
               <li>
@@ -147,7 +149,7 @@ const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, '#testimonials-section')}
                 >
-                  Testimonals
+                  {t('Testimonals')}
                 </a>
               </li>
               <li>
@@ -156,7 +158,7 @@ const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, '#portfolio-section')}
                 >
-                  Portfolio
+                  {t('Portfolio')}
                 </a>
               </li>
               <li>
@@ -165,7 +167,7 @@ const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, '#contact-section')}
                 >
-                  Contacts
+                  {t('Contacts')}
                 </a>
               </li>
             </ul>

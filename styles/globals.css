@@ -111,7 +111,7 @@ p {
 .header .top-bar {
 	position: relative;
 	padding-top: 15px;
-	padding-bottom: 120px;
+	padding-bottom: 40px;
 }
 
 .header .social {
@@ -191,8 +191,8 @@ p {
 
 .header .intro {
 	background: #566f7c;
-	padding-top: 90px;
-	padding-bottom: 60px;
+	padding-top: 50px;
+	padding-bottom: 30px;
 	position: relative;
 	font-size: 16px;
 }
@@ -746,6 +746,10 @@ p {
 
 .contact-section .service-list .fa {
 	color: #607D8B;
+}
+
+.contact-section .service-list .fa:before {
+  margin-right: 10px;
 }
 
 .contact-section .social {

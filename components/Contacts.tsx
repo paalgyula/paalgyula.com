@@ -1,45 +1,55 @@
-import * as React from 'react'
+import { useTranslation } from 'next-export-i18n';
+import * as React from 'react';
 
+/* eslint-disable @next/next/no-img-element */
 const Contacts = () => {
+  const { t } = useTranslation();
   return (
     <>
       <section className="contact-section section" id="contact-section">
-        <h2 className="section-title">Kapcsolatfelvétel</h2>
+        <h2 className="section-title">{t('Contacts')}</h2>
         <div className="intro">
           <img
             className="profile-image"
             src="/images/profile-image.png"
-            alt=""
+            alt="Paál Gyula"
+            title="Paál Gyula"
           />
           <div className="dialog">
-            <p>Szívesen vállalok szabadúszóként projekteket!</p>
+            <p>{t(`I'm ready to help you in the following as a contractor`)}</p>
             <p>
               <strong>A következőkben lehetek a segítségedre:</strong>
             </p>
             <ul className="list-unstyled service-list">
               <li>
-                <i className="fa fa-check" aria-hidden="true"></i> Mobil
-                fejlesztés: React Native
+                <i className="fa fa-check" aria-hidden="true"></i>
+                {t('Mobile Development')}: React Native (Cross Platform)
               </li>
               <li>
-                <i className="fa fa-check" aria-hidden="true"></i> Alkalmazás
-                fejlesztés Java(Fx|Swing)/Qt5
+                <i className="fa fa-check" aria-hidden="true"></i>
+                {t('Application Development')}: Java(Swing)/
+                <b>Progressive Web Application (PWA)</b>/Electron
               </li>
               <li>
-                <i className="fa fa-check" aria-hidden="true"></i> Front-end
-                fejlesztés: React/Angular
+                <i className="fa fa-check" aria-hidden="true"></i>
+                {t('Frontend Development')}: <b>React</b>/Angular
               </li>
               <li>
-                <i className="fa fa-check" aria-hidden="true"></i> Back-end
-                fejlesztés: SpringBoot/<b>go</b>/Node.js
+                <i className="fa fa-check" aria-hidden="true"></i>
+                {t('Backend Development')}: <b>go</b>/SpringBoot/Node.js
+              </li>
+              <li>
+                <i className="fa fa-check" aria-hidden="true"></i>
+                {t('DevOps')}: CI/CD pipeline setup, containerizing existing
+                applications, migrating existing infrastructure to cloud
               </li>
             </ul>
             <p>
               Írj üzenetet:{' '}
               <a href="mailto:paalgyula@paalgyula.com">
                 paalgyula@paalgyula.com
-              </a> -ra
-              vagy hívj bátran:{' '}
+              </a>{' '}
+              -ra vagy hívj bátran:{' '}
               <a href="tel:+36209410618">+36 20 941 0618</a>
             </p>
             <ul className="social list-inline">

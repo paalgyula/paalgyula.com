@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-export-i18n";
 import shortid from 'shortid';
 import experiences from '../data/experiences.json';
 
@@ -9,7 +9,7 @@ const Experiences = () => {
 
   return (
     <>
-      <h2 className="section-title">{t('Életpálya')}</h2>
+      <h2 className="section-title">{t('Experiences')}</h2>
       <div className="timeline">
         {experiences.map((experience) => (
           <div key={shortid()} className="item">

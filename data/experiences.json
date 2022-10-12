@@ -138,7 +138,12 @@
     "description": "Creating a corporate governance software for this indrusty (meat processing plant)",
     "employer": {
       "name": "Húsipari Vállalat Zrt.",
-      "address": "1186 Budapest, Besence utca 1."
+      "address": "1186 Budapest, Besence utca 1.",
+      "image": {
+        "source": "/images/husipar-logo.png",
+        "height": 80,
+        "width": 80
+      }
     },
     "jobTitle": "J2EE Architect",
     "technologies": ["J2EE", "Wildfly (JBoss AS)", "Oracle", "EclipseLink"]

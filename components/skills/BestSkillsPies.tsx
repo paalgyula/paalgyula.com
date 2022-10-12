@@ -1,7 +1,7 @@
 import Script from 'next/script';
 
 import { IKnowledgeItem } from '../../src/KnowledgeItem';
-import { useTranslation } from '../../src/translator';
+import { useTranslation } from "next-export-i18n";
 
 const KNOWLEDGES: IKnowledgeItem[] = [
   {

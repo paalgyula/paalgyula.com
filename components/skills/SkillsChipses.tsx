@@ -1,4 +1,4 @@
-import { useTranslation } from "../../src/translator";
+import { useTranslation } from "next-export-i18n";
 
 const SkillsChipses = () => {
   const { t } = useTranslation();

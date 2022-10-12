@@ -9,8 +9,10 @@ import Portfolio from '../components/Portfolio';
 import BestSkillsPies from '../components/skills/BestSkillsPies';
 import SkillsChipses from '../components/skills/SkillsChipses';
 import { IEducation } from '../src/Education';
-import { useTranslation } from '../src/translator';
+import { useTranslation } from 'next-export-i18n';
 import styles from '../styles/Home.module.css';
+
+import educations from '../data/educations.json';
 
 // type StaticProps = {
 //   locale: string;
@@ -25,33 +27,6 @@ import styles from '../styles/Home.module.css';
 //   };
 // }
 
-const EDUCATIONS: IEducation[] = [
-  {
-    degree: 'Professional Cloud Architect',
-    description: 'Google Certified Cloud Architect',
-    fromTo: '2022.01.04',
-    school: 'PrularSight',
-  },
-  {
-    degree: 'Blockchain Developer',
-    description: 'IBM Blockchain Developer Certificate',
-    fromTo: '2021.02.07',
-    school: 'Cognitive Class',
-  },
-  {
-    degree: 'Certified Ethical Hacker',
-    description: 'Certificate from ethical hacking',
-    fromTo: '2019.07',
-    school: 'EC-Council',
-  },
-  {
-    degree: 'Certified Angular2 Developer',
-    description: 'Angular developer certification from Angular 2',
-    fromTo: '2015.02.03',
-    school: 'PrularSight',
-  },
-];
-
 const Home: NextPage = () => {
   const { t } = useTranslation();
 
@@ -61,10 +36,21 @@ const Home: NextPage = () => {
         <title>Paál Gyula - The Mad Scientist</title>
         <meta
           name="description"
-          content="I'm a professional cloud architect/developer with 13 years relevant software development experience."
+          content="I'm a professional fullstack developer with 13 years relevant software development experience."
         />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+          rel="alternate"
+          hrefLang="en-us"
+          href="http://www.paalgyula.com/?lang=en"
+        />
+        <link
+          rel="alternate"
+          hrefLang="hu-hu"
+          href="http://www.paalgyula.com/?lang=hu"
+        />
       </Head>
 
       <Header />
@@ -81,12 +67,11 @@ const Home: NextPage = () => {
         <br /> */}
 
         <section className="experiences-section section" id="experiences">
-          <Experiences/>
+          <Experiences />
         </section>
 
-
         <section className="education-section section" id="eudcation-section">
-          <Educations educations={EDUCATIONS} />
+          <Educations educations={educations} />
         </section>
 
         <section
@@ -103,7 +88,7 @@ const Home: NextPage = () => {
         <section className="portfolio-section section" id="portfolio-section">
           <h2 className="section-title">Portfolio</h2>
 
-          <h3 className="subtitle">Some of my projects</h3>
+          <h3 className="subtitle">{t('Some of my projects')}</h3>
 
           <ul className="filters clearfix" id="filters">
             <li className="type active" data-filter="*">
