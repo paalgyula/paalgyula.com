@@ -416,6 +416,10 @@ p {
 	margin-bottom: 15px;
 	font-size: 20px;
 	font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .timeline .job-meta {
@@ -780,7 +784,7 @@ p {
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
 	.header {
-    /*width: 100% */
+    width: 100%
     /*&:last-child */
     /*  margin-bottom: 0 */;
 	}

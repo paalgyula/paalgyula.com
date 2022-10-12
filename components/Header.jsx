@@ -1,9 +1,13 @@
+import Image from 'next/image';
 import { useTranslation } from '../src/translator';
+import LanguageChanger from './LanguageChanger'
 
-const Header: React.FC<{}> = () => {
+const Header = () => {
   const { t } = useTranslation();
 
-  const scrollTo = (selector: string) => {
+  const scrollTo = (e, selector) => {
+    e.preventDefault()
+
     const element = document.querySelector(selector);
     if (element) {
       const topPos = element.getBoundingClientRect().top + window.pageYOffset;
@@ -18,13 +22,7 @@ const Header: React.FC<{}> = () => {
     <header className="header">
       <div className="top-bar container-fluid">
         <div className="actions">
-          <a className="btn" href="/en/">
-            <img
-              src="/images/flags/us-flag.png"
-              title="English"
-              alt="English"
-            />
-          </a>
+          <LanguageChanger />
           <a className="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
             <i className="fa fa-paper-plane" aria-hidden="true"></i>
             <span>{t('Hire me')}</span>
@@ -65,7 +63,9 @@ const Header: React.FC<{}> = () => {
       </div>
       <div className="intro">
         <div className="container text-center">
-          <img
+          <Image
+            height={160}
+            width={160}
             className="profile-image"
             src="/images/profile-image.png"
             alt="Paál Gyula"
@@ -99,7 +99,7 @@ const Header: React.FC<{}> = () => {
             </li>
             <li>
               <i className="fa fa-phone"></i>
-              <a href="tel:+36202500012">+36 20 250 0012</a>
+              <a href="tel:+36209410618">+36 20 941 0618</a>
             </li>
             <li className="website">
               <i className="fa fa-globe"></i>
@@ -117,7 +117,7 @@ const Header: React.FC<{}> = () => {
               <li>
                 <a
                   className="scrollto"
-                  onClick={() => scrollTo('#experiences-section')}
+                  onClick={e => scrollTo(e, '#experiences-section')}
                   href="#"
                 >
                   Experiences
@@ -127,7 +127,7 @@ const Header: React.FC<{}> = () => {
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={() => scrollTo('#eudcation-section')}
+                  onClick={(e) => scrollTo(e, '#eudcation-section')}
                 >
                   Educations
                 </a>
@@ -136,7 +136,7 @@ const Header: React.FC<{}> = () => {
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={() => scrollTo('#skills-section')}
+                  onClick={(e) => scrollTo(e, '#skills-section')}
                 >
                   Skillset
                 </a>
@@ -145,7 +145,7 @@ const Header: React.FC<{}> = () => {
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={() => scrollTo('#testimonials-section')}
+                  onClick={(e) => scrollTo(e, '#testimonials-section')}
                 >
                   Testimonals
                 </a>
@@ -154,7 +154,7 @@ const Header: React.FC<{}> = () => {
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={() => scrollTo('#portfolio-section')}
+                  onClick={(e) => scrollTo(e, '#portfolio-section')}
                 >
                   Portfolio
                 </a>
@@ -163,7 +163,7 @@ const Header: React.FC<{}> = () => {
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={() => scrollTo('#contact-section')}
+                  onClick={(e) => scrollTo(e, '#contact-section')}
                 >
                   Contacts
                 </a>

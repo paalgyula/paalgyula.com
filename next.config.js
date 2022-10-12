@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-const { i18n } = require('./next-i18next.config')
+const { i18n } = require('./src/i18n');
 
 module.exports = {
   reactStrictMode: true,
-  // i18n
-}
+  images: {
+    unoptimized: true,
+  },
+  i18n
+};

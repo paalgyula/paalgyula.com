@@ -40,7 +40,7 @@ const Contacts = () => {
                 paalgyula@paalgyula.com
               </a> -ra
               vagy hívj bátran:{' '}
-              <a href="tel:+36202500012">+36 20 250 0012</a>
+              <a href="tel:+36209410618">+36 20 941 0618</a>
             </p>
             <ul className="social list-inline">
               <li>

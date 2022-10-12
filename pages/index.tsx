@@ -3,11 +3,12 @@ import Head from 'next/head';
 import Script from 'next/script';
 import Contacts from '../components/Contacts';
 import Educations from '../components/Educations';
+import Experiences from '../components/Experiences';
 import Header from '../components/Header';
 import Portfolio from '../components/Portfolio';
 import BestSkillsPies from '../components/skills/BestSkillsPies';
 import SkillsChipses from '../components/skills/SkillsChipses';
-import { IEducation } from '../src/IEducation';
+import { IEducation } from '../src/Education';
 import { useTranslation } from '../src/translator';
 import styles from '../styles/Home.module.css';
 
@@ -69,15 +70,20 @@ const Home: NextPage = () => {
       <Header />
 
       <div className="wrapper container">
-        <span
+        {/* <span
           style={{
             textAlign: 'center',
           }}
         >
-          <h1>Feltöltés alatt...</h1>
+          <h1>{t('Feltöltés alatt...')}</h1>
         </span>
         <br />
-        <br />
+        <br /> */}
+
+        <section className="experiences-section section" id="experiences">
+          <Experiences/>
+        </section>
+
 
         <section className="education-section section" id="eudcation-section">
           <Educations educations={EDUCATIONS} />

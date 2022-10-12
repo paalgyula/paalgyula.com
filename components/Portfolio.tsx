@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import { IPortfolioItem } from '../src/IPortfolioItem';
+import { IPortfolioItem } from '../src/PortfolioItem';
 
 const PORTFOLIO_ITEMS: IPortfolioItem[] = [
   {
