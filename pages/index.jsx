@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import { useTranslation } from 'next-export-i18n';
 import Head from 'next/head';
 import Script from 'next/script';
 import Contacts from '../components/Contacts';
@@ -6,11 +6,8 @@ import Educations from '../components/Educations';
 import Experiences from '../components/Experiences';
 import Header from '../components/Header';
 import Portfolio from '../components/Portfolio';
-import BestSkillsPies from '../components/skills/BestSkillsPies';
+import BestSkillsPies from '../components/skills/BestSkillsPies.jsx';
 import SkillsChipses from '../components/skills/SkillsChipses';
-import { IEducation } from '../src/Education';
-import { useTranslation } from 'next-export-i18n';
-import styles from '../styles/Home.module.css';
 
 import educations from '../data/educations.json';
 
@@ -27,11 +24,11 @@ import educations from '../data/educations.json';
 //   };
 // }
 
-const Home: NextPage = () => {
+const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Paál Gyula - The Mad Scientist</title>
         <meta

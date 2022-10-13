@@ -1,34 +1,8 @@
 import Script from 'next/script';
 
-import { IKnowledgeItem } from '../../src/KnowledgeItem';
 import { useTranslation } from "next-export-i18n";
 
-const KNOWLEDGES: IKnowledgeItem[] = [
-  {
-    name: 'Java',
-    percent: 80,
-    years: 12,
-    title: 'advanced',
-  },
-  {
-    name: 'go',
-    percent: 95,
-    years: 4,
-    title: 'expert',
-  },
-  {
-    name: 'React',
-    percent: 99,
-    years: 5,
-    title: 'expert',
-  },
-  {
-    name: 'node.js',
-    percent: 85,
-    years: 5,
-    title: 'advanced',
-  },
-];
+import KNOWLEDGES from '../../data/knowledgebase.json';
 
 const BestSkillsPies = () => {
   const { t } = useTranslation();

@@ -1,86 +1,14 @@
 import Script from 'next/script';
-import { IPortfolioItem } from '../src/PortfolioItem';
 
-const PORTFOLIO_ITEMS: IPortfolioItem[] = [
-  {
-    category: 'frontend',
-    image: '/images/portfolio/portfolio-gravatar.webp',
-    imgAlt: 'Gravatar Taglib',
-    meta: 'Java',
-    name: 'Gravatar JSP/JSF Tag Library',
-    link: {
-      text: 'View on Bitbucket',
-      url: 'https://bitbucket.org/paalgyula/gravatar-taglib',
-    },
-  },
-  {
-    category: 'frontend',
-    image: '/images/portfolio/portfolio-zamzi-frontend.webp',
-    imgAlt: 'Zamazingo',
-    meta: 'Node.JS/React',
-    name: 'Zamazingo Quiz Platform',
-    link: {
-      text: 'Visit website',
-      url: 'https://zamzi.hu',
-    },
-  },
-  {
-    category: 'appz',
-    image: '/images/portfolio/portfolio-zamzi-mobile.webp',
-    imgAlt: 'Zamazingo',
-    meta: 'React Native',
-    name: 'Zamazingo Quiz Platform Client',
-    link: {
-      text: 'Visit website',
-      url: 'https://rm.zamzi.hu',
-    },
-  },
-  {
-    category: 'frontend',
-    image: '/images/portfolio/portfolio-pirat.webp',
-    imgAlt: 'PiR@',
-    meta: 'React/go',
-    name: 'PiR@ Issue Tracker (WIP)',
-    link: {
-      text: 'Visit website',
-      url: 'https://pirat.app',
-    },
-  },
-  {
-    category: 'backend',
-    image: '/images/portfolio/portfolio-jegymester.webp',
-    imgAlt: 'Jegymester',
-    meta: 'J2EE',
-    name: 'jegymester.hu backend',
-    link: {
-      text: 'Visit website',
-      url: 'https://jegymester.hu',
-    },
-  },
-  {
-    category: 'backend',
-    image: '/images/portfolio/portfolio-ris.webp',
-    imgAlt: 'RIS',
-    meta: 'C#/asp.net/Angular',
-    name: 'Railway Integrated System',
-    link: {
-      text: 'Visit website',
-      url: 'http://riseurope.eu/',
-    },
-  },
-];
+import PORTFOLIO_ITEMS from '../data/portfolio.json';
 
-type PortfolioItemProps = {
-  item: IPortfolioItem;
-};
-
-const PortfolioItem = ({ item }: PortfolioItemProps) => {
+const PortfolioItem = ({ item }) => {
   return (
     <div className={`item ${item.category} col-md-3 col-xs-6`}>
       <div className="item-inner">
         <figure className="figure">
           <img
-            loading="lazy"
+            loading="lazy"s
             className="img-responsive"
             src={item.image}
             alt={item.imgAlt || item.name}
@@ -95,7 +23,7 @@ const PortfolioItem = ({ item }: PortfolioItemProps) => {
             {item.link && <a href={item.link.url}>{item.link.text}</a>}
           </div>
         </div>
-        <a className="link-mask" href={item.link?.url}></a>
+        <a className="link-mask" href={item.link.url}></a>
       </div>
     </div>
   );
