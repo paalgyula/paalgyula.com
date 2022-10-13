@@ -4,7 +4,7 @@ import { IPortfolioItem } from '../src/PortfolioItem';
 const PORTFOLIO_ITEMS: IPortfolioItem[] = [
   {
     category: 'frontend',
-    image: '/images/portfolio/portfolio-gravatar.jpg',
+    image: '/images/portfolio/portfolio-gravatar.webp',
     imgAlt: 'Gravatar Taglib',
     meta: 'Java',
     name: 'Gravatar JSP/JSF Tag Library',
@@ -15,7 +15,7 @@ const PORTFOLIO_ITEMS: IPortfolioItem[] = [
   },
   {
     category: 'frontend',
-    image: '/images/portfolio/portfolio-zamzi-frontend.png',
+    image: '/images/portfolio/portfolio-zamzi-frontend.webp',
     imgAlt: 'Zamazingo',
     meta: 'Node.JS/React',
     name: 'Zamazingo Quiz Platform',
@@ -26,7 +26,7 @@ const PORTFOLIO_ITEMS: IPortfolioItem[] = [
   },
   {
     category: 'appz',
-    image: '/images/portfolio/portfolio-zamzi-mobile.png',
+    image: '/images/portfolio/portfolio-zamzi-mobile.webp',
     imgAlt: 'Zamazingo',
     meta: 'React Native',
     name: 'Zamazingo Quiz Platform Client',
@@ -37,7 +37,7 @@ const PORTFOLIO_ITEMS: IPortfolioItem[] = [
   },
   {
     category: 'frontend',
-    image: '/images/portfolio/portfolio-pirat.png',
+    image: '/images/portfolio/portfolio-pirat.webp',
     imgAlt: 'PiR@',
     meta: 'React/go',
     name: 'PiR@ Issue Tracker (WIP)',
@@ -48,7 +48,7 @@ const PORTFOLIO_ITEMS: IPortfolioItem[] = [
   },
   {
     category: 'backend',
-    image: '/images/portfolio/portfolio-jegymester.png',
+    image: '/images/portfolio/portfolio-jegymester.webp',
     imgAlt: 'Jegymester',
     meta: 'J2EE',
     name: 'jegymester.hu backend',
@@ -56,9 +56,10 @@ const PORTFOLIO_ITEMS: IPortfolioItem[] = [
       text: 'Visit website',
       url: 'https://jegymester.hu',
     },
-  },{
+  },
+  {
     category: 'backend',
-    image: '/images/portfolio/portfolio-ris.jpg',
+    image: '/images/portfolio/portfolio-ris.webp',
     imgAlt: 'RIS',
     meta: 'C#/asp.net/Angular',
     name: 'Railway Integrated System',
@@ -66,7 +67,7 @@ const PORTFOLIO_ITEMS: IPortfolioItem[] = [
       text: 'Visit website',
       url: 'http://riseurope.eu/',
     },
-  }
+  },
 ];
 
 type PortfolioItemProps = {
@@ -79,6 +80,7 @@ const PortfolioItem = ({ item }: PortfolioItemProps) => {
       <div className="item-inner">
         <figure className="figure">
           <img
+            loading="lazy"
             className="img-responsive"
             src={item.image}
             alt={item.imgAlt || item.name}
@@ -107,8 +109,9 @@ const Portfolio = () => {
           <figure className="figure">
             <img
               className="img-responsive"
-              src="/images/portfolio/portfolio-zombieland.jpg"
+              src="/images/portfolio/portfolio-zombieland.webp"
               alt="ZombieLand Client"
+              loading="lazy"
             />
           </figure>
           <div className="content text-left">
@@ -133,8 +136,11 @@ const Portfolio = () => {
           <figure className="figure">
             <img
               className="img-responsive"
-              src="/images/portfolio/portfolio-ncoredroid.jpg"
+              src="/images/portfolio/portfolio-ncoredroid.webp"
               alt="nCore Android Client"
+              height={180}
+              width={320}
+              loading="lazy"
             />
           </figure>
           <div className="content text-left">

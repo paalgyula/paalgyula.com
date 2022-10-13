@@ -1,4 +1,4 @@
-import { useTranslation } from "next-export-i18n";
+import { useTranslation } from 'next-export-i18n';
 
 const Educations = ({ educations }) => {
   const { t } = useTranslation();

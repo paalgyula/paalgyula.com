@@ -15,11 +15,11 @@ const LanguageChanger = () => {
             height={16}
             width={16}
             layout="fixed"
-            src="/images/flags/hu-flag.png"
+            src="/images/flags/hu-flag.webp"
             title="Hungary"
             alt="Hungary"
           /> */}
-          <img src="/images/flags/hu-flag.png" alt="Hungary" title="Hungary"/>
+          <img src="/images/flags/hu-flag.webp" alt="Hungary" title="Hungary"/>
         </a>
       </Link>
     );
@@ -31,11 +31,11 @@ const LanguageChanger = () => {
         {/* <Image
           height={16}
           width={16}
-          src="/images/flags/us-flag.png"
+          src="/images/flags/us-flag.webp"
           title="English"
           alt="English"
         /> */}
-        <img src="/images/flags/us-flag.png" alt="English" title="English"/>
+        <img src="/images/flags/us-flag.webp" alt="English" title="English"/>
       </a>
     </Link>
   );

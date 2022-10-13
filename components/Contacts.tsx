@@ -11,7 +11,7 @@ const Contacts = () => {
         <div className="intro">
           <img
             className="profile-image"
-            src="/images/profile-image.png"
+            src="/images/profile-image.webp"
             alt="Paál Gyula"
             title="Paál Gyula"
           />

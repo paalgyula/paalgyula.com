@@ -5,7 +5,7 @@
       "name": "Paál Innovációs Kft.",
       "address": "Budapest",
       "image": {
-        "source": "/images/pi-logo.png",
+        "source": "/images/pi-logo.webp",
         "height": 50,
         "width": 50
       }
@@ -29,7 +29,7 @@
     "jobTitle": "Chief of R&D",
     "employer": {
       "image": {
-        "source": "/images/interticket.png",
+        "source": "/images/interticket.webp",
         "height": 46,
         "width": 190
       },
@@ -62,7 +62,7 @@
       "address": "Denver, CO 80202",
       "location": "https://www.google.com/maps/place/999+18th+St+%233000b,+Denver,+CO+80202,+USA/data=!4m2!3m1!1s0x876c78d98b722359:0xd1c649d39a0b5df7?sa=X&ved=2ahUKEwjjwa_J0tr6AhWcg_0HHVZvCVsQ8gF6BAgIEAE",
       "image": {
-        "source": "/images/newpush.jpeg",
+        "source": "/images/newpush.webp",
         "height": 50,
         "width": 50
       }
@@ -90,7 +90,7 @@
       "address": "InfoPark, 1115 Budapest, Gábor Dénes utca 2.",
       "location": "https://www.google.com/maps/place/Budapest,+G%C3%A1bor+D%C3%A9nes+u.+2,+1117/data=!4m2!3m1!1s0x4741dd07618b5afd:0xda252844daf2afa?sa=X&ved=2ahUKEwjO2pi52dr6AhUHiv0HHXXcDCMQ8gF6BAgPEAE",
       "image": {
-        "source": "/images/infocompass-logo.png",
+        "source": "/images/infocompass-logo.webp",
         "height": 97,
         "width": 300
       }
@@ -117,7 +117,7 @@
       "name": "Pont Rendszerház Kft.",
       "address": "1117 Budapest, Fehérvári út 50-52.",
       "image": {
-        "source": "/images/pont-logo.png",
+        "source": "/images/pont-logo.webp",
         "height": 25,
         "width": 25
       }
@@ -140,7 +140,7 @@
       "name": "Húsipari Vállalat Zrt.",
       "address": "1186 Budapest, Besence utca 1.",
       "image": {
-        "source": "/images/husipar-logo.png",
+        "source": "/images/husipar-logo.webp",
         "height": 80,
         "width": 80
       }
@@ -156,7 +156,7 @@
       "name": "Welt 2000 Kft.",
       "address": "Budaörs, Baross G. u. 165",
       "image": {
-        "source": "/images/welt2000-logo.png",
+        "source": "/images/welt2000-logo.webp",
         "height": 90,
         "width": 90
       }

@@ -72,7 +72,7 @@ const Header = () => {
             height={160}
             width={160}
             className="profile-image"
-            src="/images/profile-image.png"
+            src="/images/profile-image.webp"
             alt="Paál Gyula"
             title="Paál Gyula"
           />
