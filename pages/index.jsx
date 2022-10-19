@@ -1,6 +1,5 @@
 import { useTranslation } from 'next-export-i18n';
 import Head from 'next/head';
-import Script from 'next/script';
 import Contacts from '../components/Contacts';
 import Educations from '../components/Educations';
 import Experiences from '../components/Experiences';
@@ -108,7 +107,6 @@ const Home = () => {
 
         <Contacts />
       </div>
-      <Script src="/analytics.js" />
     </div>
   );
 };

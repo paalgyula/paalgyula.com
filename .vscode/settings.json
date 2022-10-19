@@ -1,4 +1,15 @@
 {
   "workbench.colorTheme": "One Dark Pro Darker",
-  "workbench.iconTheme": "vscode-icons"
+  "workbench.iconTheme": "vscode-icons",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "out": true,
+    "node_modules": true,
+    ".next": true
+  }
 }
