@@ -1,13 +1,10 @@
-import Image from 'next/image';
-import LanguageChanger from './LanguageChanger';
-import {
-  useTranslation,
-  useLanguageQuery,
-  LanguageSwitcher,
-} from 'next-export-i18n';
+import { useTranslation } from "next-export-i18n";
+import Image from "next/image";
+import HeaderSocialLinks from "./HeaderSocialLinks";
+import LanguageChanger from "./LanguageChanger";
 
 /* eslint-disable @next/next/no-img-element */
-const Header = () => {
+export const Header = () => {
   const { t } = useTranslation();
 
   const scrollTo = (e, selector) => {
@@ -18,7 +15,7 @@ const Header = () => {
       const topPos = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: topPos, // scroll so that the element is at the top of the view
-        behavior: 'smooth', // smooth scroll
+        behavior: "smooth", // smooth scroll
       });
     }
   };
@@ -30,41 +27,15 @@ const Header = () => {
           <LanguageChanger />
           <a className="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
             <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>{t('Hire me')}</span>
+            <span>{t("Hire me")}</span>
           </a>
           <a className="btn" href="http://www.paalgyula.com/resume.pdf">
             <i className="fa fa-download" aria-hidden="true"></i>
-            <span>{t('Download my resume')}</span>
+            <span>{t("Download my resume")}</span>
           </a>
         </div>
 
-        <ul className="social list-inline">
-          <li>
-            <a href="https://twitter.com/paalgyula">
-              <i className="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://plus.google.com/+PaálGyulaÖrdög">
-              <i className="fa fa-google-plus" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://bitbucket.org/paalgyula">
-              <i className="fa fa-bitbucket" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/paalgyula">
-              <i className="fa fa-github-alt" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="skype:goofydesign?add">
-              <i className="fa fa-skype" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
+        <HeaderSocialLinks />
       </div>
       <div itemScope itemType="https://schema.org/Person" className="intro">
         <div className="container text-center">
@@ -77,16 +48,16 @@ const Header = () => {
             title="Paál Gyula"
           />
           <h1 className="name" itemProp="name">
-            {t('Gyula, Paál')}
+            {t("Gyula, Paál")}
           </h1>
           <div className="title">
             (The Mad Scientist)
             <br />
-            <img src="/images/g-logo.svg" alt="Google" title="Google" />{' '}
+            <img src="/images/g-logo.svg" alt="Google" title="Google" />{" "}
             <span itemProp="jobTitle">Certified Cloud Architect</span>
           </div>
           <div itemProp="description" className="profile">
-            {t('introduction')}
+            {t("introduction")}
           </div>
         </div>
       </div>
@@ -105,7 +76,11 @@ const Header = () => {
             </li>
             <li className="website">
               <i className="fa fa-globe"></i>
-              <a href="#" target="_blank">
+              <a
+                href="https://www.paalgyula.com"
+                rel="noreferrer"
+                target="_blank"
+              >
                 www.paalgyula.com
               </a>
             </li>
@@ -119,55 +94,55 @@ const Header = () => {
               <li>
                 <a
                   className="scrollto"
-                  onClick={(e) => scrollTo(e, '#experiences-section')}
+                  onClick={(e) => scrollTo(e, "#experiences-section")}
                   href="#"
                 >
-                  {t('Experiences')}
+                  {t("Experiences")}
                 </a>
               </li>
               <li>
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={(e) => scrollTo(e, '#eudcation-section')}
+                  onClick={(e) => scrollTo(e, "#eudcation-section")}
                 >
-                  {t('Educations')}
+                  {t("Educations")}
                 </a>
               </li>
               <li>
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={(e) => scrollTo(e, '#skills-section')}
+                  onClick={(e) => scrollTo(e, "#skills-section")}
                 >
-                  {t('Skillset')}
+                  {t("Skillset")}
                 </a>
               </li>
               <li>
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={(e) => scrollTo(e, '#testimonials-section')}
+                  onClick={(e) => scrollTo(e, "#testimonials-section")}
                 >
-                  {t('Testimonals')}
+                  {t("Testimonals")}
                 </a>
               </li>
               <li>
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={(e) => scrollTo(e, '#portfolio-section')}
+                  onClick={(e) => scrollTo(e, "#portfolio-section")}
                 >
-                  {t('Portfolio')}
+                  {t("Portfolio")}
                 </a>
               </li>
               <li>
                 <a
                   className="scrollto"
                   href="#"
-                  onClick={(e) => scrollTo(e, '#contact-section')}
+                  onClick={(e) => scrollTo(e, "#contact-section")}
                 >
-                  {t('Contacts')}
+                  {t("Contacts")}
                 </a>
               </li>
             </ul>

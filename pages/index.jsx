@@ -10,19 +10,6 @@ import SkillsChipses from '../components/skills/SkillsChipses';
 
 import educations from '../data/educations.json';
 
-// type StaticProps = {
-//   locale: string;
-// };
-
-// export async function getStaticProps({ locale }: StaticProps) {
-//   return {
-//     props: {
-//       // ...(await serverSideTranslations(locale, ['default'])),
-//       // Will be passed to the page component as props
-//     },
-//   };
-// }
-
 const Home = () => {
   const { t } = useTranslation();
 
@@ -44,7 +31,7 @@ const Home = () => {
         />
         <link
           rel="alternate"
-          hrefLang="hu-hu"
+          hrefLang="hu"
           href="http://www.paalgyula.com/?lang=hu"
         />
       </Head>
@@ -52,16 +39,6 @@ const Home = () => {
       <Header />
 
       <div className="wrapper container">
-        {/* <span
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          <h1>{t('Feltöltés alatt...')}</h1>
-        </span>
-        <br />
-        <br /> */}
-
         <section className="experiences-section section" id="experiences">
           <Experiences />
         </section>

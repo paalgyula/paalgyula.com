@@ -29,11 +29,6 @@ class DefaultDocument extends Document {
 
           />
 
-          <link rel="alternate" href="https://www.paalgyula.com/en/" />
-          <link rel="alternate" href="https://www.paalgyula.com/hu/" />
-
-          <meta name="theme-color" content="#ffffff" />
-          <meta name="description" content="Paál Gyula - The Mad Scientist" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>

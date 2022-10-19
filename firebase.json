@@ -1,11 +1,15 @@
 {
-    "hosting": {
-        "public": "out",
-        "rewrites": [
-            {
-                "source": "/",
-                "destination": "/index.html"
-            }
-        ]
-    }
+  "hosting": {
+    "public": "out",
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/api/**",
+        "function": "app"
+      }
+    ]
+  }
 }

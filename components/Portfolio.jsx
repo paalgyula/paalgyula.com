@@ -8,7 +8,7 @@ const PortfolioItem = ({ item }) => {
       <div className="item-inner">
         <figure className="figure">
           <img
-            loading="lazy"s
+            loading="lazy"
             className="img-responsive"
             src={item.image}
             alt={item.imgAlt || item.name}
