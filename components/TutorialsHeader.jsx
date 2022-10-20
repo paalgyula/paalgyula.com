@@ -3,6 +3,7 @@ import Image from "next/image";
 import LanguageChanger from "./LanguageChanger";
 import { HeaderSocialLinks } from "./HeaderSocialLinks";
 import { useRouter } from "next/router";
+import HeaderButtons from "./HeaderButtons";
 
 export const Header = ({ title }) => {
   const { t } = useTranslation();
@@ -11,17 +12,7 @@ export const Header = ({ title }) => {
   return (
     <header className="header">
       <div className="top-bar container-fluid">
-        <div className="actions">
-          <LanguageChanger />
-          <a className="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
-            <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>{t("Hire me")}</span>
-          </a>
-          <a className="btn" href="http://www.paalgyula.com/resume.pdf">
-            <i className="fa fa-download" aria-hidden="true"></i>
-            <span>{t("Download my resume")}</span>
-          </a>
-        </div>
+        <HeaderButtons />
 
         <HeaderSocialLinks />
       </div>
@@ -61,9 +52,8 @@ export const Header = ({ title }) => {
                 .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
                 .slice(0, -1)
                 .filter((p) => p.trim() !== "")
-                .join(" > ")}
-
-                {' '}&gt; {title}
+                .join(" > ")}{" "}
+              &gt; {title}
             </ul>
           </div>
         </div>

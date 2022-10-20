@@ -909,125 +909,19 @@ p {
 	}
 }
 
-/* Small devices (tablets, 768px and up) */
-/* Medium devices (desktops, 992px and up) */
-/* Large devices (large desktops, 1200px and up) */
-/* X-Large devices (large desktops, 1400px and up) */
-/* ======= Configure Style (Remove in production) ======= */
-.config-trigger {
-	position: absolute;
-	top: 30px;
-	left: -36px;
-	width: 36px;
-	height: 36px;
-	background: #222;
-	color: #fff;
-	text-align: center;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 4px;
-	-webkit-border-top-left-radius: 4px;
-	-moz-border-radius-topright: 0;
-	-moz-border-radius-bottomright: 0;
-	-moz-border-radius-bottomleft: 4px;
-	-moz-border-radius-topleft: 4px;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 4px;
-	border-top-left-radius: 4px;
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-	text-decoration: none;
+.notice {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.config-trigger:hover {
-	background: #000;
-	text-decoration: none;
+.notice p {
+  margin: 0;
+  padding: 0;
 }
 
-.config-trigger:hover .fa {
-	color: #fff;
-}
-
-.config-trigger .fa {
-	font-size: 22px;
-	padding-top: 7px;
-	display: block;
-	color: rgba(255, 255, 255, 0.8);
-}
-
-.config-panel {
-	position: absolute;
-	top: 160px;
-	right: -190px;
-	z-index: 30;
-	width: 190px;
-}
-
-.config-panel .panel-inner {
-	position: relative;
-	background: #222;
-	color: #fff;
-	padding: 15px;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 4px;
-	-webkit-border-top-left-radius: 4px;
-	-moz-border-radius-topright: 0;
-	-moz-border-radius-bottomright: 0;
-	-moz-border-radius-bottomleft: 4px;
-	-moz-border-radius-topleft: 4px;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 4px;
-	border-top-left-radius: 4px;
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-}
-
-.config-panel .panel-title {
-	font-weight: 600;
-	margin-bottom: 15px;
-	font-size: 14px;
-	text-transform: uppercase;
-}
-
-.config-panel label {
-	color: #fff;
-}
-
-.config-panel #color-options {
-	margin-bottom: 0px;
-}
-
-.config-panel #color-options li a {
-	display: block;
-	width: 28px;
-	height: 20px;
-	border: 2px solid transparent;
-	margin-bottom: 10px;
-}
-
-.config-panel #color-options li a:hover {
-	-webkit-opacity: 0.9;
-	-moz-opacity: 0.9;
-	opacity: 0.9;
-	border: 2px solid rgba(255, 255, 255, 0.8);
-}
-
-.config-panel #color-options li.active a {
-	border: 2px solid #fff;
-}
-
-.config-panel .close {
-	position: absolute;
-	right: 5px;
-	top: 5px;
-	color: #fff;
-}
-
-.config-panel .close .fa {
-	color: #fff;
+.notice .fa {
+  font-size: 25px;
 }

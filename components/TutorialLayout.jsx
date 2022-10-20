@@ -11,12 +11,12 @@ export const TutorialLayout = ({ meta, children }) => (
     <TutorialsHeader title={meta.title} />
 
     <div className="wrapper container">
-      <h1 style={{paddingBottom: 40}}>{meta.title}</h1>
-
       <section className="section" id="tutorial">
+        <h2 className="section-title">{meta.title}</h2>
+
         {children}
 
-        <div style={{ marginTop: 30 }}>
+        <div style={{ marginTop: 30, textAlign: 'right' }}>
           <p>
             <small>Author: {meta.LastModifierDisplayName}</small>
             <br />

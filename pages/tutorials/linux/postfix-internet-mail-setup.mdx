@@ -1,3 +1,5 @@
+import { TutorialLayout, Notice } from "../../../components";
+
 export const meta = {
   title: "Postfix Internet Mail Setup",
   date: "2018-02-01T21:35:10+01:00",
@@ -8,6 +10,8 @@ export const meta = {
 
 ## Introduction
 
+In this tutorial we will install *Postfix Mail Server* as our SMTP server provider (with TLS support)
+
 ## Installation
 
 ```bash
@@ -15,3 +19,9 @@ sudo apt install postfix sasl2-bin libsasl2-modules
 ```
 
 ## Configuration
+
+### TODO: continue to write the configuration
+
+export default ({ children }) => (
+  <TutorialLayout meta={meta}>{children}</TutorialLayout>
+);

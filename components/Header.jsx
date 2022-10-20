@@ -2,6 +2,7 @@ import { useTranslation } from "next-export-i18n";
 import Image from "next/image";
 import HeaderSocialLinks from "./HeaderSocialLinks";
 import LanguageChanger from "./LanguageChanger";
+import { HeaderButtons } from './HeaderButtons';
 
 /* eslint-disable @next/next/no-img-element */
 export const Header = () => {
@@ -23,17 +24,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="top-bar container-fluid">
-        <div className="actions">
-          <LanguageChanger />
-          <a className="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
-            <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>{t("Hire me")}</span>
-          </a>
-          <a className="btn" href="http://www.paalgyula.com/resume.pdf">
-            <i className="fa fa-download" aria-hidden="true"></i>
-            <span>{t("Download my resume")}</span>
-          </a>
-        </div>
+        <HeaderButtons/>
 
         <HeaderSocialLinks />
       </div>
