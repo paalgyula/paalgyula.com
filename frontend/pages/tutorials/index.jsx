@@ -32,3 +32,7 @@ const TutorialsIndex = ({ props, children, files }) => {
 };
 
 export default TutorialsIndex;
+
+const getStaticProps = async () => {
+
+}
