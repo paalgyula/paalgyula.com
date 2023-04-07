@@ -1,4 +1,6 @@
-export const HeaderSocialLinks = () => (
+import { FC } from "react";
+
+export const HeaderSocialLinks: FC = () => (
   <ul className="social list-inline">
     <li>
       <a href="https://facebook.com/azordog">
@@ -18,4 +20,4 @@ export const HeaderSocialLinks = () => (
   </ul>
 );
 
-export default HeaderSocialLinks
+export default HeaderSocialLinks;

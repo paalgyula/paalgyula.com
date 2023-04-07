@@ -7,7 +7,7 @@ import HeaderSocialLinks from "./HeaderSocialLinks";
 export const Header = () => {
   const { t } = useTranslation();
 
-  const scrollTo = (e, selector) => {
+  const scrollTo = (e: any, selector: string) => {
     e.preventDefault();
 
     const element = document.querySelector(selector);

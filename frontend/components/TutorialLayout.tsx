@@ -1,8 +1,13 @@
+import {FC, PropsWithChildren} from 'react';
 import moment from "moment";
 import Head from "next/head";
 import TutorialsHeader from "./TutorialsHeader";
 
-export const TutorialLayout = ({ meta, children }) => (
+type IMetadata = {
+  meta: any;
+}
+
+export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({ meta, children }) => (
   <>
     <Head>
       <title>Tutorial - {meta.title}</title>

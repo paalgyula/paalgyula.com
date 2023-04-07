@@ -1,11 +1,14 @@
-import { useTranslation } from "react-i18next";
-import Image from "next/image";
-import LanguageChanger from "./LanguageChanger";
-import { HeaderSocialLinks } from "./HeaderSocialLinks";
 import { useRouter } from "next/router";
+import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import HeaderButtons from "./HeaderButtons";
+import { HeaderSocialLinks } from "./HeaderSocialLinks";
 
-export const Header = ({ title }) => {
+type Props = {
+  title: string  
+}
+
+export const Header: FC<Props> = ({ title }) => {
   const { t } = useTranslation();
   const router = useRouter();
 

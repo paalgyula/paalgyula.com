@@ -4,13 +4,8 @@ import Head from "next/head";
 import { useRef } from "react";
 
 export default function AdminHome() {
-  const editorRef = useRef(null);
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-    }
-  };
-
+  // const editorRef = useRef(null);
+  
   return (
     <>
       <Head>

@@ -5,7 +5,7 @@ import Educations from "../../components/Educations";
 import Experiences from "../../components/Experiences";
 import Header from "../../components/Header";
 import Portfolio from "../../components/Portfolio";
-import BestSkillsPies from "../../components/skills/BestSkillsPies.jsx";
+import BestSkillsPies from "../../components/skills/BestSkillsPies";
 import SkillsChipses from "../../components/skills/SkillsChipses";
 
 import { getStaticPaths, makeStaticProps } from "../../lib/i18n/static";

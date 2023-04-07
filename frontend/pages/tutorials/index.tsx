@@ -2,7 +2,9 @@ import Link from "next/link";
 import shortid from "shortid";
 import { TutorialLayout } from "../../components";
 
-import tutorials from "./tutorials.json";
+import * as React from 'react'
+import { InferGetStaticPropsType } from 'next';
+import { fetchTuorialsList } from "../../data/tutorialsService";
 
 export const meta = {
   title: "Tutorials Section",
@@ -12,7 +14,8 @@ export const meta = {
   weight: 1,
 };
 
-const TutorialsIndex = ({ props, children, files }) => {
+
+export default function TutorialsIndex({ tutorials }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <TutorialLayout meta={meta}>
       <h4>
@@ -31,8 +34,12 @@ const TutorialsIndex = ({ props, children, files }) => {
   );
 };
 
-export default TutorialsIndex;
-
-const getStaticProps = async () => {
-
+export async function getStaticProps() {
+  const tutorialsResponse = await fetchTuorialsList()
+  
+  return {
+    props: {
+      tutorials: tutorialsResponse.data,
+    },
+  }
 }

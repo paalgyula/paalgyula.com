@@ -9,5 +9,5 @@ module.exports = {
     // appDir: true,
   },
   trailingSlash: true,
-  pageExtensions: ['js', 'jsx'],
+  pageExtensions: ['tsx'],
 };

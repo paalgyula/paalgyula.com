@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { memo } from "react";
+import { FC, memo } from "react";
 import { useTranslation } from "react-i18next";
 
 /* eslint-disable @next/next/no-img-element */
-const LanguageChanger = () => {
+const LanguageChanger: FC = () => {
   const { i18n } = useTranslation();
 
   if (i18n.language === "en") {
