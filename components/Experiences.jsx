@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from "next-export-i18n";
+import { useTranslation } from "react-i18next";
 import shortid from 'shortid';
 import experiences from '../data/experiences.json';
 

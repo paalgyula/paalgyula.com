@@ -1,7 +1,6 @@
-import LanguageChanger from "./LanguageChanger";
-import { useTranslation } from "next-export-i18n";
 import Link from "next/link";
-import shortid from "shortid";
+import { useTranslation } from "react-i18next";
+import LanguageChanger from "./LanguageChanger";
 
 export const HeaderButtons = () => {
   const { t } = useTranslation();
@@ -9,7 +8,7 @@ export const HeaderButtons = () => {
   return (
     <div className="actions">
       <LanguageChanger />
-      <Link passHref href="/tutorials">
+      <Link legacyBehavior passHref href="/tutorials">
         <a className="btn hidden-xs">
           <i className="fa fa-book" aria-hidden="true"></i>
           <span>{t("Tutorials")}</span>{' '}

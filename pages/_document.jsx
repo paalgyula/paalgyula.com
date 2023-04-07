@@ -1,20 +1,25 @@
 // pages/_document.js
 
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import i18nConfig from "../next-i18next.config";
 
 class DefaultDocument extends Document {
   render() {
+    const currentLocale =
+      this.props.__NEXT_DATA__.query.locale ||
+      i18nConfig.i18n.defaultLocale;
+
     return (
-      <Html>
+      <Html lang={currentLocale}> 
         <Head>
           <link rel="canonical" href="http://www.paalgyula.com/" />
           <meta name="author" content="Paál Gyula" />
           <meta name="theme-color" content="#607D8B" />
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic"
+            href="https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic&display=optional"
             rel="stylesheet"
             type="text/css"
-            crossOrigin='anonymous'
+            crossOrigin="anonymous"
           />
           <link
             href="/css/font-awesome.min.css"
@@ -23,11 +28,7 @@ class DefaultDocument extends Document {
           />
 
           <link rel="icon" type="image/x-icon" href="favicon.ico" />
-          <link
-            rel="stylesheet"
-            href="/css/bootstrap.min.css"
-
-          />
+          <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
           <link rel="icon" href="/favicon.ico" />
         </Head>

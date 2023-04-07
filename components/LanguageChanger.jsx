@@ -1,17 +1,16 @@
-import { useTranslation, LanguageSwitcher, useSelectedLanguage } from 'next-export-i18n';
-import Image from 'next/image';
-import Link from 'next/link';
-import { memo } from 'react';
+import Link from "next/link";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 /* eslint-disable @next/next/no-img-element */
 const LanguageChanger = () => {
-  const selectedLanguage = useSelectedLanguage()
+  const { i18n } = useTranslation();
 
-  if (selectedLanguage.lang === 'en') {
+  if (i18n.language === "en") {
     return (
-      <Link passHref hrefLang="hu" href="?lang=hu">
-        <a className="btn">
-          {/* <Image
+      <Link passHref className="btn" hrefLang="hu" href="/hu/">
+        {/* <a className="btn"> */}
+        {/* <Image
             height={16}
             width={16}
             layout="fixed"
@@ -19,24 +18,24 @@ const LanguageChanger = () => {
             title="Hungary"
             alt="Hungary"
           /> */}
-          <img src="/images/flags/hu-flag.webp" alt="Hungary" title="Hungary"/>
-        </a>
+        <img src="/images/flags/hu-flag.webp" alt="Hungary" title="Hungary" />
+        {/* </a> */}
       </Link>
     );
   }
 
   return (
-    <Link passHref hrefLang="en" href="?lang=en">
-      <a className="btn">
-        {/* <Image
+    <Link passHref href="/en/" className="btn" hrefLang="en">
+      {/* <a className="btn"> */}
+      {/* <Image
           height={16}
           width={16}
           src="/images/flags/us-flag.webp"
           title="English"
           alt="English"
         /> */}
-        <img src="/images/flags/us-flag.webp" alt="English" title="English"/>
-      </a>
+      <img src="/images/flags/us-flag.webp" alt="English" title="English" />
+      {/* </a> */}
     </Link>
   );
 };

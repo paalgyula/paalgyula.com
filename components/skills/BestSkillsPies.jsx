@@ -1,6 +1,6 @@
 import Script from 'next/script';
 
-import { useTranslation } from "next-export-i18n";
+import { useTranslation } from "react-i18next";
 
 import KNOWLEDGES from '../../data/knowledgebase.json';
 

@@ -1,8 +1,7 @@
-import { useTranslation } from "next-export-i18n";
 import Image from "next/image";
-import HeaderSocialLinks from "./HeaderSocialLinks";
-import LanguageChanger from "./LanguageChanger";
+import { useTranslation } from "react-i18next";
 import { HeaderButtons } from './HeaderButtons';
+import HeaderSocialLinks from "./HeaderSocialLinks";
 
 /* eslint-disable @next/next/no-img-element */
 export const Header = () => {
@@ -33,7 +32,6 @@ export const Header = () => {
           <Image
             height={160}
             width={160}
-            className="profile-image"
             src="/images/profile-image.webp"
             alt="Paál Gyula"
             title="Paál Gyula"
@@ -42,7 +40,7 @@ export const Header = () => {
             {t("Gyula, Paál")}
           </h1>
           <div className="title">
-            (The Mad Scientist)
+            (Digital Nomad)
             <br />
             <img src="/images/g-logo.svg" alt="Google" title="Google" />{" "}
             <span itemProp="jobTitle">Certified Cloud Architect</span>
