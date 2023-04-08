@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import firebaseApp from './firebaseApp';
 import { FirebaseApp } from 'firebase/app';
-import { Unsubscribe, User, getAuth } from 'firebase/auth';
+import { GoogleAuthProvider, Unsubscribe, User, getAuth, signInWithPopup } from 'firebase/auth';
 
 /**
  * Firebase context object
@@ -17,6 +17,8 @@ type FirebaseContextHolder = {
   firebaseApp: FirebaseApp;
   user: User | null;
   authenticated: boolean | undefined;
+  loginWithGoogle: () => Promise<void>;
+  logout: () => Promise<void>;
 };
 
 const FirebaseContext = createContext<FirebaseContextHolder | null>(null);
@@ -26,6 +28,8 @@ var unsubscribe: Unsubscribe;
 const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [authenticated, setAuthenticated] = useState<boolean | undefined>();
+
+  const auth = getAuth(firebaseApp);
 
   useEffect(() => {
     const auth = getAuth(firebaseApp);
@@ -45,8 +49,18 @@ const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
     console.log(user);
   }, [user]);
 
+  /**
+   * Handles google login button click and initiates authentication with firebase's google provider.
+   */
+  const loginWithGoogle = async () => {
+    const googleProvider = new GoogleAuthProvider();
+    await signInWithPopup(auth, googleProvider);
+  };
+
+  const logout = () => auth.signOut();
+
   return (
-    <FirebaseContext.Provider value={{ firebaseApp, user, authenticated }}>
+    <FirebaseContext.Provider value={{ firebaseApp, user, authenticated, loginWithGoogle, logout }}>
       {children}
     </FirebaseContext.Provider>
   );

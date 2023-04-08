@@ -1,42 +1,31 @@
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import { useFirebase } from './FirebaseProvider';
 import FullScreenLoader from './FullScreenLoader';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-import DrawerLayout from './components/DrawerLayout';
+// import DrawerLayout from './components/DrawerLayout';
+import LoginScreen from './components/auth/LoginScreen';
+import { lazy } from 'react';
+
+const DrawerLayout = lazy(() => import('./components/DrawerLayout'));
 
 const AppRouter = () => {
-  const { firebaseApp, authenticated } = useFirebase();
-
-  /**
-   * Handles google login button click and initiates authentication with firebase's google provider.
-   */
-  const handleGoogleLogin = async () => {
-    const auth = getAuth(firebaseApp);
-
-    const googleProvider = new GoogleAuthProvider();
-    await signInWithPopup(auth, googleProvider);
-  };
+  const { authenticated } = useFirebase();
 
   if (authenticated === undefined) {
     return <FullScreenLoader />;
   }
 
-  if (authenticated === undefined) {
-    return (
-      <Box>
-        To use admin panel please log in with your Google account
-        <Button color="primary" onClick={handleGoogleLogin}>
-          Login with Google
-        </Button>
-      </Box>
-    );
+  if (!authenticated) {
+    return <LoginScreen />;
   }
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/admin" Component={DrawerLayout} />
+        <Route path="/admin" Component={DrawerLayout}>
+          <Route path="tutorials"></Route>
+        </Route>
         <Route path="*">All path</Route>
       </Routes>
     </BrowserRouter>

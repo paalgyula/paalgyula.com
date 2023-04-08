@@ -1,10 +1,8 @@
 import Box from '@mui/material/Box';
 import { Suspense, lazy } from 'react';
-import FullScreenLoader from './FullScreenLoader';
 import { useFirebase } from './FirebaseProvider';
-import { getAuth } from 'firebase/auth';
+import FullScreenLoader from './FullScreenLoader';
 
-const DrawerLayout = lazy(() => import('./components/DrawerLayout'));
 const AppRouter = lazy(() => import('./AppRouter'));
 
 export default function App() {
@@ -12,9 +10,7 @@ export default function App() {
 
   return (
     <Box component="main" sx={{ height: '100vh', width: '100vw', display: 'flex' }}>
-      <Suspense fallback={<>Loading...</>}>
-        {/* <DrawerLayout /> */}
-        {/* <FullScreenLoader /> */}
+      <Suspense fallback={<FullScreenLoader />}>
         <AppRouter />
       </Suspense>
     </Box>
