@@ -1,7 +1,12 @@
 {
   "workbench.colorTheme": "One Dark Pro Mix",
   "workbench.iconTheme": "material-icon-theme",
-  "editor.fontFamily": "Hack",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "public": true
+  },
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -11,6 +16,8 @@
     "**/Thumbs.db": true,
     "out": true,
     "node_modules": true,
-    ".next": true
+    "functions": true,
+    "frontend": true,
+    "admin": true,
   }
 }
