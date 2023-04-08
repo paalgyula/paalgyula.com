@@ -11,13 +11,17 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
+    "@mui/x-date-pickers": "^6.0.4",
     "draft-js": "^0.11.7",
     "firebase": "^9.19.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardActions, CardContent, CardHeader } from '@mui/material';
-import { useFirebase } from '../../FirebaseProvider';
+import { useFirebase } from '../../firebase/FirebaseProvider';
 
 const LoginScreen = () => {
   const { loginWithGoogle } = useFirebase();

@@ -1,6 +1,6 @@
 import { Avatar, Divider, IconButton, Menu, MenuItem } from '@mui/material';
 import { MouseEvent, useState } from 'react';
-import { useFirebase } from '../../FirebaseProvider';
+import { useFirebase } from '../../firebase/FirebaseProvider';
 
 const ProfileMenu = () => {
   const { user, logout } = useFirebase();

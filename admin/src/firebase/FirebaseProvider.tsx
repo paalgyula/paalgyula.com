@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import firebaseApp from './firebaseApp';
+import firebaseApp from '../firebaseApp';
 import { FirebaseApp } from 'firebase/app';
 import { GoogleAuthProvider, Unsubscribe, User, getAuth, signInWithPopup } from 'firebase/auth';
 

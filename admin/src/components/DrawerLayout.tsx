@@ -12,11 +12,14 @@ import MailIcon from '@mui/icons-material/Mail';
 import { Box } from '@mui/material';
 import AppToolbar from './AppToolbar';
 import ContentEditor from './ContentEditor';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const drawerWidth = 240;
 
 export default function DrawerLayout() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Drawer
@@ -30,28 +33,23 @@ export default function DrawerLayout() {
         }}
         variant="permanent"
         anchor="left">
-        <Toolbar />
+        <Toolbar>
+          <Box display="flex" flex={1} textAlign="center" flexDirection="column">
+            <Typography>Universal Admin</Typography>
+            <Typography variant="subtitle2" color="GrayText">
+              <small>Version: v1.0.5</small>
+            </Typography>
+          </Box>
+        </Toolbar>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem disablePadding onClick={() => navigate('/admin/tutorials')}>
+            <ListItemButton>
+              <ListItemIcon></ListItemIcon>
+              <ListItemText primary="Tutorials" />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
         </List>
       </Drawer>
       <Box
@@ -64,10 +62,10 @@ export default function DrawerLayout() {
         justifyContent="flex-start"
         sx={{ bgcolor: 'background.default', p: 3 }}>
         <AppToolbar drawerWidth={drawerWidth} />
+
         {/* Placeholder */}
         <Toolbar />
 
-        <ContentEditor />
         <Outlet />
       </Box>
     </>

@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-import { useFirebase } from './FirebaseProvider';
-import FullScreenLoader from './FullScreenLoader';
+import { useFirebase } from './firebase/FirebaseProvider';
+import FullScreenLoader from './components/FullScreenLoader';
 import { Box, Button, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 // import DrawerLayout from './components/DrawerLayout';
 import LoginScreen from './components/auth/LoginScreen';
 import { lazy } from 'react';
+import TutorialsPage from './pages/TutorialsPage';
 
 const DrawerLayout = lazy(() => import('./components/DrawerLayout'));
 
@@ -24,7 +25,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/admin" Component={DrawerLayout}>
-          <Route path="tutorials"></Route>
+          <Route path="tutorials" Component={TutorialsPage} />
         </Route>
         <Route path="*">All path</Route>
       </Routes>

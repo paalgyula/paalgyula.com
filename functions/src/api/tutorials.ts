@@ -16,16 +16,15 @@ class TutorialListItem implements ITutorialListItem {
    * Creates a tutorial item from
    * @param {string} id ID of the tutorial item
    * @param {string} name name/title of the tutorial
-   * @param {string} slug slugged name for link
    * @param {string} link the link to the doc (doc link?)
    * @param {string} createdBy creator name of the tutorial
    */
   constructor(
     readonly id: string,
     readonly name: string,
-    readonly slug: string,
     readonly link: string,
-    readonly createdBy: StringConstructor
+    readonly author: string,
+    readonly active: boolean
   ) {}
 
   /**
@@ -52,9 +51,9 @@ class TutorialListItem implements ITutorialListItem {
     return new TutorialListItem(
       snapshot.id,
       data.name,
-      data.slug,
       data.link,
-      data.createdBy
+      data.author,
+      data.active
     );
   }
 }
