@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "frontend",
+			"name": "Next.JS Frontend"
+		},
+		{
+			"path": "functions",
+			"name": "Serverless Functions"
+		},
+		{
+			"path": "admin",
+"name": "Admin panel",
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "One Dark Pro Mix",
+		"workbench.iconTheme": "material-icon-theme",
+		 "editor.fontFamily": "'Source Code Pro'",
+	}
+}
