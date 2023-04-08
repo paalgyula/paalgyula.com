@@ -10,7 +10,11 @@
 		},
 		{
 			"path": "admin",
-"name": "Admin panel",
+			"name": "Admin panel"
+		},
+		{
+			"path": ".",
+			"name": "Project Config"
 		}
 	],
 	"settings": {

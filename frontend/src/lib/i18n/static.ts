@@ -1,8 +1,8 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import i18nextConfig from "../../next-i18next.config";
+// import i18nextConfig from "../../next-i18next.config";
 
 export const getI18nPaths = () => {
-  const paths = i18nextConfig.i18n.locales.map((locale) => ({
+  const paths = ['en', 'hu'].map((locale) => ({
     params: {
       locale,
     },

@@ -1,16 +1,14 @@
-// pages/_document.js
-
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import i18nConfig from "../next-i18next.config";
+// import i18nConfig from "../next-i18next.config";
 
 class DefaultDocument extends Document {
   render() {
     const currentLocale =
       this.props.__NEXT_DATA__.query.locale ||
-      i18nConfig.i18n.defaultLocale;
+      "en";
 
     return (
-      <Html lang={currentLocale}> 
+      <Html lang={currentLocale as string}>
         <Head>
           <link rel="canonical" href="http://www.paalgyula.com/" />
           <meta name="author" content="Paál Gyula" />

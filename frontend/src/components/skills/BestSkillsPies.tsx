@@ -35,7 +35,7 @@ const BestSkillsPies = () => {
       </div>
 
       <Script src="/javascript/easypiechart.min.js" onLoad={() => {
-        require('../../public/javascript/chart-activator.js')
+        require('../../../public/javascript/chart-activator.js')
       }}/>
     </>
   );

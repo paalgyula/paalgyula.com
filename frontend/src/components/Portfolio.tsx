@@ -1,8 +1,25 @@
-import Script from 'next/script';
+import Script from "next/script";
 
-import PORTFOLIO_ITEMS from '../data/portfolio.json';
+import PORTFOLIO_ITEMS from "../data/portfolio.json";
+import { FC } from "react";
 
-const PortfolioItem = ({ item }) => {
+interface IPortfolioItem {
+  category: string;
+  name: string;
+  image: string;
+  imgAlt: string;
+  link: {
+    text: string;
+    url: string;
+  }
+  meta: string;
+}
+
+type PortfolioItemProps = {
+  item: IPortfolioItem;
+};
+
+const PortfolioItem: FC<PortfolioItemProps> = ({ item }) => {
   return (
     <div className={`item ${item.category} col-md-3 col-xs-6`}>
       <div className="item-inner">
@@ -95,7 +112,7 @@ const Portfolio = () => {
       <Script
         src="/javascript/isotope.pkgd.min.js"
         onLoad={() => {
-          require('../public/javascript/isotope-activator.js');
+          require("../../public/javascript/isotope-activator.js");
         }}
       />
     </>

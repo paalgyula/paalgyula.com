@@ -1,6 +1,18 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Educations = ({ educations }) => {
+interface IEdutcation {
+  degree: string;
+  school: string;
+  fromTo: string;
+  description: string;
+}
+
+type Props = {
+  educations: IEdutcation[]
+}
+
+const Educations: FC<Props> = ({ educations }) => {
   const { t } = useTranslation();
 
   return (

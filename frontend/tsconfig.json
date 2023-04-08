@@ -22,7 +22,9 @@
     "incremental": true
   },
   "include": [
-    "./"
+    // hax for dont display error on root
+    "./pages",
+    "./src"
   ],
   "exclude": [
     "node_modules"

@@ -10,4 +10,5 @@ module.exports = {
   },
   trailingSlash: true,
   pageExtensions: ['tsx'],
+  // distDir: '../public'
 };

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import shortid from "shortid";
-import { TutorialLayout } from "../../components";
+import { TutorialLayout } from "../../src/components";
 
 import * as React from 'react'
 import { InferGetStaticPropsType } from 'next';
-import { fetchTuorialsList } from "../../data/tutorialsService";
+import { fetchTuorialsList } from "../../src/data/tutorialsService";
 
 export const meta = {
   title: "Tutorials Section",
@@ -39,7 +39,7 @@ export async function getStaticProps() {
   
   return {
     props: {
-      tutorials: tutorialsResponse.data,
+      tutorials: tutorialsResponse,
     },
   }
 }
