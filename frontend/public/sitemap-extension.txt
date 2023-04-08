@@ -1,2 +1,0 @@
-<xhtml:link rel="alternate" hreflang="hu" href="https://www.paalgyula.com/?lang=hu"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.paalgyula.com/?lang=en"/>
