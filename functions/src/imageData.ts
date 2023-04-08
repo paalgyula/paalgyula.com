@@ -1,8 +1,11 @@
-export const getData = (): Buffer => {
-    return Buffer.from(profilePictureData, 'base64');
-}
+// eslint:disable
 
-const profilePictureData = `iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAAAXNSR0IArs4c6QAAQABJREFUeAHs
+export const getData = (): Buffer => {
+  return Buffer.from(profilePictureData, "base64");
+};
+
+const profilePictureData = `
+iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAAAXNSR0IArs4c6QAAQABJREFUeAHs
 vWmMZed55/eeu6+1V/VGNjeJokRJtqSx5LG8wPIkcgwvwIwDZwKMJxlHhuHPAQx7YhiCAjsD5FM+
 BAG8DOLJl0HsiZ0ZT0YJRVkSRYo0JZmkSIp7c1Gv1bXX3e89+f3e09Ws5TbZe932zCFv113Pec95
 /+f/7M+bhP+07bkCaZou8MaHdj0Wed58jwcfhc33eFzgs5d2HkmSLPP8P22XrkDyH+uVAGh1zv2z
@@ -551,4 +554,4 @@ pPAvhhcOnzt+bMm00tJJBZerSfdW5pU6TwSGjoqKg41Vh4/sPHHi5LOtpxv+fenSpXgwfPDThwaA
 7xzKH6xYMXJYXsHSoUMHf6pw6NBSgvGMKhk9On9IQUG/lZl3lt3XscrDsZqaZhbMVzc0NlawpHJj
 U/2p5UuWLKnt674P6rUPLQB7G9B/+beVU4YOzp89KD93ZsGQwVNzcvKGZeHenJ2ZmcNMCl8ZmXl5
 uem5OTnp+fn5sf9YCtDRhvNfS2vL22i/OG2fhYu2tbI+paWpueVUU3PrnraW1m2p1jPrv/TFhft6
-q/vDeP7/AG8+iZ1LC8l1AAAAAElFTkSuQmCC`
+q/vDeP7/AG8+iZ1LC8l1AAAAAElFTkSuQmCC`;
