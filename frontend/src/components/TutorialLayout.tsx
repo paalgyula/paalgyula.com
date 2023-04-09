@@ -1,16 +1,25 @@
-import {FC, PropsWithChildren} from 'react';
+import { FC, PropsWithChildren } from "react";
 import moment from "moment";
 import Head from "next/head";
 import TutorialsHeader from "./TutorialsHeader";
 
-type IMetadata = {
-  meta: any;
+interface IMetadata {
+  title: string;
+  date: string;
+  LastModifierDisplayName: string;
 }
 
-export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({ meta, children }) => (
-  <>
+type Props = {
+  meta: IMetadata;
+};
+
+export const TutorialLayout: FC<PropsWithChildren<Props>> = ({
+  meta,
+  children,
+}) => (
+  <div>
     <Head>
-      <title>Tutorial - {meta.title}</title>
+      <title>{`Tutorial - ${meta.title}`}</title>
     </Head>
 
     <TutorialsHeader title={meta.title} />
@@ -21,7 +30,7 @@ export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({ meta, childre
 
         {children}
 
-        <div style={{ marginTop: 30, textAlign: 'right' }}>
+        <div style={{ marginTop: 30, textAlign: "right" }}>
           <p>
             <small>Author: {meta.LastModifierDisplayName}</small>
             <br />
@@ -32,5 +41,5 @@ export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({ meta, childre
         </div>
       </section>
     </div>
-  </>
+  </div>
 );
