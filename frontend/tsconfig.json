@@ -24,7 +24,8 @@
   "include": [
     // hax for dont display error on root
     "./pages",
-    "./src"
+    "./src",
+    "./",
   ],
   "exclude": [
     "node_modules"

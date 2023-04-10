@@ -1,73 +1,117 @@
+import { ITutorialListItem } from '@frontend/data/tutorial';
 import {
+  Box,
+  Button,
+  Card,
+  Divider,
   IconButton,
   Table,
   TableBody,
   TableCell,
   TableHead,
+  TablePagination,
   TableRow,
   Typography
 } from '@mui/material';
-import { ITutorialListItem } from '@backend/interfaces/tutorial';
 
+import AddIcon from '@mui/icons-material/Add';
 import ShowIcon from '@mui/icons-material/Visibility';
-import { FC } from 'react';
 import moment from 'moment';
+import EditIcon from '@mui/icons-material/Edit';
+import { FC, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import FullScreenLoader from '../FullScreenLoader';
+import NewTutorialDialog from './NewTutorialDialog';
+import { useLoader } from '../../loader';
+import { fetchTutorialList } from '../../firebase/tutorialService';
 
-// const rows = [
-//   {
-//     name: 'maci',
-//     id: '1235',
-//     link: 'sadsdf',
-//     active: false,
-//     author: 'nev3rkn0wn',
-//     createdAt: new Date()
-//   }
-// ] satisfies ITutorialListItem[];
+const TutorialList: FC = () => {
+  const { data, isLoading, load } = useLoader<ITutorialListItem[]>();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
-type Props = {
-  tutorials: ITutorialListItem[];
-};
+  const navigate = useNavigate();
 
-const TutorialList: FC<Props> = ({ tutorials }) => {
+  const handleDialogClose = (created?: boolean) => {
+    if (created) {
+      load(fetchTutorialList());
+    }
+    setDialogOpen(false);
+  };
+
+  useEffect(() => {
+    load(fetchTutorialList());
+  }, []);
+
   return (
-    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-      <TableHead sx={{ bgcolor: '#fafafa' }}>
-        <TableRow>
-          <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
-          <TableCell sx={{ fontWeight: 'bold' }} align="right">
-            Created
-          </TableCell>
-          <TableCell sx={{ fontWeight: 'bold' }} align="center">
-            Author
-          </TableCell>
-          <TableCell sx={{ fontWeight: 'bold' }} align="right">
-            Active
-          </TableCell>
-          <TableCell sx={{ fontWeight: 'bold' }} align="right">
-            Actions
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {tutorials.map((row) => (
-          <TableRow hover key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <TableCell component="th" scope="row">
-              {row.name}
-            </TableCell>
-            <TableCell align="right">{moment(row.createdAt).format()}</TableCell>
-            <TableCell align="right">{row.author}</TableCell>
-            <TableCell align="right">
-              {row.active ? 'Active' : <Typography color="GrayText">Inactive</Typography>}
-            </TableCell>
-            <TableCell align="right">
-              <IconButton size="small">
-                <ShowIcon fontSize="small" />
-              </IconButton>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+    <Card elevation={2}>
+      <NewTutorialDialog open={dialogOpen} onClose={handleDialogClose} />
+
+      <Box p={2} display="flex" justifyContent="space-between" bgcolor="#fafafa">
+        <Typography variant="h5">Tutorials</Typography>
+        <Button
+          startIcon={<AddIcon />}
+          variant="contained"
+          disableElevation
+          color="primary"
+          size="small"
+          onClick={() => setDialogOpen(true)}>
+          New
+        </Button>
+      </Box>
+
+      {isLoading ? (
+        <Box p={3} bgcolor="#fafafa">
+          <FullScreenLoader />
+        </Box>
+      ) : (
+        <>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead sx={{ bgcolor: '#fafafa' }}>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell align="right">Created</TableCell>
+                <TableCell align="center">Author</TableCell>
+                <TableCell align="right">Active</TableCell>
+                <TableCell align="right">Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data!.map((row) => (
+                <TableRow
+                  hover
+                  key={row.name}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{moment(row.createdAt).fromNow()}</TableCell>
+                  <TableCell align="right">{row.author}</TableCell>
+                  <TableCell align="right">
+                    {row.active ? 'Active' : <Typography color="GrayText">Inactive</Typography>}
+                  </TableCell>
+                  <TableCell align="right">
+                    <IconButton onClick={() => navigate(`/admin/tutorials/${row.id}`)} size="small">
+                      <EditIcon fontSize="small" />
+                    </IconButton>
+                    <IconButton size="small">
+                      <ShowIcon fontSize="small" />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <Divider />
+          <TablePagination
+            page={0}
+            component="div"
+            onPageChange={() => {}}
+            rowsPerPage={10}
+            count={data?.length ?? 0}
+          />
+        </>
+      )}
+    </Card>
   );
 };
 

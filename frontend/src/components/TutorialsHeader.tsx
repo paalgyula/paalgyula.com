@@ -1,16 +1,16 @@
-import { useRouter } from "next/router";
-import { FC } from "react";
+// import { useRouter } from "next/router";
+import { FC, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import HeaderButtons from "./HeaderButtons";
 import { HeaderSocialLinks } from "./HeaderSocialLinks";
 
 type Props = {
-  title: string  
+  title: string,
+  breadcrumb?: ReactNode
 }
 
-export const Header: FC<Props> = ({ title }) => {
+export const Header: FC<Props> = ({ title, breadcrumb }) => {
   const { t } = useTranslation();
-  const router = useRouter();
 
   return (
     <header className="header">
@@ -46,21 +46,16 @@ export const Header: FC<Props> = ({ title }) => {
           </ul>
         </div>
       </div>
-      <div className="page-nav-space-holder hidden-xs">
-        <div className="page-nav-wrapper text-center" id="page-nav-wrapper">
-          <div className="container">
-            <ul className="nav page-nav list-inline" id="page-nav">
-              {router.pathname
-                .split("/")
-                .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
-                .slice(0, -1)
-                .filter((p) => p.trim() !== "")
-                .join(" > ")}{" "}
-              &gt; {title}
-            </ul>
+
+      {breadcrumb && (
+        <div className="page-nav-space-holder hidden-xs">
+          <div className="page-nav-wrapper text-center" id="page-nav-wrapper">
+            <div className="container">
+              {breadcrumb}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };

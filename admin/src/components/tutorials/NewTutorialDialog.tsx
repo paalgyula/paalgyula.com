@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ITutorial } from '@backend/interfaces/tutorial';
+import { ITutorial } from '@frontend/data/tutorial';
 import LoaderButton from '../forms/LoaderButton';
 import { createTutorial } from '../../firebase/tutorialService';
 
@@ -26,21 +26,19 @@ const defaultValues: ITutorial = {
     displayName: '',
     nick: ''
   },
-  createdAt: new Date(),
+  createdAt: new Date().toUTCString(),
   link: ''
 };
 
 type Props = {
   open: boolean;
-  onClose: () => void;
+  onClose: (refresh?: boolean) => void;
 };
 
 const NewTutorialDialog: FC<Props> = ({ open, onClose }) => {
   const {
     control,
-    register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors }
   } = useForm({
@@ -51,6 +49,7 @@ const NewTutorialDialog: FC<Props> = ({ open, onClose }) => {
   useEffect(() => {
     if (!open) {
       reset();
+      setSubmitting(false);
     }
   }, [open]);
 
@@ -58,8 +57,14 @@ const NewTutorialDialog: FC<Props> = ({ open, onClose }) => {
 
   const onSubmit = async (data: ITutorial) => {
     setSubmitting(true);
-    await createTutorial(data);
-    onClose();
+    try {
+      await createTutorial(data);
+      onClose(true);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const NewTutorialForm = () => (

@@ -1,56 +1,64 @@
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { Box, IconButton } from '@mui/material';
 import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Box } from '@mui/material';
-import AppToolbar from './AppToolbar';
-import ContentEditor from './ContentEditor';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import AppToolbar from './AppToolbar';
+import { useDrawer } from './contexts/DrawerProvider';
 
 const drawerWidth = 240;
 
 export default function DrawerLayout() {
   const navigate = useNavigate();
+  const { open, toggleOpen } = useDrawer();
 
   return (
     <>
       <Drawer
         sx={{
-          width: drawerWidth,
+          transition: 'width 200ms ease-in-out',
+          width: open ? drawerWidth : 0,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: open ? drawerWidth : 0,
             boxSizing: 'border-box'
           }
         }}
-        variant="permanent"
+        open={open}
+        variant="persistent"
         anchor="left">
-        <Toolbar>
-          <Box display="flex" flex={1} textAlign="center" flexDirection="column">
-            <Typography>Universal Admin</Typography>
-            <Typography variant="subtitle2" color="GrayText">
-              <small>Version: v1.0.5</small>
-            </Typography>
-          </Box>
-        </Toolbar>
-        <Divider />
-        <List>
-          <ListItem disablePadding onClick={() => navigate('/admin/tutorials')}>
-            <ListItemButton>
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary="Tutorials" />
-            </ListItemButton>
-          </ListItem>
-          <Divider />
-        </List>
+        {open && (
+          <>
+            <Box display="flex" flexDirection="row" p={1}>
+              <IconButton size="small" onClick={toggleOpen}>
+                <ChevronLeftIcon />
+              </IconButton>
+              <Box display="flex" flex={1} textAlign="center" flexDirection="column">
+                <Typography>Universal Admin</Typography>
+                <Typography variant="subtitle2" color="GrayText">
+                  <small>Version: v1.0.5</small>
+                </Typography>
+              </Box>
+            </Box>
+            <Divider />
+            <List>
+              <ListItem disablePadding onClick={() => navigate('/admin/tutorials')}>
+                <ListItemButton>
+                  <ListItemIcon></ListItemIcon>
+                  <ListItemText primary="Tutorials" />
+                </ListItemButton>
+              </ListItem>
+              <Divider />
+            </List>
+          </>
+        )}
       </Drawer>
       <Box
         component="main"
@@ -61,7 +69,7 @@ export default function DrawerLayout() {
         alignItems="flex-start"
         justifyContent="flex-start"
         sx={{ bgcolor: 'background.default', p: 3 }}>
-        <AppToolbar drawerWidth={drawerWidth} />
+        <AppToolbar drawerWidth={drawerWidth}></AppToolbar>
 
         {/* Placeholder */}
         <Toolbar />

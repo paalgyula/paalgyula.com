@@ -1,12 +1,12 @@
 import Link from "next/link";
 import shortid from "shortid";
-import { TutorialLayout } from "../../src/components";
+import { TutorialLayout } from "@frontend/components";
 
 import * as React from 'react'
-import { InferGetStaticPropsType } from 'next';
-import { fetchTuorialsList } from "../../src/data/tutorialsService";
+import { InferGetStaticPropsType, NextPage } from 'next';
+import { fetchTuorialsList } from "@frontend/data/tutorialsService";
 
-export const meta = {
+const meta = {
   title: "Tutorials Section",
   date: "2018-01-31T12:19:22+01:00",
   LastModifierDisplayName: "Paál Gyula",
@@ -15,7 +15,7 @@ export const meta = {
 };
 
 
-export default function TutorialsIndex({ tutorials }: InferGetStaticPropsType<typeof getStaticProps>) {
+const TutorialsIndex : NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ tutorials }) => {
   return (
     <TutorialLayout meta={meta}>
       <h4>
@@ -26,17 +26,21 @@ export default function TutorialsIndex({ tutorials }: InferGetStaticPropsType<ty
       <ul>
         {tutorials.map((tutorial) => (
           <li key={shortid()}>
-            <Link href={tutorial.link}>{tutorial.name}</Link>
+            <Link href={`/tutorials/${tutorial.link}`}>{tutorial.name}</Link>
           </li>
         ))}
       </ul>
     </TutorialLayout>
   );
-};
+}
+
+export default TutorialsIndex;
 
 export async function getStaticProps() {
   const tutorialsResponse = await fetchTuorialsList()
   
+  console.error(tutorialsResponse);
+
   return {
     props: {
       tutorials: tutorialsResponse,

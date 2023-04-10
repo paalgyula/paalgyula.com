@@ -2,6 +2,7 @@
   "name": "landing-page",
   "private": true,
   "scripts": {
+    "test": "vitest",
     "dev": "next dev",
     "build": "next build",
     "export": "next export && rm -rf ../public && cp -r out ../public",
@@ -14,6 +15,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@types/shortid": "^0.0.29",
+    "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "firebase": "^9.19.1",
     "framer-motion": "^10.10.0",
@@ -30,11 +32,15 @@
     "shortid": "^2.2.16"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
     "@types/node": "18.15.11",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7",
-    "typescript": "5.0.3"
+    "jsdom": "^21.1.1",
+    "typescript": "5.0.3",
+    "vitest": "^0.30.0"
   }
 }

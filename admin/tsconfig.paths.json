@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@backend/*": ["../functions/src/*"]
+      "@frontend/*": ["../frontend/src/*"],
+      // "@backend/*": ["../functions/src/*"]
     }
   }
 }

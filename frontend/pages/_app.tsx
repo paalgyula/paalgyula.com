@@ -4,11 +4,8 @@ import Script from "next/script";
 import '../styles/globals.css';
 import { appWithTranslation } from "next-i18next";
 import { FC } from "react";
-// import "../public/css/font-awesome.min.css";
-// import "../public/css/bootstrap.min.css";
 
-const NEXT_PUBLIC_ANALYTICS_ID = process.env.NEXT_PUBLIC_ANALYTICS_ID;
-
+const { NEXT_PUBLIC_ANALYTICS_ID } = process.env;
 
 const MyApp: FC<{Component: any, pageProps: any}> = ({ Component, pageProps }) => (
   <>
