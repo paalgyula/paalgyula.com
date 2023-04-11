@@ -42,6 +42,7 @@ export class Tutorial implements ITutorial {
     const t = new Tutorial(tutorial.id!, tutorial.name, tutorial.subtitle, tutorial.link, tutorial.category, tutorial.active, tutorial.author, tutorial.createdAt)
     t.content = tutorial.content;
     t.lastModified = tutorial.lastModified;
+    t.tags = tutorial.tags
 
     return t;
   }
@@ -91,7 +92,7 @@ export class Tutorial implements ITutorial {
     };
 
     if (Boolean(this.lastModified)) {
-      data.lastModified = Timestamp.fromMillis(Date.parse(this.createdAt))
+      data.lastModified = new Date(Date.parse(this.createdAt))
     }
 
     if (Boolean(this.content)) {

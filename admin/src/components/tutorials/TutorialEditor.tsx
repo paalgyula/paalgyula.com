@@ -1,9 +1,6 @@
-import { ITutorial } from '@frontend/data/tutorial';
-import { Box, Card, CardActions, FormControlLabel, Switch, TextField } from '@mui/material';
+
+import { Autocomplete, Box, Card, CardActions, Chip, FormControlLabel, Switch, TextField } from '@mui/material';
 import {
-  convertFromRaw, DefaultDraftBlockRenderMap,
-  Editor,
-  EditorState,
   RawDraftContentState
 } from 'draft-js';
 import { useEffect, useState } from 'react';
@@ -11,62 +8,19 @@ import {
   Controller,
   FormProvider,
   SubmitHandler,
-  useForm,
-  useFormContext
+  useForm
 } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { getTutorialById } from '../../firebase/tutorialService';
+import { getTutorialById, updateTutorial } from '../../firebase/tutorialService';
 import { useLoader } from '../../loader';
-import { useDrawer } from '../contexts/DrawerProvider';
-import LoaderButton from '../forms/LoaderButton';
 import FullScreenLoader from '../FullScreenLoader';
-import ContentEditor from './ConentEditor';
+import { useDrawer } from '../contexts/DrawerProvider';
+import ContentEditor from '../draft/ConentEditor';
+import LoaderButton from '../forms/LoaderButton';
 
-import { Map } from 'immutable';
-import { updateTutorial } from '../../firebase/tutorialService';
-import CodeBlock from '../draft/CodeBlock';
-
-const blockRenderMap = Map({
-  'code-block2': {
-    // element is used during paste or html conversion to auto match your component;
-    // it is also retained as part of this.props.children and not stripped out
-    element: 'code-block2',
-    wrapper: <CodeBlock highlight />
-  }
-});
-
-// keep support for other draft default block types and add our myCustomBlock type
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
-const Preview = () => {
-  const form = useFormContext();
-  const { watch } = form;
-
-  const content = watch('content');
-  const [editorState, setEditorState] = useState<EditorState>(
-    EditorState.createEmpty()
-  );
-
-  useEffect(() => {
-    try {
-      const ec = convertFromRaw(content);
-      setEditorState(EditorState.createWithContent(ec));
-    } catch (err) {
-      console.error(`error creating state: err`);
-    }
-  }, [content]);
-
-  return (
-    <Card elevation={2} sx={{ flex: 1, p: 2 }}>
-      <Editor
-        blockRenderMap={extendedBlockRenderMap}
-        editorState={editorState}
-        onChange={() => { }}
-        readOnly
-      />
-    </Card>
-  );
-};
+import { useFirebase } from '../../firebase/FirebaseProvider';
+import { ITutorial } from '../../firebase/tutorial';
+import DraftPreview from '../draft/DraftPreview';
 
 const TutorialEditor = () => {
   const { id } = useParams();
@@ -75,6 +29,8 @@ const TutorialEditor = () => {
   const { data, isLoading, load } = useLoader<ITutorial>();
   const { setDocumentTitle } = useDrawer();
   const [preview, setPreview] = useState(false);
+
+  const { user } = useFirebase()
 
   const handleEditorChange = (value: RawDraftContentState) => {
     setValue('content', value, {
@@ -90,7 +46,18 @@ const TutorialEditor = () => {
   }, [id]);
 
   const onSubmit: SubmitHandler<ITutorial> = async (data: ITutorial) => {
-    return await updateTutorial(data);
+    data.lastModified = new Date();
+    data.author = {
+      // TODO: download user avatar first?
+      avatarUrl: '',
+      displayName: user?.displayName ?? '',
+      nick: user?.displayName ?? '',
+    }
+
+    console.log(data);
+
+    await updateTutorial(data);
+    setDocumentTitle(data.name)
   };
 
   if (isLoading) {
@@ -110,7 +77,7 @@ const TutorialEditor = () => {
                   render={({ field }) => <TextField label="Title" sx={{ flex: 1 }} {...field} />}
                 />
 
-                <FormControlLabel control={<Switch value={} onChange={(e) => setValue('active')} />} label="Public" />
+                <FormControlLabel control={<Switch value={form.watch('active')} onChange={(e) => setValue('active', e.target.checked)} />} label="Public" />
                 <FormControlLabel control={<Switch />} value={preview} onChange={() => setPreview(s => !s)} label="Show preview" />
 
               </Box>
@@ -123,15 +90,39 @@ const TutorialEditor = () => {
               />
               <Controller
                 control={control}
-                name="subtitle"
+                name="tags"
                 render={({ field }) => (
-                  <TextField multiline label="Subtitle (optional)" {...field} />
+                  <Autocomplete
+                    multiple
+                    options={[]}
+                    defaultValue={[]}
+                    value={form.watch('tags')}
+                    onChange={(_, value) => {
+                      setValue('tags', value as string[], { shouldDirty: true });
+                    }}
+                    // {...field}
+                    freeSolo
+                    renderTags={(value: readonly string[], getTagProps) =>
+                      value.map((option: string, index: number) => (
+                        // eslint-disable-next-line react/jsx-key
+                        <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                      ))
+                    }
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        label="Tags"
+                        placeholder="Tags"
+                      />
+                    )}
+                  />
                 )}
               />
 
               <ContentEditor
                 onChange={handleEditorChange}
-                content={data.content}
+                content={data!.content}
               />
             </Box>
 
@@ -148,8 +139,12 @@ const TutorialEditor = () => {
           </Card>
         </form>
 
-        {preview && (<Preview />)}
-        
+        {preview && (
+          <Card elevation={2} sx={{ flex: 1, p: 2 }}>
+            <DraftPreview content={form.watch('content')} />
+          </Card>
+        )}
+
       </Box>
     </FormProvider>
   );
