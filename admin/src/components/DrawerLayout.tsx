@@ -3,21 +3,25 @@ import { Box, IconButton } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+import { IAdminModule } from '../AppRouter';
 import AppToolbar from './AppToolbar';
-import { useDrawer } from './contexts/DrawerProvider';
+import ModuleErrorBoundary from './ModuleErrorBoundary';
+import { useDrawer } from '../hooks/useDrawer';
+import { useModules } from '../hooks/useModules';
 
 const drawerWidth = 240;
 
-export default function DrawerLayout() {
-  const navigate = useNavigate();
-  const { open, toggleOpen } = useDrawer();
+type Props = {
+  modules?: IAdminModule[];
+};
+
+const DrawerLayout: FC<Props> = ({}) => {
+  const modules = useModules();
+  const { isOpen: open, toggleDrawer: toggleOpen } = useDrawer();
 
   return (
     <>
@@ -40,7 +44,11 @@ export default function DrawerLayout() {
               <IconButton size="small" onClick={toggleOpen}>
                 <ChevronLeftIcon />
               </IconButton>
-              <Box display="flex" flex={1} textAlign="center" flexDirection="column">
+              <Box
+                display="flex"
+                flex={1}
+                textAlign="center"
+                flexDirection="column">
                 <Typography>Universal Admin</Typography>
                 <Typography variant="subtitle2" color="GrayText">
                   <small>Version: v1.0.5</small>
@@ -49,12 +57,9 @@ export default function DrawerLayout() {
             </Box>
             <Divider />
             <List>
-              <ListItem disablePadding onClick={() => navigate('/admin/tutorials')}>
-                <ListItemButton>
-                  <ListItemIcon></ListItemIcon>
-                  <ListItemText primary="Tutorials" />
-                </ListItemButton>
-              </ListItem>
+              {modules?.map((m) => (
+                <m.Links />
+              ))}
               <Divider />
             </List>
           </>
@@ -74,8 +79,12 @@ export default function DrawerLayout() {
         {/* Placeholder */}
         <Toolbar />
 
-        <Outlet />
+        <ModuleErrorBoundary>
+          <Outlet />
+        </ModuleErrorBoundary>
       </Box>
     </>
   );
-}
+};
+
+export default DrawerLayout;

@@ -1,17 +1,29 @@
-import { AppBar, Box, Breadcrumbs, IconButton, Toolbar, Typography } from '@mui/material';
-import ProfileMenu from './auth/ProfileMenu';
-import { FC, PropsWithChildren } from 'react';
-import { useDrawer } from './contexts/DrawerProvider';
-import app from '../firebaseApp';
 import MenuIcon from '@mui/icons-material/Menu';
+import {
+  AppBar,
+  Box,
+  Breadcrumbs,
+  IconButton,
+  Toolbar,
+  Typography
+} from '@mui/material';
+import { FC, PropsWithChildren } from 'react';
+import ProfileMenu from './auth/UserDropdown';
+import { useDrawer } from '../hooks/useDrawer';
+import { useBreadcrumb } from '../hooks/useBreadcrumbs';
 
 type Props = {
   title?: string;
   drawerWidth: number;
 };
 
-const AppToolbar: FC<PropsWithChildren<Props>> = ({ children, drawerWidth, title = '' }) => {
-  const { toggleOpen, open, breadcrumb, documentTitle } = useDrawer();
+const AppToolbar: FC<PropsWithChildren<Props>> = ({
+  children,
+  drawerWidth,
+  title = ''
+}) => {
+  const { toggleDrawer: toggleOpen, isOpen: open } = useDrawer();
+  const { breadcrumb, documentTitle } = useBreadcrumb();
 
   return (
     <AppBar
@@ -33,7 +45,10 @@ const AppToolbar: FC<PropsWithChildren<Props>> = ({ children, drawerWidth, title
         {breadcrumb && (
           <>
             <Box pl={2} />
-            <Breadcrumbs sx={{ color: '#fff' }} separator="›" aria-label="breadcrumb">
+            <Breadcrumbs
+              sx={{ color: '#fff' }}
+              separator="›"
+              aria-label="breadcrumb">
               {breadcrumb}
               {documentTitle && (
                 <Typography key="3" color="inherit">

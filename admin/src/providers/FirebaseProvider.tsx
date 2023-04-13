@@ -1,19 +1,24 @@
-import React, {
+import { FirebaseApp } from 'firebase/app';
+import {
+  GoogleAuthProvider,
+  Unsubscribe,
+  User,
+  getAuth,
+  signInWithPopup
+} from 'firebase/auth';
+import {
   FC,
   PropsWithChildren,
   createContext,
-  useContext,
   useEffect,
   useState
 } from 'react';
 import firebaseApp from '../firebaseApp';
-import { FirebaseApp } from 'firebase/app';
-import { GoogleAuthProvider, Unsubscribe, User, getAuth, signInWithPopup } from 'firebase/auth';
 
 /**
  * Firebase context object
  */
-type FirebaseContextHolder = {
+export type FirebaseContextHolder = {
   firebaseApp: FirebaseApp;
   user: User | null;
   authenticated: boolean | undefined;
@@ -21,9 +26,11 @@ type FirebaseContextHolder = {
   logout: () => Promise<void>;
 };
 
-const FirebaseContext = createContext<FirebaseContextHolder | null>(null);
+export const firebaseContext = createContext<FirebaseContextHolder | null>(
+  null
+);
 
-var unsubscribe: Unsubscribe;
+let unsubscribe: Unsubscribe;
 
 const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -33,6 +40,9 @@ const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const auth = getAuth(firebaseApp);
+
+    // Set the current user if it's exists already
+    setUser(auth.currentUser);
 
     // Store unsubscribe function
     unsubscribe = auth.onAuthStateChanged(setUser);
@@ -46,7 +56,6 @@ const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
   // Update authenticated flag
   useEffect(() => {
     setAuthenticated(Boolean(user));
-    console.log(user);
   }, [user]);
 
   /**
@@ -60,20 +69,11 @@ const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
   const logout = () => auth.signOut();
 
   return (
-    <FirebaseContext.Provider value={{ firebaseApp, user, authenticated, loginWithGoogle, logout }}>
+    <firebaseContext.Provider
+      value={{ firebaseApp, user, authenticated, loginWithGoogle, logout }}>
       {children}
-    </FirebaseContext.Provider>
+    </firebaseContext.Provider>
   );
 };
 
 export default FirebaseProvider;
-
-export const useFirebase = (): FirebaseContextHolder => {
-  const context = useContext(FirebaseContext);
-
-  if (!context) {
-    throw new Error('useFirebase must be wrapped with FirebaseContext');
-  }
-
-  return context;
-};

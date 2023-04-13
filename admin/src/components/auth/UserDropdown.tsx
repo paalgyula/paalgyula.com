@@ -1,6 +1,15 @@
-import { Avatar, Divider, IconButton, Menu, MenuItem } from '@mui/material';
+import {
+  Avatar,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Menu,
+  MenuItem
+} from '@mui/material';
 import { MouseEvent, useState } from 'react';
-import { useFirebase } from '../../firebase/FirebaseProvider';
+import { useFirebase } from '../../hooks/useFirebase';
 
 const ProfileMenu = () => {
   const { user, logout } = useFirebase();
@@ -31,8 +40,19 @@ const ProfileMenu = () => {
         MenuListProps={{
           'aria-labelledby': 'basic-button'
         }}>
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <ListItem title={user.displayName ?? ''}>
+          <ListItemAvatar>
+            <Avatar src={user.photoURL ?? ''} />
+          </ListItemAvatar>
+          <ListItemText primary={user.displayName} secondary={user.email} />
+        </ListItem>
+        {/* TODO: implement Profile and My accoount pages */}
+        <MenuItem disabled onClick={handleClose}>
+          Profile
+        </MenuItem>
+        <MenuItem disabled onClick={handleClose}>
+          My account
+        </MenuItem>
         <Divider />
         <MenuItem onClick={() => logout()}>Logout</MenuItem>
       </Menu>

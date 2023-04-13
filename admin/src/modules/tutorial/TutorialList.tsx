@@ -1,4 +1,3 @@
-import { ITutorialListItem } from '@frontend/data/tutorial';
 import {
   Box,
   Button,
@@ -15,15 +14,16 @@ import {
 } from '@mui/material';
 
 import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 import ShowIcon from '@mui/icons-material/Visibility';
 import moment from 'moment';
-import EditIcon from '@mui/icons-material/Edit';
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import FullScreenLoader from '../FullScreenLoader';
 import NewTutorialDialog from './NewTutorialDialog';
+import { ITutorialListItem } from '../../firebase/tutorial';
 import { useLoader } from '../../loader';
 import { fetchTutorialList } from '../../firebase/tutorialService';
+import FullScreenLoader from '../../components/FullScreenLoader';
 
 const TutorialList: FC = () => {
   const { data, isLoading, load } = useLoader<ITutorialListItem[]>();
@@ -46,7 +46,11 @@ const TutorialList: FC = () => {
     <Card elevation={2}>
       <NewTutorialDialog open={dialogOpen} onClose={handleDialogClose} />
 
-      <Box p={2} display="flex" justifyContent="space-between" bgcolor="#fafafa">
+      <Box
+        p={2}
+        display="flex"
+        justifyContent="space-between"
+        bgcolor="#fafafa">
         <Typography variant="h5">Tutorials</Typography>
         <Button
           startIcon={<AddIcon />}
@@ -84,13 +88,21 @@ const TutorialList: FC = () => {
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{moment(row.createdAt).fromNow()}</TableCell>
+                  <TableCell align="right">
+                    {moment(row.createdAt).fromNow()}
+                  </TableCell>
                   <TableCell align="right">{row.author}</TableCell>
                   <TableCell align="right">
-                    {row.active ? 'Active' : <Typography color="GrayText">Inactive</Typography>}
+                    {row.active ? (
+                      'Active'
+                    ) : (
+                      <Typography color="GrayText">Inactive</Typography>
+                    )}
                   </TableCell>
                   <TableCell align="right">
-                    <IconButton onClick={() => navigate(`/admin/tutorials/${row.id}`)} size="small">
+                    <IconButton
+                      onClick={() => navigate(`/tutorials/${row.id}`)}
+                      size="small">
                       <EditIcon fontSize="small" />
                     </IconButton>
                     <IconButton size="small">

@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import FirebaseProvider from './firebase/FirebaseProvider';
+import FirebaseProvider from './providers/FirebaseProvider';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';

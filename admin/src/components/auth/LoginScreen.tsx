@@ -1,5 +1,12 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader } from '@mui/material';
-import { useFirebase } from '../../firebase/FirebaseProvider';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader
+} from '@mui/material';
+import { useFirebase } from '../../hooks/useFirebase';
 
 const LoginScreen = () => {
   const { loginWithGoogle } = useFirebase();
@@ -21,7 +28,10 @@ const LoginScreen = () => {
           </CardContent>
           <CardActions>
             <Box flex={1} />
-            <Button color="primary" variant="contained" onClick={loginWithGoogle}>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={loginWithGoogle}>
               Sign in with Google
             </Button>
           </CardActions>

@@ -1,17 +1,27 @@
-import { FC, PropsWithChildren, ReactNode, createContext, useContext, useState } from 'react';
+import {
+  FC,
+  PropsWithChildren,
+  ReactNode,
+  createContext,
+  useState
+} from 'react';
 
-type DrawerProps = {
-  toggleOpen: () => void;
-  open: boolean;
+type AppState = {
+  toggleDrawer: () => void;
+  drawerOpen: boolean;
+
+  /**
+   * Breadcrumb area
+   */
   breadcrumb?: ReactNode;
   setBreadcrumb: (node?: ReactNode) => void;
   setDocumentTitle: (string?: string) => void;
   documentTitle?: string;
 };
 
-const DrawerContext = createContext<DrawerProps | null>(null);
+export const appContext = createContext<AppState | null>(null);
 
-const DrawerProvider: FC<PropsWithChildren> = ({ children }) => {
+const AppStateProvider: FC<PropsWithChildren> = ({ children }) => {
   const [breadcrumb, setBreadcrumb] = useState<ReactNode>();
   const [open, setOpen] = useState(true);
   const [documentTitle, setDocumentTitle] = useState<string>();
@@ -23,27 +33,18 @@ const DrawerProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <DrawerContext.Provider
+    <appContext.Provider
       value={{
-        toggleOpen: () => setOpen((open) => !open),
+        toggleDrawer: () => setOpen((open) => !open),
         setBreadcrumb: setBreadcrumbInternal,
         setDocumentTitle,
-        open,
+        drawerOpen: open,
         breadcrumb,
         documentTitle
       }}>
       {children}
-    </DrawerContext.Provider>
+    </appContext.Provider>
   );
 };
 
-export const useDrawer = (): DrawerProps => {
-  const ctx = useContext(DrawerContext);
-  if (!ctx) {
-    throw new Error('useBreadcrumb must be wrapped with DrawerProvider');
-  }
-
-  return ctx;
-};
-
-export default DrawerProvider;
+export default AppStateProvider;

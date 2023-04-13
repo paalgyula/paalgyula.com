@@ -1,8 +1,14 @@
-
-import { Autocomplete, Box, Card, CardActions, Chip, FormControlLabel, Switch, TextField } from '@mui/material';
 import {
-  RawDraftContentState
-} from 'draft-js';
+  Autocomplete,
+  Box,
+  Card,
+  CardActions,
+  Chip,
+  FormControlLabel,
+  Switch,
+  TextField
+} from '@mui/material';
+import { RawDraftContentState } from 'draft-js';
 import { useEffect, useState } from 'react';
 import {
   Controller,
@@ -11,26 +17,28 @@ import {
   useForm
 } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { getTutorialById, updateTutorial } from '../../firebase/tutorialService';
-import { useLoader } from '../../loader';
-import FullScreenLoader from '../FullScreenLoader';
-import { useDrawer } from '../contexts/DrawerProvider';
-import ContentEditor from '../draft/ConentEditor';
-import LoaderButton from '../forms/LoaderButton';
-
-import { useFirebase } from '../../firebase/FirebaseProvider';
+import FullScreenLoader from '../../components/FullScreenLoader';
+import ContentEditor from '../../components/draft/ConentEditor';
+import DraftPreview from '../../components/draft/DraftPreview';
+import LoaderButton from '../../components/forms/LoaderButton';
 import { ITutorial } from '../../firebase/tutorial';
-import DraftPreview from '../draft/DraftPreview';
+import {
+  getTutorialById,
+  updateTutorial
+} from '../../firebase/tutorialService';
+import { useBreadcrumb } from '../../hooks/useBreadcrumbs';
+import { useFirebase } from '../../hooks/useFirebase';
+import { useLoader } from '../../loader';
 
 const TutorialEditor = () => {
   const { id } = useParams();
   const form = useForm<ITutorial>({});
   const { control, setValue, reset, handleSubmit } = form;
   const { data, isLoading, load } = useLoader<ITutorial>();
-  const { setDocumentTitle } = useDrawer();
+  const { setDocumentTitle } = useBreadcrumb();
   const [preview, setPreview] = useState(false);
 
-  const { user } = useFirebase()
+  const { user } = useFirebase();
 
   const handleEditorChange = (value: RawDraftContentState) => {
     setValue('content', value, {
@@ -51,13 +59,13 @@ const TutorialEditor = () => {
       // TODO: download user avatar first?
       avatarUrl: '',
       displayName: user?.displayName ?? '',
-      nick: user?.displayName ?? '',
-    }
+      nick: user?.displayName ?? ''
+    };
 
     console.log(data);
 
     await updateTutorial(data);
-    setDocumentTitle(data.name)
+    setDocumentTitle(data.name);
   };
 
   if (isLoading) {
@@ -70,16 +78,30 @@ const TutorialEditor = () => {
         <form style={{ flex: 1 }} onSubmit={handleSubmit(onSubmit)}>
           <Card>
             <Box p={2} display="flex" flexDirection="column" rowGap={2}>
-              <Box display="flex" flex={1} flexDirection="row" columnGap={2} >
+              <Box display="flex" flex={1} flexDirection="row" columnGap={2}>
                 <Controller
                   control={control}
                   name="name"
-                  render={({ field }) => <TextField label="Title" sx={{ flex: 1 }} {...field} />}
+                  render={({ field }) => (
+                    <TextField label="Title" sx={{ flex: 1 }} {...field} />
+                  )}
                 />
 
-                <FormControlLabel control={<Switch value={form.watch('active')} onChange={(e) => setValue('active', e.target.checked)} />} label="Public" />
-                <FormControlLabel control={<Switch />} value={preview} onChange={() => setPreview(s => !s)} label="Show preview" />
-
+                <FormControlLabel
+                  control={
+                    <Switch
+                      value={form.watch('active')}
+                      onChange={(e) => setValue('active', e.target.checked)}
+                    />
+                  }
+                  label="Public"
+                />
+                <FormControlLabel
+                  control={<Switch />}
+                  value={preview}
+                  onChange={() => setPreview((s) => !s)}
+                  label="Show preview"
+                />
               </Box>
               <Controller
                 control={control}
@@ -98,14 +120,20 @@ const TutorialEditor = () => {
                     defaultValue={[]}
                     value={form.watch('tags')}
                     onChange={(_, value) => {
-                      setValue('tags', value as string[], { shouldDirty: true });
+                      setValue('tags', value as string[], {
+                        shouldDirty: true
+                      });
                     }}
                     // {...field}
                     freeSolo
                     renderTags={(value: readonly string[], getTagProps) =>
                       value.map((option: string, index: number) => (
                         // eslint-disable-next-line react/jsx-key
-                        <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                        <Chip
+                          variant="outlined"
+                          label={option}
+                          {...getTagProps({ index })}
+                        />
                       ))
                     }
                     renderInput={(params) => (
@@ -144,7 +172,6 @@ const TutorialEditor = () => {
             <DraftPreview content={form.watch('content')} />
           </Card>
         )}
-
       </Box>
     </FormProvider>
   );

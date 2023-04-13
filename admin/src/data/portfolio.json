@@ -1,0 +1,68 @@
+[
+  {
+    "category": "frontend",
+    "image": "/images/portfolio/portfolio-gravatar.webp",
+    "imgAlt": "Gravatar Taglib",
+    "meta": "Java",
+    "name": "Gravatar JSP/JSF Tag Library",
+    "link": {
+      "text": "View on Bitbucket",
+      "url": "https://bitbucket.org/paalgyula/gravatar-taglib"
+    }
+  },
+  {
+    "category": "frontend",
+    "image": "/images/portfolio/portfolio-zamzi-frontend.webp",
+    "imgAlt": "Zamazingo",
+    "meta": "Node.JS/React",
+    "name": "Zamazingo Quiz Platform",
+    "link": {
+      "text": "Visit website",
+      "url": "https://zamzi.hu"
+    }
+  },
+  {
+    "category": "appz",
+    "image": "/images/portfolio/portfolio-zamzi-mobile.webp",
+    "imgAlt": "Zamazingo",
+    "meta": "React Native",
+    "name": "Zamazingo Quiz Platform Client",
+    "link": {
+      "text": "Visit website",
+      "url": "https://rm.zamzi.hu"
+    }
+  },
+  {
+    "category": "frontend",
+    "image": "/images/portfolio/portfolio-pirat.webp",
+    "imgAlt": "PiR@",
+    "meta": "React/go",
+    "name": "PiR@ Issue Tracker (WIP)",
+    "link": {
+      "text": "Visit website",
+      "url": "https://pirat.app"
+    }
+  },
+  {
+    "category": "backend",
+    "image": "/images/portfolio/portfolio-jegymester.webp",
+    "imgAlt": "Jegymester",
+    "meta": "J2EE",
+    "name": "jegymester.hu backend",
+    "link": {
+      "text": "Visit website",
+      "url": "https://jegymester.hu"
+    }
+  },
+  {
+    "category": "backend",
+    "image": "/images/portfolio/portfolio-ris.webp",
+    "imgAlt": "RIS",
+    "meta": "C#/asp.net/Angular",
+    "name": "Railway Integrated System",
+    "link": {
+      "text": "Visit website",
+      "url": "http://riseurope.eu/"
+    }
+  }
+]

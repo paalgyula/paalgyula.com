@@ -1,7 +1,7 @@
 import { Box, Link } from '@mui/material';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import { useDrawer } from '../components/contexts/DrawerProvider';
+import { useBreadcrumb } from '../../../hooks/useBreadcrumbs';
 
 const BREADCRUMBS = [
   <Link underline="hover" key="1" color="inherit" href="/admin">
@@ -14,9 +14,8 @@ const BREADCRUMBS = [
 
 const TutorialsPage: FC = () => {
   const { id } = useParams();
-  const [dialogOpen, setDialogOpen] = useState(false);
 
-  const { setBreadcrumb } = useDrawer();
+  const { setBreadcrumb } = useBreadcrumb();
 
   useEffect(() => {
     setBreadcrumb(BREADCRUMBS);

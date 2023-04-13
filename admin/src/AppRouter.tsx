@@ -1,17 +1,23 @@
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-import { useFirebase } from './firebase/FirebaseProvider';
+import { FC, ReactNode } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DrawerLayout from './components/DrawerLayout';
 import FullScreenLoader from './components/FullScreenLoader';
-import { Box, Button, Card, CardActions, CardContent, CardHeader } from '@mui/material';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-// import DrawerLayout from './components/DrawerLayout';
 import LoginScreen from './components/auth/LoginScreen';
-import { lazy } from 'react';
-import TutorialsPage from './pages/TutorialsPage';
-import TutorialEditor from './components/tutorials/TutorialEditor';
-import TutorialList from './components/tutorials/TutorialList';
-import DrawerProvider from './components/contexts/DrawerProvider';
+import { useFirebase } from './hooks/useFirebase';
+import CvModule from './modules/cv/CvModule';
+import ProfileModule from './modules/profile/ProfileModule';
+import TutorialModule from './modules/tutorial/TutorialModule';
+import { ModuleProvider } from './providers/ModuleProvider';
 
-const DrawerLayout = lazy(() => import('./components/DrawerLayout'));
+//const DrawerLayout = lazy(() => import('./components/DrawerLayout'));
+// const TutorialModule = lazy(() => import('./modules/tutorial/TutorialModule'));
+
+export interface IAdminModule {
+  Links: FC;
+  Routes: ReactNode | null | ReactNode[];
+}
+
+const modules: IAdminModule[] = [TutorialModule, CvModule, ProfileModule];
 
 const AppRouter = () => {
   const { authenticated } = useFirebase();
@@ -25,19 +31,15 @@ const AppRouter = () => {
   }
 
   return (
-    <BrowserRouter>
-      <DrawerProvider>
+    <BrowserRouter basename="/admin">
+      <ModuleProvider modules={modules}>
         <Routes>
-          <Route path="/admin" Component={DrawerLayout}>
-            <Route path="tutorials" Component={TutorialsPage}>
-              <Route path="" Component={TutorialList} />
-              <Route path="new" Component={Box}/>
-              <Route path=":id" Component={TutorialEditor} />
-            </Route>
+          <Route path="" Component={DrawerLayout}>
+            {modules.map((m) => m.Routes)}
           </Route>
           <Route path="*">All path</Route>
         </Routes>
-      </DrawerProvider>
+      </ModuleProvider>
     </BrowserRouter>
   );
 };

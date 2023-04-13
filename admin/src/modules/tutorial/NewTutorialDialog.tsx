@@ -4,16 +4,15 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
-  FormControl,
   TextField,
   Typography
 } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ITutorial } from '@frontend/data/tutorial';
-import LoaderButton from '../forms/LoaderButton';
 import { createTutorial } from '../../firebase/tutorialService';
+import LoaderButton from '../../components/forms/LoaderButton';
+import { ITutorial } from '../../firebase/tutorial';
+import { useFirebase } from '../../hooks/useFirebase';
 
 const defaultValues: ITutorial = {
   name: '',
@@ -36,14 +35,12 @@ type Props = {
 };
 
 const NewTutorialDialog: FC<Props> = ({ open, onClose }) => {
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues
   });
+
+  const [submitting, setSubmitting] = useState(false);
+  const { user } = useFirebase();
 
   // Reset form if the dialog has been closed
   useEffect(() => {
@@ -53,11 +50,14 @@ const NewTutorialDialog: FC<Props> = ({ open, onClose }) => {
     }
   }, [open]);
 
-  const [submitting, setSubmitting] = useState(false);
-
   const onSubmit = async (data: ITutorial) => {
     setSubmitting(true);
     try {
+      data.author = {
+        avatarUrl: user?.photoURL ?? '',
+        displayName: user?.displayName ?? '',
+        nick: user?.displayName ?? ''
+      };
       await createTutorial(data);
       onClose(true);
     } catch (err) {
@@ -72,12 +72,16 @@ const NewTutorialDialog: FC<Props> = ({ open, onClose }) => {
       <Controller
         name="name"
         control={control}
-        render={({ field }) => <TextField required label="Tutorial title" {...field} />}
+        render={({ field }) => (
+          <TextField required label="Tutorial title" {...field} />
+        )}
       />
       <Controller
         name="subtitle"
         control={control}
-        render={({ field }) => <TextField label="Subtile (optional)" {...field} />}
+        render={({ field }) => (
+          <TextField label="Subtile (optional)" {...field} />
+        )}
       />
       <Controller
         name="link"

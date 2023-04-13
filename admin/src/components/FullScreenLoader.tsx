@@ -1,5 +1,4 @@
 import { Box, CircularProgress, Typography } from '@mui/material';
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 export default function FullScreenLoader() {
   return (
