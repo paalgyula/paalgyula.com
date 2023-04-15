@@ -1,16 +1,16 @@
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
-import Contacts from "../../components/Contacts";
-import Educations from "../../components/Educations";
-import Experiences from "../../components/Experiences";
-import Header from "../../components/Header";
-import Portfolio from "../../components/Portfolio";
-import BestSkillsPies from "../../components/skills/BestSkillsPies";
-import SkillsChipses from "../../components/skills/SkillsChipses";
+import Contacts from "@frontend/components/Contacts";
+import Educations from "@frontend/components/Educations";
+import Experiences from "@frontend/components/Experiences";
+import Header from "@frontend/components/Header";
+import Portfolio from "@frontend/components/Portfolio";
+import BestSkillsPies from "@frontend/components/skills/BestSkillsPies";
+import SkillsChipses from "@frontend/components/skills/SkillsChipses";
 
-import { getStaticPaths, makeStaticProps } from "../../lib/i18n/static";
+import { getStaticPaths, makeStaticProps } from "@frontend/lib/i18n/static";
 
-import educations from "../../data/educations.json";
+import educations from "@frontend/data/educations.json";
 
 const Home = () => {
   const { t } = useTranslation();

@@ -1,0 +1,26 @@
+[
+  {
+    "degree": "Professional Cloud Architect",
+    "description": "Google Certified Cloud Architect",
+    "fromTo": "2022.01.04",
+    "school": "PrularSight"
+  },
+  {
+    "degree": "Blockchain Developer",
+    "description": "IBM Blockchain Developer Certificate",
+    "fromTo": "2021.02.07",
+    "school": "Cognitive Class"
+  },
+  {
+    "degree": "Certified Ethical Hacker",
+    "description": "Certificate from ethical hacking",
+    "fromTo": "2019.07",
+    "school": "EC-Council"
+  },
+  {
+    "degree": "Certified Angular2 Developer",
+    "description": "Angular developer certification from Angular 2",
+    "fromTo": "2015.02.03",
+    "school": "PrularSight"
+  }
+]

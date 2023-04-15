@@ -1,10 +1,18 @@
 {
   "hosting": {
-    "public": "frontend/out",
+    "predeploy": [
+      "cd frontend && yarn && yarn build && yarn export",
+      "cd admin && yarn && yarn build"
+    ],
+    "public": "public",
     "rewrites": [
       {
         "source": "/",
         "destination": "/index.html"
+      },
+      {
+        "source": "/admin/**",
+        "destination": "/admin/index.html"
       },
       {
         "source": "/api/**",
@@ -42,6 +50,12 @@
     "ui": {
       "enabled": true
     },
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "hosting": {
+      "port": 5000
+    },
+    "pubsub": {
+      "port": 8085
+    }
   }
 }

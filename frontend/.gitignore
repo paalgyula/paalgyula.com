@@ -38,3 +38,7 @@ yarn-error.log*
 .firebase
 out
 cache
+
+public/sitemap*
+
+.env

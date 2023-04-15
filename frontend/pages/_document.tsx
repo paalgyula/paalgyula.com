@@ -1,5 +1,3 @@
-// pages/_document.js
-
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import i18nConfig from "../next-i18next.config";
 
@@ -10,7 +8,7 @@ class DefaultDocument extends Document {
       i18nConfig.i18n.defaultLocale;
 
     return (
-      <Html lang={currentLocale}> 
+      <Html lang={currentLocale as string}>
         <Head>
           <link rel="canonical" href="http://www.paalgyula.com/" />
           <meta name="author" content="Paál Gyula" />
@@ -29,7 +27,6 @@ class DefaultDocument extends Document {
 
           <link rel="icon" type="image/x-icon" href="favicon.ico" />
           <link rel="stylesheet" href="/css/bootstrap.min.css" />
-
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>

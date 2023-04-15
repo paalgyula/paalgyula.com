@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    // "baseUrl": ".",
+    "paths": {
+      // "@ua-admin/*": ["./src/*"]
+      // "@frontend/*": ["../frontend/src/*"]
+      // "@backend/*": ["../functions/src/*"]
+    }
+  }
+}
