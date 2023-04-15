@@ -1,9 +1,9 @@
 import { ReactNode, useContext } from 'react';
-import { appContext } from '../providers/AppStateProvider';
+import { IBreadcrumb, appContext } from '../providers/AppStateProvider';
 
 type BreadcrumbProps = {
-  breadcrumb?: ReactNode;
-  setBreadcrumb: (node?: ReactNode) => void;
+  breadcrumb?: IBreadcrumb[];
+  setBreadcrumb: (breadcrumbs?: IBreadcrumb[]) => void;
   setDocumentTitle: (string?: string) => void;
   documentTitle?: string;
 };

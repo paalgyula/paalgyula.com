@@ -9,6 +9,8 @@ import {
 import { Fragment, useEffect, useState } from 'react';
 import exp from '../../data/experiences.json';
 import shortid from 'shortid';
+import { BREADCRUMBS } from './CvModule';
+import { useBreadcrumb } from '../../hooks/useBreadcrumbs';
 
 const fetchExperiences = async (): Promise<IExperience[]> => {
   return exp;
@@ -16,8 +18,14 @@ const fetchExperiences = async (): Promise<IExperience[]> => {
 
 export const Experiences = () => {
   const [experiences, setExperiences] = useState<IExperience[]>([]);
+  const { setBreadcrumb } = useBreadcrumb();
 
   useEffect(() => {
+    setBreadcrumb([
+      ...BREADCRUMBS,
+      { title: 'Experiences', link: '/cv/experiences' }
+    ]);
+
     fetchExperiences().then(setExperiences);
   }, []);
 

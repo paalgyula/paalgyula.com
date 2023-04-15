@@ -31,12 +31,9 @@ const CodeBlock: FC<PropsWithChildren<Props>> = ({
   const code = offsetKey!.substring(0, 5);
   console.log(code);
 
-  const contentState = editorState.getCurrentContent();
-  const block = contentState.getBlockForKey(code);
+  // const contentState = editorState.getCurrentContent();
+  // const block = contentState.getBlockForKey(code);
   // const { language } = block.getData();
-
-  // eslint-disable-next-line react/prop-types
-  //editorState.findLastKey((val, key) => key === (props as any)['data-offset-key'])
 
   const handleChange = (e: SelectChangeEvent<string>) => {
     // data.set('language', e.target.value);

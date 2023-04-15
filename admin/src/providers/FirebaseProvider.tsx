@@ -59,7 +59,8 @@ const FirebaseProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [user]);
 
   /**
-   * Handles google login button click and initiates authentication with firebase's google provider.
+   * Handles google login button click and initiates
+   * authentication with firebase's google provider.
    */
   const loginWithGoogle = async () => {
     const googleProvider = new GoogleAuthProvider();

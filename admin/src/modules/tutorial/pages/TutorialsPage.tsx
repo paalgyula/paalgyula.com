@@ -1,15 +1,11 @@
-import { Box, Link } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { useBreadcrumb } from '../../../hooks/useBreadcrumbs';
+import { IBreadcrumb } from '../../../providers/AppStateProvider';
 
-const BREADCRUMBS = [
-  <Link underline="hover" key="1" color="inherit" href="/admin">
-    Admin
-  </Link>,
-  <Link key="2" underline="hover" color="inherit" href="/admin/tutorials">
-    Tutorials
-  </Link>
+export const BREADCRUMBS: IBreadcrumb[] = [
+  { title: 'Tutorials', link: '/tutorials' }
 ];
 
 const TutorialsPage: FC = () => {

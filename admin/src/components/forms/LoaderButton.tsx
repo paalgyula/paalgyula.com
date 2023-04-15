@@ -13,7 +13,9 @@ const LoaderButton: FC<PropsWithChildren<ButtonProps & Props>> = ({
 }) => {
   return (
     <Button
-      startIcon={loading ? <CircularProgress size={16} color="primary" /> : null}
+      startIcon={
+        loading ? <CircularProgress size={16} color="primary" /> : null
+      }
       disabled={disabled || loading}
       {...props}>
       {children}

@@ -5,7 +5,7 @@ export default class ModuleErrorBoundary extends Component<
   { children?: ReactNode },
   { eventId: string; hasError: boolean; error?: any }
 > {
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<unknown>) {
     super(props);
     this.state = { eventId: '', hasError: false };
   }

@@ -7,19 +7,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-import { IAdminModule } from '../AppRouter';
-import AppToolbar from './AppToolbar';
-import ModuleErrorBoundary from './ModuleErrorBoundary';
 import { useDrawer } from '../hooks/useDrawer';
 import { useModules } from '../hooks/useModules';
-
-const drawerWidth = 240;
+import AppToolbar from './AppToolbar';
+import ModuleErrorBoundary from './ModuleErrorBoundary';
+import shortid from 'shortid';
 
 type Props = {
-  modules?: IAdminModule[];
+  drawerWidth?: number;
 };
 
-const DrawerLayout: FC<Props> = ({}) => {
+const DrawerLayout: FC<Props> = ({ drawerWidth = 240 }) => {
   const modules = useModules();
   const { isOpen: open, toggleDrawer: toggleOpen } = useDrawer();
 
@@ -58,7 +56,7 @@ const DrawerLayout: FC<Props> = ({}) => {
             <Divider />
             <List>
               {modules?.map((m) => (
-                <m.Links />
+                <m.Links key={shortid()} />
               ))}
               <Divider />
             </List>
@@ -74,7 +72,7 @@ const DrawerLayout: FC<Props> = ({}) => {
         alignItems="flex-start"
         justifyContent="flex-start"
         sx={{ bgcolor: 'background.default', p: 3 }}>
-        <AppToolbar drawerWidth={drawerWidth}></AppToolbar>
+        <AppToolbar drawerWidth={drawerWidth} />
 
         {/* Placeholder */}
         <Toolbar />

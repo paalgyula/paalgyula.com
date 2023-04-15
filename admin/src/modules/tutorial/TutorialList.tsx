@@ -21,7 +21,7 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NewTutorialDialog from './NewTutorialDialog';
 import { ITutorialListItem } from '../../firebase/tutorial';
-import { useLoader } from '../../loader';
+import { useLoader } from '../../hooks/useLoader';
 import { fetchTutorialList } from '../../firebase/tutorialService';
 import FullScreenLoader from '../../components/FullScreenLoader';
 
@@ -117,7 +117,9 @@ const TutorialList: FC = () => {
           <TablePagination
             page={0}
             component="div"
-            onPageChange={() => {}}
+            onPageChange={() => {
+              console.log('Pagination not implemented');
+            }}
             rowsPerPage={10}
             count={data?.length ?? 0}
           />

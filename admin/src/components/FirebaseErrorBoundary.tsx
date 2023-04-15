@@ -1,11 +1,11 @@
-import FirebaseProvider from '@ua-admin/firebase/FirebaseProvider';
 import { Component, ReactNode } from 'react';
+import FirebaseProvider from '../providers/FirebaseProvider';
 
 export default class FirebaseErrorBoundary extends Component<
   { children?: ReactNode },
   { eventId: string; hasError: boolean; error?: any }
 > {
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<unknown>) {
     super(props);
     this.state = { eventId: '', hasError: false };
   }

@@ -1,16 +1,9 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import {
-  AppBar,
-  Box,
-  Breadcrumbs,
-  IconButton,
-  Toolbar,
-  Typography
-} from '@mui/material';
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
-import ProfileMenu from './auth/UserDropdown';
 import { useDrawer } from '../hooks/useDrawer';
-import { useBreadcrumb } from '../hooks/useBreadcrumbs';
+import ProfileMenu from './auth/UserDropdown';
+import Breadcrumbs from './Breadcrumbs';
 
 type Props = {
   title?: string;
@@ -23,8 +16,6 @@ const AppToolbar: FC<PropsWithChildren<Props>> = ({
   title = ''
 }) => {
   const { toggleDrawer: toggleOpen, isOpen: open } = useDrawer();
-  const { breadcrumb, documentTitle } = useBreadcrumb();
-
   return (
     <AppBar
       position="fixed"
@@ -42,22 +33,7 @@ const AppToolbar: FC<PropsWithChildren<Props>> = ({
         <Typography variant="h6" noWrap component="div">
           {title}
         </Typography>
-        {breadcrumb && (
-          <>
-            <Box pl={2} />
-            <Breadcrumbs
-              sx={{ color: '#fff' }}
-              separator="›"
-              aria-label="breadcrumb">
-              {breadcrumb}
-              {documentTitle && (
-                <Typography key="3" color="inherit">
-                  {documentTitle}
-                </Typography>
-              )}
-            </Breadcrumbs>
-          </>
-        )}
+        <Breadcrumbs />
         <Box flex={1}>{children}</Box>
         <Box>
           <ProfileMenu />

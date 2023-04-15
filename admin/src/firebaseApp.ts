@@ -19,7 +19,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 if (import.meta.env.VITE_FIREBASE_EMULATOR) {
-  const db = getFirestore();
+  const db = getFirestore(app);
   connectFirestoreEmulator(db, 'localhost', 8080);
 }
 // const analytics = getAnalytics(app);

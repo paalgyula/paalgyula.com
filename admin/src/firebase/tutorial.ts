@@ -1,4 +1,4 @@
-import { DocumentData, Timestamp } from "firebase/firestore";
+import { DocumentData, Timestamp } from 'firebase/firestore';
 
 export interface IAuthor {
   displayName: string;
@@ -38,11 +38,20 @@ export class Tutorial implements ITutorial {
    * @param {ITutorial} tutorial the tutorial interface
    * @return {Tutorial}
    */
-  static fromInterface(tutorial:ITutorial): Tutorial {
-    const t = new Tutorial(tutorial.id!, tutorial.name, tutorial.subtitle, tutorial.link, tutorial.category, tutorial.active, tutorial.author, tutorial.createdAt)
+  static fromInterface(tutorial: ITutorial): Tutorial {
+    const t = new Tutorial(
+      tutorial.id!,
+      tutorial.name,
+      tutorial.subtitle,
+      tutorial.link,
+      tutorial.category,
+      tutorial.active,
+      tutorial.author,
+      tutorial.createdAt
+    );
     t.content = tutorial.content;
     t.lastModified = tutorial.lastModified;
-    t.tags = tutorial.tags
+    t.tags = tutorial.tags;
 
     return t;
   }
@@ -69,7 +78,7 @@ export class Tutorial implements ITutorial {
       (data.createdAt as Timestamp).toDate().toUTCString()
     );
 
-    tutorial.content = data.content ?? "";
+    tutorial.content = data.content ?? '';
     tutorial.tags = data.tags ?? [];
 
     return tutorial;
@@ -88,18 +97,18 @@ export class Tutorial implements ITutorial {
       active: this.active,
       author: this.author,
       tags: this.tags ?? [],
-      createdAt: Timestamp.fromMillis(Date.parse(this.createdAt)),
+      createdAt: Timestamp.fromMillis(Date.parse(this.createdAt))
     };
 
-    if (Boolean(this.lastModified)) {
-      data.lastModified = new Date(Date.parse(this.createdAt))
+    if (this.lastModified) {
+      data.lastModified = new Date(Date.parse(this.createdAt));
     }
 
-    if (Boolean(this.content)) {
-      data.content = this.content
+    if (this.content) {
+      data.content = this.content;
     }
 
-    return data
+    return data;
   }
 }
 

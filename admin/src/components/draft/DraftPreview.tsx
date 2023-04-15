@@ -13,14 +13,16 @@ import DraftEditorProvider from './DraftEditorProvider';
 
 const blockRenderMap = Map({
   'code-block2': {
-    // element is used during paste or html conversion to auto match your component;
+    // element is used during paste or html conversion to
+    // auto match your component;
     // it is also retained as part of this.props.children and not stripped out
     element: 'code-block2',
     wrapper: <CodeBlock highlight />
   }
 });
 
-// keep support for other draft default block types and add our myCustomBlock type
+// keep support for other draft default block types and
+// add our myCustomBlock type
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
 type Props = {
@@ -47,7 +49,7 @@ const DraftPreview: FC<Props> = ({ content }) => {
         blockRenderMap={extendedBlockRenderMap}
         editorState={editorState}
         // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onChange={() => { }}
+        onChange={() => {}}
         readOnly
       />
     </DraftEditorProvider>

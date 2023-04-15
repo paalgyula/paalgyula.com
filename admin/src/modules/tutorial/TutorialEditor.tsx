@@ -28,7 +28,7 @@ import {
 } from '../../firebase/tutorialService';
 import { useBreadcrumb } from '../../hooks/useBreadcrumbs';
 import { useFirebase } from '../../hooks/useFirebase';
-import { useLoader } from '../../loader';
+import { useLoader } from '../../hooks/useLoader';
 
 const TutorialEditor = () => {
   const { id } = useParams();

@@ -1,10 +1,12 @@
-import {
-  FC,
-  PropsWithChildren,
-  ReactNode,
-  createContext,
-  useState
-} from 'react';
+import { FC, PropsWithChildren, createContext, useState } from 'react';
+
+/**
+ * Breadcrumb interface
+ */
+export interface IBreadcrumb {
+  title: string;
+  link?: string;
+}
 
 type AppState = {
   toggleDrawer: () => void;
@@ -13,8 +15,8 @@ type AppState = {
   /**
    * Breadcrumb area
    */
-  breadcrumb?: ReactNode;
-  setBreadcrumb: (node?: ReactNode) => void;
+  breadcrumb?: IBreadcrumb[];
+  setBreadcrumb: (node?: IBreadcrumb[]) => void;
   setDocumentTitle: (string?: string) => void;
   documentTitle?: string;
 };
@@ -22,12 +24,12 @@ type AppState = {
 export const appContext = createContext<AppState | null>(null);
 
 const AppStateProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [breadcrumb, setBreadcrumb] = useState<ReactNode>();
+  const [breadcrumb, setBreadcrumb] = useState<IBreadcrumb[]>();
   const [open, setOpen] = useState(true);
   const [documentTitle, setDocumentTitle] = useState<string>();
 
   // sets the breadcrumb and removes document title from
-  const setBreadcrumbInternal = (node?: ReactNode) => {
+  const setBreadcrumbInternal = (node?: IBreadcrumb[]) => {
     setBreadcrumb(node);
     setDocumentTitle(undefined);
   };

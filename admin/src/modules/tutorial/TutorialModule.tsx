@@ -1,23 +1,24 @@
-import { Box, ListItem, ListItemButton, ListItemText } from '@mui/material';
-import { Component, FC, ReactNode } from 'react';
-import { Route, useNavigate } from 'react-router-dom';
+import SchoolIcon from '@mui/icons-material/School';
+import { Box } from '@mui/material';
+import { FC } from 'react';
+import { Route } from 'react-router-dom';
 import { IAdminModule } from '../../AppRouter';
+import Menu from '../../components/menu/Menu';
 import TutorialEditor from './TutorialEditor';
 import TutorialList from './TutorialList';
 import TutorialsPage from './pages/TutorialsPage';
 
 const Links: FC = () => {
-  const navigate = useNavigate();
-
   return (
-    <>
-      <ListItem disablePadding onClick={() => navigate('/tutorials')}>
-        <ListItemButton>
-          {/* <ListItemIcon></ListItemIcon> */}
-          <ListItemText primary="Tutorials" />
-        </ListItemButton>
-      </ListItem>
-    </>
+    <Menu
+      menu={[
+        {
+          title: 'Tutorials',
+          link: '/tutorials',
+          icon: SchoolIcon
+        }
+      ]}
+    />
   );
 };
 

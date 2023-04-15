@@ -9,9 +9,6 @@ import ProfileModule from './modules/profile/ProfileModule';
 import TutorialModule from './modules/tutorial/TutorialModule';
 import { ModuleProvider } from './providers/ModuleProvider';
 
-//const DrawerLayout = lazy(() => import('./components/DrawerLayout'));
-// const TutorialModule = lazy(() => import('./modules/tutorial/TutorialModule'));
-
 export interface IAdminModule {
   Links: FC;
   Routes: ReactNode | null | ReactNode[];
@@ -37,7 +34,7 @@ const AppRouter = () => {
           <Route path="" Component={DrawerLayout}>
             {modules.map((m) => m.Routes)}
           </Route>
-          <Route path="*">All path</Route>
+          <Route path="*">404 - Not found</Route>
         </Routes>
       </ModuleProvider>
     </BrowserRouter>
