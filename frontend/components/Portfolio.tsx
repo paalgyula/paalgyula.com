@@ -1,8 +1,9 @@
-import Script from 'next/script';
+import Script from "next/script";
 
-import PORTFOLIO_ITEMS from '../data/portfolio.json';
+import PORTFOLIO_ITEMS from "../data/portfolio.json";
+import { FC } from "react";
 
-const PortfolioItem = ({ item }) => {
+const PortfolioItem: FC<{ item: IPortfolioItem }> = ({ item }) => {
   return (
     <div className={`item ${item.category} col-md-3 col-xs-6`}>
       <div className="item-inner">
@@ -23,7 +24,7 @@ const PortfolioItem = ({ item }) => {
             {item.link && <a href={item.link.url}>{item.link.text}</a>}
           </div>
         </div>
-        <a className="link-mask" href={item.link.url}></a>
+        {item.link && <a className="link-mask" href={item.link.url}></a>}
       </div>
     </div>
   );
@@ -95,7 +96,7 @@ const Portfolio = () => {
       <Script
         src="/javascript/isotope.pkgd.min.js"
         onLoad={() => {
-          require('../public/javascript/isotope-activator.js');
+          require("../public/javascript/isotope-activator.js");
         }}
       />
     </>

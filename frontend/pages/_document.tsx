@@ -6,11 +6,11 @@ import i18nConfig from "../next-i18next.config";
 class DefaultDocument extends Document {
   render() {
     const currentLocale =
-      this.props.__NEXT_DATA__.query.locale ||
+      (this.props.__NEXT_DATA__.query.locale as string | undefined) ||
       i18nConfig.i18n.defaultLocale;
 
     return (
-      <Html lang={currentLocale}> 
+      <Html lang={currentLocale}>
         <Head>
           <link rel="canonical" href="http://www.paalgyula.com/" />
           <meta name="author" content="Paál Gyula" />

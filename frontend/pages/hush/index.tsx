@@ -1,18 +1,16 @@
+import { Header } from "components";
+import Contacts from "components/Contacts";
+import Educations from "components/Educations";
+import Experiences from "components/Experiences";
+import Portfolio from "components/Portfolio";
+import BestSkillsPies from "components/skills/BestSkillsPies";
+import SkillsChipses from "components/skills/SkillsChipses";
 import Head from "next/head";
-import { useTranslation } from "react-i18next";
-import Contacts from "../../components/Contacts";
-import Educations from "../../components/Educations";
-import Experiences from "../../components/Experiences";
-import Header from "../../components/Header";
-import Portfolio from "../../components/Portfolio";
-import BestSkillsPies from "../../components/skills/BestSkillsPies";
-import SkillsChipses from "../../components/skills/SkillsChipses";
-
-import { getStaticPaths, makeStaticProps } from "../../lib/i18n/static";
 
 import educations from "../../data/educations.json";
+import { useTranslation } from "lib/translate";
 
-const Home = () => {
+export default function HungarianProfilePage() {
   const { t } = useTranslation();
 
   return (
@@ -29,12 +27,12 @@ const Home = () => {
         <link
           rel="alternate"
           hrefLang="en-us"
-          href="http://www.paalgyula.com/?lang=en"
+          href="http://www.paalgyula.com/en/"
         />
         <link
           rel="alternate"
           hrefLang="hu"
-          href="http://www.paalgyula.com/?lang=hu"
+          href="http://www.paalgyula.com/hu/"
         />
       </Head>
 
@@ -88,25 +86,4 @@ const Home = () => {
       </div>
     </>
   );
-};
-
-export default Home;
-
-// const getStaticProps = makeStaticProps(["common"]);
-
-// export { getStaticPaths, getStaticProps };
-
-// export const getStaticProps = async ctx => {
-//   // some data fetched from anywhere...
-//   const someOtherData = 'hello world'
-//   return {
-//     props: {
-//       ...(await getI18nProps(ctx, [
-//         'second-page',
-//         'common',
-//         'footer',
-//       ])),
-//       someOtherData,
-//     },
-//   }
-// }
+}

@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Educations = ({ educations }) => {
+const Educations: FC<{ educations: any[] }> = ({ educations }) => {
   const { t } = useTranslation();
 
   return (
