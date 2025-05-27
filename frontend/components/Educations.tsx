@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "lib/translate";
+import { FC } from "react";
 
 const Educations: FC<{ educations: any[] }> = ({ educations }) => {
   const { t } = useTranslation();
 
   return (
     <>
-      <h2 className="section-title">{t('Educations')}</h2>
+      <h2 className="section-title">{t("Educations")}</h2>
       <div className="row">
         {educations?.map((e) => (
           <div key={e.degree} className="item col-xs-12 col-sm-4">

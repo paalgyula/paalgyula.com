@@ -5,9 +5,8 @@ module.exports = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    // appDir: true,
-  },
+  swcMinify: true,
+  experimental: {},
+  pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
   trailingSlash: true,
-  pageExtensions: ['tsx'],
 };

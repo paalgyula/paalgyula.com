@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "lib/translate";
 import LanguageChanger from "./LanguageChanger";
+import { Box } from "@chakra-ui/react";
 
 export const HeaderButtons = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="actions">
+    <Box className="actions">
       <LanguageChanger />
       <Link legacyBehavior passHref href="/tutorials">
         <a className="btn hidden-xs">
           <i className="fa fa-book" aria-hidden="true"></i>
-          <span>{t("Tutorials")}</span>{' '}
+          <span>{t("Tutorials")}</span>
           <span className="badge badge-danger">NEW</span>
         </a>
       </Link>
@@ -23,7 +24,7 @@ export const HeaderButtons = () => {
         <i className="fa fa-download" aria-hidden="true"></i>
         <span>{t("Download my resume")}</span>
       </a>
-    </div>
+    </Box>
   );
 };
 

@@ -1,5 +1,6 @@
-import { useTranslation } from 'react-i18next';
-import * as React from 'react';
+// import { useTranslation } from 'react-i18next';
+import { useTranslation } from "lib/translate";
+import * as React from "react";
 
 /* eslint-disable @next/next/no-img-element */
 const Contacts = () => {
@@ -7,7 +8,7 @@ const Contacts = () => {
   return (
     <>
       <section className="contact-section section" id="contact-section">
-        <h2 className="section-title">{t('Contacts')}</h2>
+        <h2 className="section-title">{t("Contacts")}</h2>
         <div className="intro">
           <img
             className="profile-image"
@@ -23,33 +24,33 @@ const Contacts = () => {
             <ul className="list-unstyled service-list">
               <li>
                 <i className="fa fa-check" aria-hidden="true"></i>
-                {t('Mobile Development')}: React Native (Cross Platform)
+                {t("Mobile Development")}: React Native (Cross Platform)
               </li>
               <li>
                 <i className="fa fa-check" aria-hidden="true"></i>
-                {t('Application Development')}: Java(Swing)/
+                {t("Application Development")}: Java(Swing)/
                 <b>Progressive Web Application (PWA)</b>/Electron
               </li>
               <li>
                 <i className="fa fa-check" aria-hidden="true"></i>
-                {t('Frontend Development')}: <b>React</b>/Angular
+                {t("Frontend Development")}: <b>React</b>/Angular
               </li>
               <li>
                 <i className="fa fa-check" aria-hidden="true"></i>
-                {t('Backend Development')}: <b>go</b>/SpringBoot/Node.js
+                {t("Backend Development")}: <b>go</b>/SpringBoot/Node.js
               </li>
               <li>
                 <i className="fa fa-check" aria-hidden="true"></i>
-                {t('DevOps')}: CI/CD pipeline setup, containerizing existing
+                {t("DevOps")}: CI/CD pipeline setup, containerizing existing
                 applications, migrating existing infrastructure to cloud
               </li>
             </ul>
             <p>
-              Írj üzenetet:{' '}
+              Írj üzenetet:{" "}
               <a href="mailto:paalgyula@paalgyula.com">
                 paalgyula@paalgyula.com
-              </a>{' '}
-              -ra vagy hívj bátran:{' '}
+              </a>{" "}
+              -ra vagy hívj bátran:{" "}
               <a href="tel:+36209410618">+36 20 941 0618</a>
             </p>
             <ul className="social list-inline">

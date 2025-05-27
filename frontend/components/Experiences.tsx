@@ -1,15 +1,15 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useTranslation } from "react-i18next";
-import shortid from 'shortid';
-import experiences from '../data/experiences.json';
+import Image from "next/image";
+import Link from "next/link";
+import shortid from "shortid";
+import experiences from "../data/experiences.json";
+import { useTranslation } from "lib/translate";
 
 const Experiences = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <h2 className="section-title">{t('Experiences')}</h2>
+      <h2 className="section-title">{t("Experiences")}</h2>
       <div className="timeline">
         {experiences.map((experience) => (
           <div key={shortid()} className="item">
@@ -39,7 +39,7 @@ const Experiences = () => {
             <div className="job-meta">
               <div className="title">{experience.jobTitle}</div>
               <div className="time">
-                {experience.from} - {experience.to || 'Today'}
+                {experience.from} - {experience.to || "Today"}
               </div>
             </div>
             <div className="job-desc">

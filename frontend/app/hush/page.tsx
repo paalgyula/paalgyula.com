@@ -1,4 +1,4 @@
-import { Header } from "components";
+import { PageHeader } from "components/PageHeader";
 import Contacts from "components/Contacts";
 import Educations from "components/Educations";
 import Experiences from "components/Experiences";
@@ -9,6 +9,16 @@ import Head from "next/head";
 
 import educations from "../../data/educations.json";
 import { useTranslation } from "lib/translate";
+import { Metadata } from "next";
+import PortfolioSection from "components/portfolio/PortfolioSection";
+
+export const metadata: Metadata = {
+  // title: "Hush",
+  title: "Gyula, Paál - Digital Nomad",
+  viewport: "width=device-width, initial-scale=1",
+  description:
+    "I'm a professional fullstack developer with 13 years relevant software development experience.",
+};
 
 export default function HungarianProfilePage() {
   const { t } = useTranslation();
@@ -16,14 +26,6 @@ export default function HungarianProfilePage() {
   return (
     <>
       <Head>
-        <title>Paál Gyula - Digital Nomad</title>
-        <meta
-          name="description"
-          content="I'm a professional fullstack developer with 13 years relevant software development experience."
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link
           rel="alternate"
           hrefLang="en-us"
@@ -36,7 +38,7 @@ export default function HungarianProfilePage() {
         />
       </Head>
 
-      <Header />
+      <PageHeader />
 
       <div className="wrapper container">
         <section className="experiences-section section" id="experiences">
@@ -58,29 +60,7 @@ export default function HungarianProfilePage() {
           <SkillsChipses />
         </section>
 
-        <section className="portfolio-section section" id="portfolio-section">
-          <h2 className="section-title">Portfolio</h2>
-
-          <h3 className="subtitle">{t("Some of my projects")}</h3>
-
-          <ul className="filters clearfix" id="filters">
-            <li className="type active" data-filter="*">
-              All
-            </li>
-            <li className="type" data-filter=".backend">
-              Back-end
-            </li>
-            <li className="type" data-filter=".frontend">
-              Front-end
-            </li>
-            <li className="type" data-filter=".appz">
-              Application
-            </li>
-          </ul>
-          <div className="items-wrapper isotope row">
-            <Portfolio />
-          </div>
-        </section>
+        <PortfolioSection />
 
         <Contacts />
       </div>

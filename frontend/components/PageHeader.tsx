@@ -1,10 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
-import { HeaderButtons } from './HeaderButtons';
+import { HeaderButtons } from "./HeaderButtons";
 import HeaderSocialLinks from "./HeaderSocialLinks";
+import { useTranslation } from "lib/translate";
+import { Box } from "@chakra-ui/react";
 
 /* eslint-disable @next/next/no-img-element */
-export const Header = () => {
+export const PageHeader = () => {
   const { t } = useTranslation();
 
   const scrollTo = (e: any, selector: string) => {
@@ -21,14 +24,14 @@ export const Header = () => {
   };
 
   return (
-    <header className="header">
-      <div className="top-bar container-fluid">
-        <HeaderButtons/>
+    <Box as="header" background="#607D8B" color="#fff">
+      <Box position="relative" paddingTop="15px" paddingBottom="40px">
+        <HeaderButtons />
 
         <HeaderSocialLinks />
-      </div>
-      <div itemScope itemType="https://schema.org/Person" className="intro">
-        <div className="container text-center">
+      </Box>
+      <Box itemScope itemType="https://schema.org/Person" className="intro">
+        <Box className="container text-center">
           <Image
             height={160}
             width={160}
@@ -39,18 +42,18 @@ export const Header = () => {
           <h1 className="name" itemProp="name">
             {t("Gyula, Paál")}
           </h1>
-          <div className="title">
+          <Box className="title">
             (Digital Nomad)
             <br />
             <img src="/images/g-logo.svg" alt="Google" title="Google" />{" "}
             <span itemProp="jobTitle">Certified Cloud Architect</span>
-          </div>
-          <div itemProp="description" className="profile">
+          </Box>
+          <Box itemProp="description" className="profile">
             {t("introduction")}
-          </div>
-        </div>
-      </div>
-      <div className="contact-info">
+          </Box>
+        </Box>
+      </Box>
+      <Box className="contact-info">
         <div className="container text-center">
           <ul className="list-inline">
             <li className="email">
@@ -75,7 +78,7 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </Box>
       <div className="page-nav-space-holder hidden-xs">
         <div className="page-nav-wrapper text-center" id="page-nav-wrapper">
           <div className="container">
@@ -138,8 +141,8 @@ export const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+    </Box>
   );
 };
 
-export default Header;
+export default PageHeader;

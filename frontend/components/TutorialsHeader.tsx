@@ -1,16 +1,17 @@
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "lib/translate";
 import HeaderButtons from "./HeaderButtons";
 import { HeaderSocialLinks } from "./HeaderSocialLinks";
 
 type Props = {
-  title: string  
-}
+  title: string;
+};
 
 export const Header: FC<Props> = ({ title }) => {
   const { t } = useTranslation();
   const router = useRouter();
+  const pathName = usePathname();
 
   return (
     <header className="header">
@@ -50,7 +51,7 @@ export const Header: FC<Props> = ({ title }) => {
         <div className="page-nav-wrapper text-center" id="page-nav-wrapper">
           <div className="container">
             <ul className="nav page-nav list-inline" id="page-nav">
-              {router.pathname
+              {pathName
                 .split("/")
                 .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
                 .slice(0, -1)

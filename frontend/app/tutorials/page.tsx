@@ -1,9 +1,7 @@
 import Link from "next/link";
 import shortid from "shortid";
-import { TutorialLayout } from "../../components";
+import { TutorialLayout } from "../../components/TutorialLayout";
 
-import * as React from "react";
-import { InferGetStaticPropsType } from "next";
 import { fetchTuorialsList } from "../../data/tutorialsService";
 
 export const meta = {
@@ -14,9 +12,9 @@ export const meta = {
   weight: 1,
 };
 
-export default function TutorialsIndex({
-  tutorials,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default async function TutorialsIndex() {
+  const tutorials = await fetchTuorialsList();
+
   return (
     <TutorialLayout meta={meta}>
       <h4>
@@ -33,14 +31,4 @@ export default function TutorialsIndex({
       </ul>
     </TutorialLayout>
   );
-}
-
-export async function getStaticProps() {
-  const tutorialsResponse = await fetchTuorialsList();
-
-  return {
-    props: {
-      tutorials: tutorialsResponse,
-    },
-  };
 }

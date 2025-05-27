@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "lib/translate";
 
 const SkillsChipses = () => {
   const { t } = useTranslation();
@@ -6,7 +6,7 @@ const SkillsChipses = () => {
   return (
     <>
       <div className="other-skills">
-        <h3 className="subtitle">{t('another-experiences')}</h3>
+        <h3 className="subtitle">{t("another-experiences")}</h3>
         <div className="misc-skills">
           <span className="skill-tag">HTML5</span>
           <span className="skill-tag">CSS3</span>

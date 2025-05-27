@@ -6,7 +6,7 @@
     "**/bower_components": true,
     "**/*.code-search": true,
     ".next": true,
-    "out": true,
+    "out": true
   },
   "files.exclude": {
     "**/.git": true,
@@ -18,5 +18,6 @@
     "out": true,
     "node_modules": true,
     ".next": true
-  }
+  },
+  "i18n-ally.localesPaths": ["lib/i18n", "public/locales"]
 }

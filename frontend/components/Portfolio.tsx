@@ -2,6 +2,7 @@ import Script from "next/script";
 
 import PORTFOLIO_ITEMS from "../data/portfolio.json";
 import { FC } from "react";
+import PortfolioScript from "./PortfolioScript";
 
 const PortfolioItem: FC<{ item: IPortfolioItem }> = ({ item }) => {
   return (
@@ -93,12 +94,7 @@ const Portfolio = () => {
         <PortfolioItem item={item} key={item.name} />
       ))}
 
-      <Script
-        src="/javascript/isotope.pkgd.min.js"
-        onLoad={() => {
-          require("../public/javascript/isotope-activator.js");
-        }}
-      />
+      <PortfolioScript />
     </>
   );
 };

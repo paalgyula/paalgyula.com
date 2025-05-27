@@ -1,8 +1,9 @@
-import Script from 'next/script';
+import Script from "next/script";
 
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "lib/translate";
 
-import KNOWLEDGES from '../../data/knowledgebase.json';
+import KNOWLEDGES from "../../data/knowledgebase.json";
+import BestSkillsPiesScript from "./BestSkillPiesScript";
 
 const BestSkillsPies = () => {
   const { t } = useTranslation();
@@ -10,7 +11,7 @@ const BestSkillsPies = () => {
   return (
     <>
       <div className="top-skills">
-        <h3 className="subtitle">{t('skills-subtitle')}</h3>
+        <h3 className="subtitle">{t("skills-subtitle")}</h3>
         <div className="row">
           {KNOWLEDGES.map((ki) => (
             <div key={ki.name} className="item col-xs-12 col-sm-3">
@@ -34,9 +35,7 @@ const BestSkillsPies = () => {
         </div>
       </div>
 
-      <Script src="/javascript/easypiechart.min.js" onLoad={() => {
-        require('../../public/javascript/chart-activator.js')
-      }}/>
+      <BestSkillsPiesScript />
     </>
   );
 };
