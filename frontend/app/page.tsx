@@ -1,14 +1,19 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import ConnnectBox from "./connect-box";
 
 export const metadata: Metadata = {
-  title: "My Page Title",
+  title: "Paál Gyula - Sr. Cloud Architect",
+  description: `Highly motivated
+        Cloud Native Software Developer
+        with a passion for building next-generation, scalable cloud
+        applications. Skilled in to plan and developing robust systems utilizing, go, React, node.js.`,
 };
 
 export default function Page() {
   return (
-    <div className="h-[100vh] w-[100vw] flex flex-col justify-center items-center">
-      <div className="mb-10">
+    <div className="h-[100vh] w-full flex flex-col justify-center items-center">
+      <div className="mb-10 p-4">
         <Image
           src="/images/namecard.png"
           alt="Paál Gyula"
@@ -18,7 +23,7 @@ export default function Page() {
         />
       </div>
 
-      <div className="w-[500px] text-center font-light italic text-xl">
+      <div className="max-w-[500px] text-center font-light italic text-md md:text-xl p-4">
         Highly motivated{" "}
         <span className="text-primary">Cloud Native Software Developer</span>{" "}
         with a passion for building next-generation, scalable cloud
@@ -30,23 +35,7 @@ export default function Page() {
       <div className="mt-10 text-sm">This page is under development...</div>
 
       <div className="absolute right-0 bottom-0 text-sm font-light italic">
-        <div className="p-3 flex flex-col gap-0 text-right">
-          <a href="#" className="hover:underline">
-            +36 70 171 2997
-          </a>
-          <a href="#" className="hover:underline">
-            paalgyula@paalgyula.com
-          </a>
-          <a href="#" className="hover:underline">
-            paalgyula.com
-          </a>
-          <a href="#" className="hover:underline">
-            github.com/paalgyula
-          </a>
-          <a href="#" className="hover:underline">
-            linkedin.com/in/nev3rkn0wn
-          </a>
-        </div>
+        <ConnnectBox />
       </div>
     </div>
   );

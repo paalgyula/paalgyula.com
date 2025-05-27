@@ -6,8 +6,6 @@ module.exports = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    swcMinify: true,
-  },
+  experimental: {},
   trailingSlash: true,
 };

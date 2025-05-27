@@ -14,8 +14,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={"bg-primary"}>
       <Head>
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon.png" />
         <link rel="icon" href="/favicon.ico" />
+
+        <meta
+          property="og:title"
+          content="How to Become an SEO Expert (8 Steps)"
+        />
+        <meta
+          property="og:description"
+          content="Get from SEO newbie to SEO pro in 8 simple steps."
+        />
       </Head>
       <Script
         src={
