@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useTranslation } from "react-i18next";
 import Contacts from "../../components/Contacts";
 import Educations from "../../components/Educations";
 import Experiences from "../../components/Experiences";
@@ -8,13 +7,9 @@ import Portfolio from "../../components/Portfolio";
 import BestSkillsPies from "../../components/skills/BestSkillsPies";
 import SkillsChipses from "../../components/skills/SkillsChipses";
 
-import { getStaticPaths, makeStaticProps } from "../../lib/i18n/static";
-
 import educations from "../../data/educations.json";
 
 const Home = () => {
-  const { t } = useTranslation();
-
   return (
     <>
       <Head>
@@ -53,7 +48,7 @@ const Home = () => {
           className="skills-section section text-center"
           id="skills-section"
         >
-          <h2 className="section-title">{t("knowledgebase")}</h2>
+          <h2 className="section-title">Knowledgebase</h2>
 
           <BestSkillsPies />
 
@@ -63,7 +58,7 @@ const Home = () => {
         <section className="portfolio-section section" id="portfolio-section">
           <h2 className="section-title">Portfolio</h2>
 
-          <h3 className="subtitle">{t("Some of my projects")}</h3>
+          <h3 className="subtitle">Some of my projects</h3>
 
           <ul className="filters clearfix" id="filters">
             <li className="type active" data-filter="*">
@@ -92,21 +87,23 @@ const Home = () => {
 
 export default Home;
 
-const getStaticProps = makeStaticProps(['common'])
+const getStaticPaths = async () => {
+  return {
+    paths: [
+      {
+        params: {
+          locale: "hu",
+        },
+      }, // See the "paths" section below
+    ],
+    fallback: true, // false or "blocking"
+  };
+};
 
-export { getStaticPaths, getStaticProps }
+const getStaticProps = () => {
+  return {
+    props: {},
+  };
+};
 
-// export const getStaticProps = async ctx => {
-//   // some data fetched from anywhere...
-//   const someOtherData = 'hello world'
-//   return {
-//     props: {
-//       ...(await getI18nProps(ctx, [
-//         'second-page',
-//         'common',
-//         'footer',
-//       ])),
-//       someOtherData,
-//     },
-//   }
-// }
+export { getStaticPaths, getStaticProps };

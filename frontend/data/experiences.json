@@ -163,7 +163,12 @@
     },
     "jobTitle": "PHP/Java Developer",
     "technologies": [
-      "Tomcat", "Axis2", "PHP 5", "Smarty (PHP Template engine)", "MySQL", "Oracle"
+      "Tomcat",
+      "Axis2",
+      "PHP 5",
+      "Smarty (PHP Template engine)",
+      "MySQL",
+      "Oracle"
     ]
   }
 ]

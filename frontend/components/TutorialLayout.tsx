@@ -1,13 +1,20 @@
-import {FC, PropsWithChildren} from 'react';
 import moment from "moment";
 import Head from "next/head";
+import { FC, PropsWithChildren } from "react";
 import TutorialsHeader from "./TutorialsHeader";
 
 type IMetadata = {
-  meta: any;
-}
+  meta: {
+    title: string;
+    LastModifierDisplayName: string;
+    date: string;
+  };
+};
 
-export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({ meta, children }) => (
+export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({
+  meta,
+  children,
+}) => (
   <>
     <Head>
       <title>Tutorial - {meta.title}</title>
@@ -21,7 +28,7 @@ export const TutorialLayout: FC<PropsWithChildren<IMetadata>> = ({ meta, childre
 
         {children}
 
-        <div style={{ marginTop: 30, textAlign: 'right' }}>
+        <div style={{ marginTop: 30, textAlign: "right" }}>
           <p>
             <small>Author: {meta.LastModifierDisplayName}</small>
             <br />

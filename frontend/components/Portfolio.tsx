@@ -1,15 +1,24 @@
-import Script from 'next/script';
+import Script from "next/script";
 
-import PORTFOLIO_ITEMS from '../data/portfolio.json';
+import { IItem } from "lib/models";
+import Image from "next/image";
+import { FC } from "react";
+import PORTFOLIO_ITEMS from "../data/portfolio.json";
 
-const PortfolioItem = ({ item }) => {
+type PortfolioItemProps = {
+  item: IItem;
+};
+
+const PortfolioItem: FC<PortfolioItemProps> = ({ item }) => {
   return (
     <div className={`item ${item.category} col-md-3 col-xs-6`}>
       <div className="item-inner">
         <figure className="figure">
-          <img
+          <Image
             loading="lazy"
             className="img-responsive"
+            width={200}
+            height={120}
             src={item.image}
             alt={item.imgAlt || item.name}
           />
@@ -35,11 +44,13 @@ const Portfolio = () => {
       <div className="item appz col-md-3 col-xs-6">
         <div className="item-inner">
           <figure className="figure">
-            <img
+            <Image
               className="img-responsive"
               src="/images/portfolio/portfolio-zombieland.webp"
               alt="ZombieLand Client"
               loading="lazy"
+              width={320}
+              height={160}
             />
           </figure>
           <div className="content text-left">
@@ -62,7 +73,7 @@ const Portfolio = () => {
       <div className="item appz col-md-3 col-xs-6">
         <div className="item-inner">
           <figure className="figure">
-            <img
+            <Image
               className="img-responsive"
               src="/images/portfolio/portfolio-ncoredroid.webp"
               alt="nCore Android Client"
@@ -95,7 +106,7 @@ const Portfolio = () => {
       <Script
         src="/javascript/isotope.pkgd.min.js"
         onLoad={() => {
-          require('../public/javascript/isotope-activator.js');
+          require("../public/javascript/isotope-activator.js");
         }}
       />
     </>

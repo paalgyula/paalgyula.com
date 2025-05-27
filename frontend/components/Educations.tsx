@@ -1,11 +1,14 @@
-import { useTranslation } from 'react-i18next';
+import { IEducation } from "lib/models";
+import { FC } from "react";
 
-const Educations = ({ educations }) => {
-  const { t } = useTranslation();
+type EducationsProps = {
+  educations: IEducation[];
+};
 
+const Educations: FC<EducationsProps> = ({ educations }) => {
   return (
     <>
-      <h2 className="section-title">{t('Educations')}</h2>
+      <h2 className="section-title">Educations</h2>
       <div className="row">
         {educations?.map((e) => (
           <div key={e.degree} className="item col-xs-12 col-sm-4">

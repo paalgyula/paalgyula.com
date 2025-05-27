@@ -1,9 +1,7 @@
 const Timeline = () => {
   return (
     <>
-      <h2 className="section-title">
-        Educations
-      </h2>
+      <h2 className="section-title">Educations</h2>
       <div className="row">
         <div className="item col-xs-12 col-sm-4">
           <div className="item-inner">

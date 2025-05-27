@@ -2,12 +2,12 @@
 
 module.exports = {
   reactStrictMode: true,
+  output: "export",
   images: {
     unoptimized: true,
   },
   experimental: {
-    // appDir: true,
+    swcMinify: true,
   },
   trailingSlash: true,
-  pageExtensions: ['tsx'],
 };

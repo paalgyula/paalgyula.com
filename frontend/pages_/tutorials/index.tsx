@@ -1,10 +1,9 @@
 import Link from "next/link";
-import shortid from "shortid";
 import { TutorialLayout } from "../../components";
 
-import * as React from 'react'
-import { InferGetStaticPropsType } from 'next';
-import { fetchTuorialsList } from "../../data/tutorialsService";
+import { ITutorialListItem } from "@backend/interfaces/tutorial";
+import { InferGetStaticPropsType } from "next";
+import { FC } from "react";
 
 export const meta = {
   title: "Tutorials Section",
@@ -14,8 +13,11 @@ export const meta = {
   weight: 1,
 };
 
+type TutorialsIndexProps = {
+  tutorials: ITutorialListItem[];
+} & InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function TutorialsIndex({ tutorials }: InferGetStaticPropsType<typeof getStaticProps>) {
+export const TutorialsIndex: FC<TutorialsIndexProps> = ({ tutorials }) => {
   return (
     <TutorialLayout meta={meta}>
       <h4>
@@ -25,7 +27,7 @@ export default function TutorialsIndex({ tutorials }: InferGetStaticPropsType<ty
 
       <ul>
         {tutorials.map((tutorial) => (
-          <li key={shortid()}>
+          <li key={tutorial.id}>
             <Link href={tutorial.link}>{tutorial.name}</Link>
           </li>
         ))}
@@ -35,11 +37,14 @@ export default function TutorialsIndex({ tutorials }: InferGetStaticPropsType<ty
 };
 
 export async function getStaticProps() {
-  const tutorialsResponse = await fetchTuorialsList()
-  
+  // const tutorialsResponse = await fetchTuorialsList();
+
   return {
     props: {
-      tutorials: tutorialsResponse.data,
+      tutorials: [],
+      // tutorials: tutorialsResponse,
     },
-  }
+  };
 }
+
+export default TutorialsIndex;

@@ -1,15 +1,13 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
 import HeaderButtons from "./HeaderButtons";
 import { HeaderSocialLinks } from "./HeaderSocialLinks";
 
 type Props = {
-  title: string  
-}
+  title: string;
+};
 
 export const Header: FC<Props> = ({ title }) => {
-  const { t } = useTranslation();
   const router = useRouter();
 
   return (

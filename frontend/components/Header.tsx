@@ -1,12 +1,9 @@
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
-import { HeaderButtons } from './HeaderButtons';
+import { HeaderButtons } from "./HeaderButtons";
 import HeaderSocialLinks from "./HeaderSocialLinks";
 
 /* eslint-disable @next/next/no-img-element */
 export const Header = () => {
-  const { t } = useTranslation();
-
   const scrollTo = (e: any, selector: string) => {
     e.preventDefault();
 
@@ -23,7 +20,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="top-bar container-fluid">
-        <HeaderButtons/>
+        <HeaderButtons />
 
         <HeaderSocialLinks />
       </div>
@@ -37,7 +34,7 @@ export const Header = () => {
             title="Paál Gyula"
           />
           <h1 className="name" itemProp="name">
-            {t("Gyula, Paál")}
+            Gyula, Paál
           </h1>
           <div className="title">
             (Digital Nomad)
@@ -46,7 +43,7 @@ export const Header = () => {
             <span itemProp="jobTitle">Certified Cloud Architect</span>
           </div>
           <div itemProp="description" className="profile">
-            {t("introduction")}
+            Introduction
           </div>
         </div>
       </div>
@@ -86,7 +83,7 @@ export const Header = () => {
                   onClick={(e) => scrollTo(e, "#experiences-section")}
                   href="#"
                 >
-                  {t("Experiences")}
+                  Experiences
                 </a>
               </li>
               <li>
@@ -95,7 +92,7 @@ export const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, "#eudcation-section")}
                 >
-                  {t("Educations")}
+                  Educations
                 </a>
               </li>
               <li>
@@ -104,7 +101,7 @@ export const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, "#skills-section")}
                 >
-                  {t("Skillset")}
+                  Skillset
                 </a>
               </li>
               <li>
@@ -113,7 +110,7 @@ export const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, "#testimonials-section")}
                 >
-                  {t("Testimonals")}
+                  Testimonals
                 </a>
               </li>
               <li>
@@ -122,7 +119,7 @@ export const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, "#portfolio-section")}
                 >
-                  {t("Portfolio")}
+                  Portfolio
                 </a>
               </li>
               <li>
@@ -131,7 +128,7 @@ export const Header = () => {
                   href="#"
                   onClick={(e) => scrollTo(e, "#contact-section")}
                 >
-                  {t("Contacts")}
+                  Contacts
                 </a>
               </li>
             </ul>
