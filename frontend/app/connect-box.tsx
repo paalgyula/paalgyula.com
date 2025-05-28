@@ -1,5 +1,4 @@
-import { FC, ReactNode } from "react";
-
+import { FC, PropsWithChildren, ReactNode } from "react";
 import {
   FaEnvelope,
   FaGithub,
@@ -15,13 +14,18 @@ type ConnectRowProps = {
   icon?: ReactNode;
 };
 
-const ConnectRow: FC<ConnectRowProps> = ({ icon, text }) => {
+const ConnectRow: FC<PropsWithChildren<ConnectRowProps>> = ({
+  icon,
+  text,
+  children,
+}) => {
   return (
     <div className="flex flex-row gap-2 justify-end content-center items-center">
       <a href="#" className="hover:underline">
         {text}
       </a>
       {icon}
+      {children}
     </div>
   );
 };
@@ -29,10 +33,9 @@ const ConnectRow: FC<ConnectRowProps> = ({ icon, text }) => {
 const ConnnectBox = () => {
   return (
     <div className="p-3 flex flex-col gap-0 text-right">
-      <ConnectRow
-        icon={<FaPhone className="text-primary" />}
-        text="+36 70 171 2997"
-      />
+      <ConnectRow text="+36 70 171 2997">
+        <FaPhone className="text-primary" />
+      </ConnectRow>
 
       <ConnectRow
         icon={<FaEnvelope className="text-primary" />}

@@ -34,7 +34,7 @@ export default function Page() {
 
       <div className="mt-10 text-sm">This page is under development...</div>
 
-      <div className="absolute right-0 bottom-0 text-sm font-light italic">
+      <div className="fixed right-0 bottom-0 text-sm font-light italic">
         <ConnnectBox />
       </div>
     </div>
