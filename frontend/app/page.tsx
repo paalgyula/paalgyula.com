@@ -1,3 +1,4 @@
+import ReportVitals from "components/ReportVitals";
 import { Metadata } from "next";
 import Image from "next/image";
 import ConnnectBox from "./connect-box";
@@ -37,6 +38,7 @@ export default function Page() {
       <div className="fixed right-0 bottom-0 text-sm font-light italic">
         <ConnnectBox />
       </div>
+      <ReportVitals />
     </div>
   );
 }

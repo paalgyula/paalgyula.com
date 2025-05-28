@@ -1,16 +1,11 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Head from "next/head";
-import Script from "next/script";
+import { ReactNode } from "react";
 import "../styles/global.css";
 
 const { NEXT_PUBLIC_ANALYTICS_ID } = process.env;
 
-export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={"bg-primary"}>
       <Head>
@@ -26,7 +21,7 @@ export default function RootLayout({
           content="Get from SEO newbie to SEO pro in 8 simple steps."
         />
       </Head>
-      <Script
+      {/* <Script
         src={
           "https://www.googletagmanager.com/gtag/js?id=" +
           NEXT_PUBLIC_ANALYTICS_ID
@@ -41,7 +36,8 @@ export default function RootLayout({
 
           gtag('config', '${NEXT_PUBLIC_ANALYTICS_ID}');
         `}
-      </Script>
+      </Script> */}
+      <GoogleAnalytics gaId={NEXT_PUBLIC_ANALYTICS_ID as string} />
       <body className="text-white">{children}</body>
     </html>
   );

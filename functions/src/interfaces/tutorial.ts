@@ -1,10 +1,8 @@
 export interface ITutorialListItem {
-    name: string
-    slug: string
-    id: string
-    link: string;
+  name: string;
+  slug: string;
+  id: string;
+  link: string;
 }
 
-export interface ITutorialsResponse {
-    data: ITutorialListItem[]
-}
+export type ITutorialsResponse = ITutorialListItem[];

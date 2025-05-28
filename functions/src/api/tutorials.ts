@@ -34,7 +34,8 @@ class TutorialListItem implements ITutorialListItem {
    * @return {DocumentData} firebase document
    */
   static toFirestore(doc: WithFieldValue<TutorialListItem>): DocumentData {
-    const { id: _, ...tutorial } = doc;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, ...tutorial } = doc;
 
     return tutorial;
   }
