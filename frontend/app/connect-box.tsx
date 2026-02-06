@@ -33,18 +33,26 @@ const ConnectRow: FC<PropsWithChildren<ConnectRowProps>> = ({
 const ConnnectBox = () => {
   return (
     <div className="p-3 flex flex-col gap-0 text-right">
-      <ConnectRow text="+36 70 171 2997">
+      <ConnectRow text="+36 70 171 2997" href="tel:+36701712997">
         <FaPhone className="text-primary" />
       </ConnectRow>
 
       <ConnectRow
         icon={<FaEnvelope className="text-primary" />}
-        text="paalgyula87@gmail.com"
+        text="gyula@pilab.hu"
+        href="mailto:gyula@pilab.hu"
+      />
+
+      <ConnectRow
+        icon={<FaGlobe className="text-primary" />}
+        text="pilab.hu"
+        href="https://pilab.hu"
       />
 
       <ConnectRow
         icon={<FaGlobe className="text-primary" />}
         text="paalgyula.com"
+        href="https://paalgyula.com"
       />
 
       <ConnectRow

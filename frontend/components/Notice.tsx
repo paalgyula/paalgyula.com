@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren } from "react";
 
 type Props = {
-  type: string
-}
+  type: "notice" | "warning";
+};
 
-export const Notice: FC<PropsWithChildren<Props>> = ({ type, children }) => {
+const Notice: FC<PropsWithChildren<Props>> = ({ type, children }) => {
   switch (type) {
     case "warning":
       return (
@@ -23,3 +23,5 @@ export const Notice: FC<PropsWithChildren<Props>> = ({ type, children }) => {
       );
   }
 };
+
+export default Notice;

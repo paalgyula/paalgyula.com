@@ -42,8 +42,8 @@ const Contacts = () => {
             </ul>
             <p>
               Írj üzenetet:{" "}
-              <a href="mailto:paalgyula@paalgyula.com">
-                paalgyula@paalgyula.com
+              <a href="mailto:gyula@pilab.hu">
+                gyula@pilab.hu
               </a>{" "}
               -ra vagy hívj bátran:{" "}
               <a href="tel:+36209410618">+36 20 941 0618</a>

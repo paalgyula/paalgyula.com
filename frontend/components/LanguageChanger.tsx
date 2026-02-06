@@ -4,7 +4,7 @@ import { FC, memo } from "react";
 /* eslint-disable @next/next/no-img-element */
 const LanguageChanger: FC = () => {
   return (
-    <Link passHref className="btn" hrefLang="hu" href="/hu/">
+    <Link passHref className="btn" hrefLang="hu" href="/hun">
       {/* <a className="btn"> */}
       {/* <Image
             height={16}
@@ -20,7 +20,7 @@ const LanguageChanger: FC = () => {
   );
 
   // return (
-  //   <Link passHref href="/en/" className="btn" hrefLang="en">
+  //   <Link passHref href="/eng" className="btn" hrefLang="en">
   //     {/* <a className="btn"> */}
   //     {/* <Image
   //         height={16}

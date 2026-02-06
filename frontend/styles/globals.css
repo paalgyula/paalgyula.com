@@ -2,19 +2,24 @@ body {
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	color: #666;
 	background: #f5f5f5;
+	background: radial-gradient(circle at top left, #3a3a3a, #2a2a2a); /* Example radial gradient */
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"), radial-gradient(circle at top left, #3a3a3a, #2a2a2a);
+	background-size: cover;
+	background-blend-mode: overlay;
 	font-size: 14px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: #444;
+	color: #DDDDDD;
 	overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 500;
+	color: #FFFFFF;
 }
 
 a {
-	color: #607D8B;
+	color: #80BFFF;
 	-webkit-transition: all 0.4s ease-in-out;
 	-moz-transition: all 0.4s ease-in-out;
 	-ms-transition: all 0.4s ease-in-out;
@@ -100,7 +105,7 @@ p {
 }
 
 .header {
-	background: #607D8B;
+	background: #212529;
 	color: #fff;
 }
 
@@ -241,7 +246,7 @@ p {
 }
 
 .page-nav-wrapper {
-	background: #41545e;
+	background: #343a40;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	position: absolute;
@@ -258,7 +263,7 @@ p {
 	left: 0;
 	width: 100%;
 	z-index: 100;
-	background: #607D8B;
+	background: #212529;
 }
 
 .page-nav-wrapper a {

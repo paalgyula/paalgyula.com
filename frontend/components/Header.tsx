@@ -43,7 +43,10 @@ export const Header = () => {
             <span itemProp="jobTitle">Certified Cloud Architect</span>
           </div>
           <div itemProp="description" className="profile">
-            Introduction
+            Hey there! I am a Cloud Native software architect and developer
+            based in Budapest, Hungary. My specialization is the next-gen cloud
+            based development, with highly scalable workloads using Go, React,
+            Node.js and modern DevOps practices.
           </div>
         </div>
       </div>
@@ -52,8 +55,8 @@ export const Header = () => {
           <ul className="list-inline">
             <li className="email">
               <i className="fa fa-envelope"></i>
-              <a href="mailto:paalgyula@paalgyula.com">
-                paalgyula@paalgyula.com
+              <a href="mailto:gyula@pilab.hu">
+                gyula@pilab.hu
               </a>
             </li>
             <li>

@@ -1,0 +1,331 @@
+---
+type: tutorial
+published: true
+draft: false
+title: SSH public key authentication
+date: "2018-02-02T12:29:49+01:00"
+LastModifierDisplayName: Paál Gyula
+LastModifierEmail: gyula@pilab.hu
+---
+
+# SSH public key authentication
+
+## Introduction
+
+Public-key authentication with Secure Shell is more secure than password authentication, as it provides much stronger identity checking. An entity must possess both the private key and the correct passphrase to authenticate itself to another entity.
+
+Unlike traditional password-based authentication, SSH public key authentication uses a cryptographic key pair consisting of a public key and a private key. The public key is shared with servers you want to connect to, while the private key remains secret on your local machine. This approach offers several advantages:
+
+- **Enhanced security**: Eliminates the risk of password interception or brute-force attacks
+- **Automation**: Enables script execution and automated tasks without user interaction
+- **Accountability**: Provides better audit trails with key-based authentication logs
+- **No password reuse**: Avoids password fatigue from managing multiple server passwords
+- **Key revocation**: Easy to disable access by simply removing the public key from authorized servers
+
+## Understanding the Cryptography
+
+SSH key authentication uses asymmetric cryptography (RSA, ECDSA, or Ed25519). When you connect to a server:
+
+1. The server stores your public key in `~/.ssh/authorized_keys`
+2. Your SSH client uses your private key to sign authentication requests
+3. The server verifies the signature using your public key
+4. If verification succeeds, you're authenticated and granted access
+
+The mathematical properties ensure that only the holder of the private key can create valid signatures that match a given public key.
+
+## Generating your keypair
+
+### Prerequisites
+
+Before generating a keypair, ensure you have SSH installed on your system:
+
+```bash
+which ssh-keygen
+```
+
+If it's not installed, install OpenSSH:
+
+```bash
+# Debian/Ubuntu
+sudo apt-get install openssh-client
+
+# RedHat/CentOS
+sudo yum install openssh-clients
+
+# macOS
+brew install openssh
+```
+
+### Key Generation
+
+<Notice type="warning">
+  be sure that `~/.ssh/id_rsa` does not exist or this command will override it!
+</Notice>
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "youremail@yourdomain.com"
+```
+
+This creates a new SSH key pair using the RSA algorithm with 4096-bit strength, using the provided email as a label/comment.
+
+**Breakdown of the command:**
+
+- `-t rsa`: Specifies the key type (RSA is widely supported)
+- `-b 4096`: Sets the key size to 4096 bits (stronger than the default 2048)
+- `-C "youremail@yourdomain.com"`: Adds a comment for identification
+
+**Alternative key types:**
+
+If you prefer modern alternatives:
+
+```bash
+# ECDSA (elliptic curve, faster than RSA)
+ssh-keygen -t ecdsa -b 521 -C "youremail@yourdomain.com"
+
+# Ed25519 (most secure and fastest, recommended)
+ssh-keygen -t ed25519 -C "youremail@yourdomain.com"
+```
+
+### Interactive Prompts
+
+When you run the command, you'll be prompted:
+
+1. **"Enter a file in which to save the key:"** - Press Enter to use the default location (`~/.ssh/id_rsa`). Alternatively, specify a custom path for multiple keys.
+
+2. **"Enter passphrase (empty for no passphrase):"** - Type a strong passphrase to protect your private key, or press Enter for no passphrase.
+
+**Passphrase considerations:**
+
+- **With passphrase**: More secure but requires you to enter it each time (unless using an SSH agent)
+- **Without passphrase**: Convenient for automation and scripts but less secure if your private key is compromised
+
+<Notice type="warning">
+  It is strongly recommended to always use a passphrase. If someone gains access
+  to your private key, they can immediately connect to all servers where it's
+  authorized. A passphrase adds an additional layer of protection against
+  unauthorized access.
+</Notice>
+
+### Verify Key Generation
+
+After generation, verify your keys exist:
+
+```bash
+ls -la ~/.ssh/
+```
+
+You should see two files:
+
+- `id_rsa` - Your private key (must be kept secret, permissions should be 600)
+- `id_rsa.pub` - Your public key (safe to share with servers)
+
+Check and fix permissions if needed:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
+```
+
+## Installing Your Public Key on Remote Servers
+
+### Method 1: Using ssh-copy-id (Recommended)
+
+The easiest method if you can still authenticate with a password:
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa.pub username@remote-server.com
+```
+
+This command:
+
+1. Connects to the remote server using your password
+2. Appends your public key to `~/.ssh/authorized_keys`
+3. Sets proper permissions automatically
+
+### Method 2: Manual Installation
+
+If `ssh-copy-id` is not available:
+
+1. Display your public key:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+2. Connect to the remote server:
+
+```bash
+ssh username@remote-server.com
+```
+
+3. On the remote server, edit the authorized keys file:
+
+```bash
+mkdir -p ~/.ssh
+nano ~/.ssh/authorized_keys
+```
+
+4. Paste your public key content into the file and save (Ctrl+X, then Y)
+
+5. Set proper permissions:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
+## Testing Your Setup
+
+Once your public key is installed, test the connection:
+
+```bash
+ssh -i ~/.ssh/id_rsa username@remote-server.com
+```
+
+If using the default key location, SSH will find it automatically:
+
+```bash
+ssh username@remote-server.com
+```
+
+If successful, you'll either:
+
+- Be connected directly (if no passphrase)
+- Be prompted for your passphrase (if you set one)
+
+If it prompts for a password instead, double-check that:
+
+- The public key is in `~/.ssh/authorized_keys` on the server
+- File permissions are correct (600 for authorized_keys)
+- SSH server config allows public key authentication
+
+## Configuring SSH Config for Easier Access
+
+Create or edit `~/.ssh/config` to simplify connections:
+
+```bash
+Host myserver
+    HostName remote-server.com
+    User username
+    IdentityFile ~/.ssh/id_rsa
+    Port 22
+```
+
+Now you can simply connect with:
+
+```bash
+ssh myserver
+```
+
+Multiple entries make managing multiple servers convenient:
+
+```bash
+Host server1
+    HostName server1.example.com
+    User deploy
+    IdentityFile ~/.ssh/id_deploy
+
+Host server2
+    HostName server2.example.com
+    User admin
+    IdentityFile ~/.ssh/id_admin
+
+Host *
+    AddKeysToAgent yes
+    IdentitiesOnly yes
+```
+
+## Using SSH Agent for Passphrase Convenience
+
+The SSH agent stores your decrypted private key in memory, so you don't need to enter your passphrase repeatedly:
+
+```bash
+# Start the SSH agent
+eval $(ssh-agent -s)
+
+# Add your private key to the agent
+ssh-add ~/.ssh/id_rsa
+```
+
+You'll be prompted for your passphrase once, and subsequent SSH connections will use the cached key.
+
+To list keys in the agent:
+
+```bash
+ssh-add -l
+```
+
+## Security Best Practices
+
+1. **Use strong passphrases**: Treat your passphrase like a master password
+2. **Protect your private key**: Never share or expose your private key file
+3. **Limit key permissions**: Ensure `~/.ssh` has 700 permissions, private keys 600
+4. **Separate keys per purpose**: Use different keys for different purposes (GitHub, servers, etc.)
+5. **Rotate keys periodically**: Generate new keys and retire old ones
+6. **Disable password authentication on servers**: Once you've verified key access works
+7. **Monitor authorized_keys**: Regularly review who has access to your servers
+8. **Revoke compromised keys immediately**: Remove from `authorized_keys` if suspected leak
+
+## Disabling Password Authentication on the Server
+
+Once you've verified key-based authentication works, strengthen security by disabling passwords:
+
+On the server, edit `/etc/ssh/sshd_config`:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Find and change these lines:
+
+```
+PasswordAuthentication no
+PubkeyAuthentication yes
+```
+
+Restart the SSH service:
+
+```bash
+sudo systemctl restart sshd
+```
+
+<Notice type="warning">
+  Before disabling password authentication, ensure you have key-based access
+  working and can connect successfully. Otherwise, you might lock yourself out
+  of the server.
+</Notice>
+
+## Troubleshooting
+
+### "Permission denied (publickey)"
+
+**Causes and solutions:**
+
+- Public key not in `authorized_keys` - Reinstall using `ssh-copy-id`
+- Wrong permissions on `authorized_keys` - Should be 600
+- Wrong permissions on `~/.ssh` - Should be 700
+- SSH agent not running - Start with `eval $(ssh-agent -s)`
+
+### "Could not open a connection to your authentication agent"
+
+```bash
+# Start the agent
+eval $(ssh-agent -s)
+# Add your key
+ssh-add ~/.ssh/id_rsa
+```
+
+### Debugging SSH Connection Issues
+
+Use verbose mode to see detailed connection information:
+
+```bash
+ssh -vvv username@remote-server.com
+```
+
+This will show the authentication methods attempted and why each might have failed.
+
+## Conclusion
+
+SSH public key authentication is a fundamental security practice for any system administrator or developer. By following these steps, you've significantly improved the security of your remote connections while also enabling automation and scripting capabilities. Remember to protect your private keys carefully and maintain good key hygiene by regularly reviewing and updating your authorized keys.

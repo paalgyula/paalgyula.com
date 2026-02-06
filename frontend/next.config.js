@@ -1,6 +1,14 @@
-/** @type {import('next').NextConfig} */
+const createMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    // Optionally add remark and rehype plugins
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
 
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   output: "export",
   images: {
@@ -15,4 +23,7 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'], // Add 'md' and 'mdx'
 };
+
+module.exports = createMDX(nextConfig);

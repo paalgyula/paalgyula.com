@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+'use client';
+
+import { usePathname } from "next/navigation";
 import { FC } from "react";
 import HeaderButtons from "./HeaderButtons";
 import { HeaderSocialLinks } from "./HeaderSocialLinks";
@@ -8,7 +10,7 @@ type Props = {
 };
 
 export const Header: FC<Props> = ({ title }) => {
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <header className="header">
@@ -23,8 +25,8 @@ export const Header: FC<Props> = ({ title }) => {
           <ul className="list-inline">
             <li className="email">
               <i className="fa fa-envelope"></i>
-              <a href="mailto:paalgyula@paalgyula.com">
-                paalgyula@paalgyula.com
+              <a href="mailto:gyula@pilab.hu">
+                gyula@pilab.hu
               </a>
             </li>
             <li>
@@ -48,7 +50,7 @@ export const Header: FC<Props> = ({ title }) => {
         <div className="page-nav-wrapper text-center" id="page-nav-wrapper">
           <div className="container">
             <ul className="nav page-nav list-inline" id="page-nav">
-              {router.pathname
+              {pathname
                 .split("/")
                 .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
                 .slice(0, -1)

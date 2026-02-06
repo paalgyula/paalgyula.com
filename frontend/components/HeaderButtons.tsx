@@ -11,13 +11,13 @@ export const HeaderButtons = () => {
           <span>Tutorials</span> <span className="badge badge-danger">NEW</span>
         </a>
       </Link>
-      <a className="btn hidden-xs" href="mailto:paalgyula@paalgyula.com">
+      <a className="btn hidden-xs" href="mailto:gyula@pilab.hu">
         <i className="fa fa-paper-plane" aria-hidden="true"></i>
         <span>Hire me</span>
       </a>
-      <a className="btn" href="http://www.paalgyula.com/resume.pdf">
+      <a className="btn" href="/cv_en_dark.pdf">
         <i className="fa fa-download" aria-hidden="true"></i>
-        <span>Download my resume</span>
+        <span>Download my CV (PDF)</span>
       </a>
     </div>
   );
