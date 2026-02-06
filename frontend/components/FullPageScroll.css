@@ -1,0 +1,77 @@
+/* A fő burkoló */
+.scroll-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* A görgethető konténer */
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* Ez a lelke az egésznek */
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox elrejtés */
+  -ms-overflow-style: none; /* IE elrejtés */
+}
+
+.snap-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari elrejtés */
+}
+
+/* Az egyes oldalak */
+.snap-section {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* Biztosítja, hogy ne tudj egyszerre 3 oldalt átugrani */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content {
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* Navigációs pöttyök stílusa */
+.dot-navigation {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.nav-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+/* Aktív állapot jelzése JS nélkül nehézkes CSS-ben, 
+   de a scroll-snap miatt a fókusz segít */
+.nav-dot:focus {
+  background: white;
+  outline: none;
+}
